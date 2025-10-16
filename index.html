@@ -86,12 +86,19 @@
             z-index: -1;
         }
 
-        /* Theme Toggle */
-        .theme-toggle {
+        /* Control Panel */
+        .control-panel {
             position: fixed;
             top: 20px;
-            right: 80px;
+            right: 20px;
             z-index: 1001;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        /* Theme Toggle */
+        .theme-toggle {
             background: var(--card-bg);
             backdrop-filter: blur(20px);
             border-radius: 50px;
@@ -99,6 +106,7 @@
             display: flex;
             box-shadow: var(--shadow);
             border: 1px solid rgba(255, 255, 255, 0.1);
+            width: fit-content;
         }
 
         [data-theme="light"] .theme-toggle {
@@ -127,22 +135,40 @@
 
         /* Music Player */
         .music-player {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 1001;
             background: var(--card-bg);
             backdrop-filter: blur(20px);
-            border-radius: 50px;
-            padding: 8px;
+            border-radius: 20px;
+            padding: 15px;
             display: flex;
-            align-items: center;
+            flex-direction: column;
             box-shadow: var(--shadow);
             border: 1px solid rgba(255, 255, 255, 0.1);
+            width: 320px;
+            max-height: 450px;
+            overflow: hidden;
         }
 
         [data-theme="light"] .music-player {
             border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .player-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .player-header h3 {
+            font-size: 1.2rem;
+            color: var(--accent);
+        }
+
+        .player-controls {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 15px;
         }
 
         .player-btn {
@@ -152,7 +178,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: transparent;
+            background: var(--light-gray);
             border: none;
             color: var(--text-primary);
             cursor: pointer;
@@ -162,6 +188,107 @@
         .player-btn:hover {
             background: var(--accent);
             transform: scale(1.1);
+            box-shadow: var(--glow);
+        }
+
+        .player-btn.active {
+            background: var(--accent);
+            box-shadow: var(--glow);
+        }
+
+        .volume-controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .volume-slider {
+            flex: 1;
+            -webkit-appearance: none;
+            height: 5px;
+            background: var(--light-gray);
+            border-radius: 5px;
+            outline: none;
+        }
+
+        .volume-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: var(--accent);
+            cursor: pointer;
+            box-shadow: var(--glow);
+        }
+
+        .playlist {
+            max-height: 250px;
+            overflow-y: auto;
+            padding-right: 5px;
+        }
+
+        .playlist::-webkit-scrollbar {
+            width: 5px;
+        }
+
+        .playlist::-webkit-scrollbar-track {
+            background: var(--light-gray);
+            border-radius: 10px;
+        }
+
+        .playlist::-webkit-scrollbar-thumb {
+            background: var(--accent);
+            border-radius: 10px;
+        }
+
+        .track {
+            display: flex;
+            align-items: center;
+            padding: 8px 12px;
+            border-radius: 8px;
+            margin-bottom: 8px;
+            cursor: pointer;
+            transition: var(--transition);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .track:hover {
+            background: rgba(220, 38, 38, 0.2);
+            transform: translateX(5px);
+        }
+
+        .track.active {
+            background: rgba(220, 38, 38, 0.3);
+            border-left: 3px solid var(--accent);
+        }
+
+        .track-info {
+            flex: 1;
+            margin-left: 10px;
+        }
+
+        .track-title {
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .track-artist {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        .track-duration {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        /* Spotify Embed */
+        .spotify-embed {
+            margin-top: 15px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
         }
 
         /* Header & Navigation */
@@ -889,6 +1016,16 @@
                 flex-direction: column;
                 text-align: center;
             }
+
+            .control-panel {
+                flex-direction: row;
+                top: 80px;
+                right: 20px;
+            }
+
+            .music-player {
+                width: 280px;
+            }
         }
 
         @media (max-width: 768px) {
@@ -937,11 +1074,21 @@
                 font-size: 2rem;
             }
 
+            .control-panel {
+                position: static;
+                flex-direction: column;
+                align-items: center;
+                margin: 20px auto;
+                width: 100%;
+            }
+
             .theme-toggle, .music-player {
-                position: relative;
-                top: auto;
-                right: auto;
-                margin: 10px;
+                margin-bottom: 15px;
+            }
+
+            .music-player {
+                width: 100%;
+                max-width: 300px;
             }
         }
 
@@ -972,17 +1119,77 @@
     <!-- Particle Background -->
     <div id="particles-js"></div>
 
-    <!-- Theme Toggle -->
-    <div class="theme-toggle">
-        <button class="theme-btn active" data-theme="dark"><i class="fas fa-moon"></i></button>
-        <button class="theme-btn" data-theme="light"><i class="fas fa-sun"></i></button>
-    </div>
+    <!-- Control Panel -->
+    <div class="control-panel">
+        <!-- Theme Toggle -->
+        <div class="theme-toggle">
+            <button class="theme-btn active" data-theme="dark"><i class="fas fa-moon"></i></button>
+            <button class="theme-btn" data-theme="light"><i class="fas fa-sun"></i></button>
+        </div>
 
-    <!-- Music Player -->
-    <div class="music-player">
-        <button class="player-btn" id="play-btn"><i class="fas fa-play"></i></button>
-        <button class="player-btn" id="pause-btn"><i class="fas fa-pause"></i></button>
-        <button class="player-btn" id="stop-btn"><i class="fas fa-stop"></i></button>
+        <!-- Music Player -->
+        <div class="music-player">
+            <div class="player-header">
+                <h3>Now Playing</h3>
+                <div class="player-controls">
+                    <button class="player-btn" id="prev-btn"><i class="fas fa-step-backward"></i></button>
+                    <button class="player-btn" id="play-btn"><i class="fas fa-play"></i></button>
+                    <button class="player-btn" id="next-btn"><i class="fas fa-step-forward"></i></button>
+                </div>
+            </div>
+            
+            <div class="volume-controls">
+                <button class="player-btn" id="mute-btn"><i class="fas fa-volume-up"></i></button>
+                <input type="range" min="0" max="100" value="50" class="volume-slider" id="volume-slider">
+            </div>
+            
+            <div class="playlist">
+                <div class="track active">
+                    <i class="fas fa-music"></i>
+                    <div class="track-info">
+                        <div class="track-title">Roll Up</div>
+                        <div class="track-artist">Emtee</div>
+                    </div>
+                    <div class="track-duration">3:45</div>
+                </div>
+                <div class="track">
+                    <i class="fas fa-music"></i>
+                    <div class="track-info">
+                        <div class="track-title">Pearl Thusi</div>
+                        <div class="track-artist">Emtee</div>
+                    </div>
+                    <div class="track-duration">4:12</div>
+                </div>
+                <div class="track">
+                    <i class="fas fa-music"></i>
+                    <div class="track-info">
+                        <div class="track-title">Mpumalanga</div>
+                        <div class="track-artist">Kraizie</div>
+                    </div>
+                    <div class="track-duration">3:28</div>
+                </div>
+                <div class="track">
+                    <i class="fas fa-music"></i>
+                    <div class="track-info">
+                        <div class="track-title">Dreams To Reality</div>
+                        <div class="track-artist">Kraizie</div>
+                    </div>
+                    <div class="track-duration">3:55</div>
+                </div>
+                <div class="track">
+                    <i class="fas fa-music"></i>
+                    <div class="track-info">
+                        <div class="track-title">Street Lights</div>
+                        <div class="track-artist">F-eezy</div>
+                    </div>
+                    <div class="track-duration">4:07</div>
+                </div>
+            </div>
+            
+            <div class="spotify-embed">
+                <iframe src="https://open.spotify.com/embed/playlist/0qIvroVtThINkLvz2hLfh8?utm_source=generator&theme=0" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            </div>
+        </div>
     </div>
 
     <!-- Header & Navigation -->
@@ -1183,13 +1390,15 @@
                             <a href="https://www.instagram.com/emteetherapper/" target="_blank"><i class="fab fa-instagram"></i></a>
                             <a href="https://twitter.com/emteetherapper" target="_blank"><i class="fab fa-twitter"></i></a>
                             <a href="https://www.youtube.com/c/EmteeOfficial" target="_blank"><i class="fab fa-youtube"></i></a>
+                            <a href="https://www.facebook.com/emteetherapper/" target="_blank"><i class="fab fa-facebook"></i></a>
+                            <a href="https://www.tiktok.com/@emteetherapper" target="_blank"><i class="fab fa-tiktok"></i></a>
                         </div>
                     </div>
                 </div>
                 <div class="modal-details">
                     <div class="detail-card">
                         <h3>About</h3>
-                        <p>Mthembeni Ndevu, professionally known as Emtee, is a South African rapper, singer, and songwriter. He gained recognition after releasing "Roll Up", which reached number one on several music charts in South Africa.</p>
+                        <p>Mthembeni Ndevu, professionally known as Emtee, is a South African rapper, singer, and songwriter. He gained recognition after releasing "Roll Up", which reached number one on several music charts in South Africa. Founder of eMtee Records.</p>
                     </div>
                     <div class="detail-card">
                         <h3>Top Tracks</h3>
@@ -1198,17 +1407,20 @@
                             <li>Pearl Thusi</li>
                             <li>We Made It</li>
                             <li>Don't Forget To Pray</li>
+                            <li>Amanzi</li>
                         </ul>
                     </div>
                     <div class="detail-card">
                         <h3>Booking Info</h3>
-                        <p>Appearance Fee: R 8,000 - R 15,000</p>
-                        <p>Feature Verse: R 25,000+</p>
+                        <p>Appearance Fee: R 15,000 - R 25,000</p>
+                        <p>Feature Verse: R 30,000+</p>
+                        <p>Contact: 061 460 0542</p>
                     </div>
                     <div class="detail-card">
                         <h3>Latest Release</h3>
                         <p>Album: DIY 3 (2023)</p>
                         <p>Label: eMtee Records</p>
+                        <p>Streams: 10M+</p>
                     </div>
                 </div>
             </div>
@@ -1230,13 +1442,14 @@
                             <a href="https://www.instagram.com/kraizie_k/" target="_blank"><i class="fab fa-instagram"></i></a>
                             <a href="https://twitter.com/Kraizie_K" target="_blank"><i class="fab fa-twitter"></i></a>
                             <a href="https://www.youtube.com/channel/UCexample" target="_blank"><i class="fab fa-youtube"></i></a>
+                            <a href="https://www.facebook.com/KraizieK" target="_blank"><i class="fab fa-facebook"></i></a>
                         </div>
                     </div>
                 </div>
                 <div class="modal-details">
                     <div class="detail-card">
                         <h3>About</h3>
-                        <p>Kraizie is a rising star from Mpumalanga known for his unique flow and authentic storytelling. His music reflects his experiences growing up in South Africa's townships.</p>
+                        <p>Kraizie is a rising star from Mpumalanga known for his unique flow and authentic storytelling. His music reflects his experiences growing up in South Africa's townships with raw emotion and powerful lyricism.</p>
                     </div>
                     <div class="detail-card">
                         <h3>Top Tracks</h3>
@@ -1245,17 +1458,20 @@
                             <li>Dreams To Reality</li>
                             <li>Street Lights</li>
                             <li>No Sleep</li>
+                            <li>Township Boy</li>
                         </ul>
                     </div>
                     <div class="detail-card">
                         <h3>Booking Info</h3>
-                        <p>Appearance Fee: R 5,000 - R 10,000</p>
-                        <p>Feature Verse: R 15,000+</p>
+                        <p>Appearance Fee: R 8,000 - R 15,000</p>
+                        <p>Feature Verse: R 20,000+</p>
+                        <p>Contact: 061 460 0542</p>
                     </div>
                     <div class="detail-card">
                         <h3>Latest Release</h3>
                         <p>EP: Township Dreams (2023)</p>
                         <p>Label: eMtee Records</p>
+                        <p>Streams: 2M+</p>
                     </div>
                 </div>
             </div>
@@ -1380,7 +1596,7 @@
     </section>
 
     <!-- WhatsApp Floating Button -->
-    <a href="https://wa.me/27837254362?text=Hi%2C%20I'm%20interested%20in%20eMtee%20Records%20merchandise" class="whatsapp-float" target="_blank">
+    <a href="https://wa.me/27614600542?text=Hi%2C%20I'm%20interested%20in%20eMtee%20Records%20merchandise" class="whatsapp-float" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
 
@@ -1396,6 +1612,7 @@
                     <a href="https://www.youtube.com/c/EmteeRecords" target="_blank"><i class="fab fa-youtube"></i></a>
                     <a href="https://www.facebook.com/emteerecords" target="_blank"><i class="fab fa-facebook-f"></i></a>
                     <a href="https://open.spotify.com/user/emteerecords" target="_blank"><i class="fab fa-spotify"></i></a>
+                    <a href="https://www.tiktok.com/@emteerecords" target="_blank"><i class="fab fa-tiktok"></i></a>
                 </div>
             </div>
             <div class="footer-column">
@@ -1412,8 +1629,9 @@
                 <h3>Contact Us</h3>
                 <ul class="footer-links">
                     <li><i class="fas fa-map-marker-alt"></i> Johannesburg, South Africa</li>
-                    <li><i class="fas fa-phone"></i> +27 11 123 4567</li>
+                    <li><i class="fas fa-phone"></i> 061 460 0542</li>
                     <li><i class="fas fa-envelope"></i> info@emteerecords.co.za</li>
+                    <li><i class="fas fa-globe"></i> www.emteerecords.co.za</li>
                 </ul>
             </div>
         </div>
@@ -1616,7 +1834,7 @@
                 // Create WhatsApp message
                 const message = `Hi, I would like to order: ${product} for R ${price}`;
                 const encodedMessage = encodeURIComponent(message);
-                const whatsappURL = `https://wa.me/27837254362?text=${encodedMessage}`;
+                const whatsappURL = `https://wa.me/27614600542?text=${encodedMessage}`;
                 
                 // Open WhatsApp
                 window.open(whatsappURL, '_blank');
@@ -1636,7 +1854,7 @@
             
             // Create WhatsApp message
             const message = `New Booking Request:%0A%0AName: ${name}%0AArtist: ${artist}%0A%0APlease check the admin panel for full details.`;
-            const whatsappURL = `https://wa.me/27837254362?text=${message}`;
+            const whatsappURL = `https://wa.me/27614600542?text=${message}`;
             
             // Open WhatsApp
             window.open(whatsappURL, '_blank');
@@ -1647,22 +1865,77 @@
         });
 
         // Music Player Functionality
-        const audio = new Audio('https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3');
         const playBtn = document.getElementById('play-btn');
-        const pauseBtn = document.getElementById('pause-btn');
-        const stopBtn = document.getElementById('stop-btn');
-
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const muteBtn = document.getElementById('mute-btn');
+        const volumeSlider = document.getElementById('volume-slider');
+        const tracks = document.querySelectorAll('.track');
+        
+        let currentTrack = 0;
+        let isPlaying = false;
+        let isMuted = false;
+        let volume = 50;
+        
+        // Set initial volume
+        volumeSlider.value = volume;
+        
+        // Play/Pause functionality
         playBtn.addEventListener('click', () => {
-            audio.play();
+            isPlaying = !isPlaying;
+            playBtn.innerHTML = isPlaying ? '<i class="fas fa-pause"></i>' : '<i class="fas fa-play"></i>';
+            
+            if (isPlaying) {
+                playBtn.classList.add('active');
+            } else {
+                playBtn.classList.remove('active');
+            }
         });
-
-        pauseBtn.addEventListener('click', () => {
-            audio.pause();
+        
+        // Previous track
+        prevBtn.addEventListener('click', () => {
+            tracks[currentTrack].classList.remove('active');
+            currentTrack = (currentTrack - 1 + tracks.length) % tracks.length;
+            tracks[currentTrack].classList.add('active');
         });
-
-        stopBtn.addEventListener('click', () => {
-            audio.pause();
-            audio.currentTime = 0;
+        
+        // Next track
+        nextBtn.addEventListener('click', () => {
+            tracks[currentTrack].classList.remove('active');
+            currentTrack = (currentTrack + 1) % tracks.length;
+            tracks[currentTrack].classList.add('active');
+        });
+        
+        // Mute functionality
+        muteBtn.addEventListener('click', () => {
+            isMuted = !isMuted;
+            muteBtn.innerHTML = isMuted ? '<i class="fas fa-volume-mute"></i>' : '<i class="fas fa-volume-up"></i>';
+            
+            if (isMuted) {
+                volumeSlider.disabled = true;
+            } else {
+                volumeSlider.disabled = false;
+            }
+        });
+        
+        // Volume control
+        volumeSlider.addEventListener('input', (e) => {
+            volume = e.target.value;
+        });
+        
+        // Track selection
+        tracks.forEach((track, index) => {
+            track.addEventListener('click', () => {
+                tracks[currentTrack].classList.remove('active');
+                currentTrack = index;
+                tracks[currentTrack].classList.add('active');
+                
+                if (!isPlaying) {
+                    isPlaying = true;
+                    playBtn.innerHTML = '<i class="fas fa-pause"></i>';
+                    playBtn.classList.add('active');
+                }
+            });
         });
     </script>
 </body>
