@@ -6,18 +6,21 @@
     <title>eMtee Records | South Africa's Premier Music Label</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
     <style>
         :root {
             --primary: #000000;
             --secondary: #ffffff;
             --accent: #dc2626;
+            --accent-glow: rgba(220, 38, 38, 0.4);
             --gray: #1a1a1a;
             --light-gray: #333333;
-            --transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            --card-bg: rgba(30, 30, 30, 0.7);
+            --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --card-bg: rgba(30, 30, 30, 0.85);
             --text-primary: #ffffff;
             --text-secondary: #cccccc;
             --shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            --glow: 0 0 20px var(--accent-glow);
         }
 
         [data-theme="light"] {
@@ -25,10 +28,11 @@
             --secondary: #000000;
             --gray: #f5f5f5;
             --light-gray: #e0e0e0;
-            --card-bg: rgba(255, 255, 255, 0.8);
+            --card-bg: rgba(255, 255, 255, 0.9);
             --text-primary: #000000;
             --text-secondary: #444444;
             --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            --glow: 0 0 20px rgba(220, 38, 38, 0.2);
         }
 
         * {
@@ -38,25 +42,67 @@
             font-family: 'Inter', sans-serif;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             background-color: var(--primary);
             color: var(--text-primary);
             overflow-x: hidden;
             transition: var(--transition);
+            background: radial-gradient(ellipse at center, var(--gray) 0%, var(--primary) 100%);
+        }
+
+        /* Custom Cursor */
+        .cursor {
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--accent);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            mix-blend-mode: difference;
+            transition: transform 0.2s ease;
+        }
+
+        .cursor-follower {
+            width: 8px;
+            height: 8px;
+            background: var(--accent);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9998;
+            transition: transform 0.4s ease;
+        }
+
+        /* Particle Background */
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
         }
 
         /* Theme Toggle */
         .theme-toggle {
             position: fixed;
             top: 20px;
-            right: 20px;
+            right: 80px;
             z-index: 1001;
             background: var(--card-bg);
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(20px);
             border-radius: 50px;
             padding: 8px;
             display: flex;
             box-shadow: var(--shadow);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        [data-theme="light"] .theme-toggle {
+            border: 1px solid rgba(0, 0, 0, 0.1);
         }
 
         .theme-btn {
@@ -76,6 +122,46 @@
         .theme-btn.active {
             background: var(--accent);
             color: white;
+            box-shadow: var(--glow);
+        }
+
+        /* Music Player */
+        .music-player {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1001;
+            background: var(--card-bg);
+            backdrop-filter: blur(20px);
+            border-radius: 50px;
+            padding: 8px;
+            display: flex;
+            align-items: center;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        [data-theme="light"] .music-player {
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .player-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: transparent;
+            border: none;
+            color: var(--text-primary);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .player-btn:hover {
+            background: var(--accent);
+            transform: scale(1.1);
         }
 
         /* Header & Navigation */
@@ -90,26 +176,26 @@
             background-color: rgba(0, 0, 0, 0.9);
             z-index: 1000;
             transition: var(--transition);
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         [data-theme="light"] header {
             background-color: rgba(255, 255, 255, 0.9);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
         }
 
         .logo {
             height: 50px;
             display: flex;
             align-items: center;
+            transition: var(--transition);
         }
 
         .logo img {
             height: 100%;
             transition: var(--transition);
-        }
-
-        [data-theme="light"] .logo img {
-            filter: none;
+            filter: drop-shadow(0 0 10px rgba(220, 38, 38, 0.5));
         }
 
         nav ul {
@@ -140,6 +226,7 @@
             height: 2px;
             background-color: var(--accent);
             transition: var(--transition);
+            box-shadow: var(--glow);
         }
 
         nav ul li a:hover::after {
@@ -156,7 +243,7 @@
         /* Hero Section */
         .hero {
             height: 100vh;
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), 
                         url('images/whole team.jpg') center/cover no-repeat;
             display: flex;
             align-items: center;
@@ -187,29 +274,22 @@
             max-width: 800px;
             position: relative;
             z-index: 1;
-            animation: fadeUp 1s ease-out;
-        }
-
-        @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
         }
 
         .hero-logo {
             max-width: 400px;
             margin: 0 auto 2rem;
-            animation: logoPulse 4s infinite;
+            animation: logoFloat 6s ease-in-out infinite;
+            filter: drop-shadow(0 10px 30px rgba(220, 38, 38, 0.5));
         }
 
-        @keyframes logoPulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
+        @keyframes logoFloat {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-20px) scale(1.05); }
         }
 
         .hero-logo img {
             width: 100%;
-            filter: drop-shadow(0 5px 15px rgba(220, 38, 38, 0.5));
         }
 
         .hero p {
@@ -232,6 +312,9 @@
             letter-spacing: 1px;
             position: relative;
             overflow: hidden;
+            border: none;
+            cursor: pointer;
+            box-shadow: var(--glow);
         }
 
         .btn::before {
@@ -252,7 +335,7 @@
         .btn:hover {
             background-color: #b91c1c;
             transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(220, 38, 38, 0.3);
+            box-shadow: 0 10px 20px rgba(220, 38, 38, 0.3), var(--glow);
         }
 
         /* Stats Section */
@@ -262,17 +345,26 @@
             display: flex;
             justify-content: space-around;
             flex-wrap: wrap;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stats::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent 30%, var(--accent-glow) 100%);
+            opacity: 0.1;
         }
 
         .stat-item {
             text-align: center;
             margin: 1rem;
-            animation: countUp 2s ease-out;
-        }
-
-        @keyframes countUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+            position: relative;
+            z-index: 1;
         }
 
         .stat-number {
@@ -280,6 +372,7 @@
             font-weight: 800;
             color: var(--accent);
             display: block;
+            text-shadow: 0 0 10px var(--accent-glow);
         }
 
         .stat-label {
@@ -292,6 +385,7 @@
         /* Artists Section */
         .section {
             padding: 5rem 5%;
+            position: relative;
         }
 
         .section-title {
@@ -305,6 +399,7 @@
             text-transform: uppercase;
             letter-spacing: 2px;
             display: inline-block;
+            position: relative;
         }
 
         .section-title h2::after {
@@ -316,6 +411,7 @@
             width: 80px;
             height: 3px;
             background-color: var(--accent);
+            box-shadow: var(--glow);
         }
 
         .artists-grid {
@@ -333,6 +429,7 @@
             backdrop-filter: blur(10px);
             box-shadow: var(--shadow);
             border: 1px solid rgba(255, 255, 255, 0.1);
+            cursor: pointer;
         }
 
         [data-theme="light"] .artist-card {
@@ -341,7 +438,7 @@
 
         .artist-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(220, 38, 38, 0.2);
+            box-shadow: 0 15px 30px rgba(220, 38, 38, 0.2), var(--glow);
         }
 
         .artist-img {
@@ -420,10 +517,11 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.8);
+            background-color: rgba(0, 0, 0, 0.9);
             z-index: 2000;
             overflow-y: auto;
             padding: 2rem;
+            backdrop-filter: blur(10px);
         }
 
         .modal-content {
@@ -433,12 +531,14 @@
             border-radius: 15px;
             overflow: hidden;
             position: relative;
-            animation: modalFadeIn 0.3s ease-out;
+            animation: modalSlideIn 0.5s ease-out;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        @keyframes modalFadeIn {
-            from { opacity: 0; transform: scale(0.9); }
-            to { opacity: 1; transform: scale(1); }
+        @keyframes modalSlideIn {
+            from { opacity: 0; transform: translateY(-50px) scale(0.9); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
         }
 
         .close-modal {
@@ -451,6 +551,12 @@
             border: none;
             cursor: pointer;
             z-index: 10;
+            transition: var(--transition);
+        }
+
+        .close-modal:hover {
+            color: var(--accent);
+            transform: rotate(90deg);
         }
 
         .modal-body {
@@ -471,11 +577,15 @@
             height: 200px;
             object-fit: cover;
             border-radius: 10px;
+            box-shadow: var(--shadow);
         }
 
         .modal-info h2 {
             font-size: 2.5rem;
             margin-bottom: 0.5rem;
+            background: linear-gradient(to right, var(--accent), #ff6b6b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .modal-info p {
@@ -498,11 +608,13 @@
             border-radius: 50%;
             color: var(--text-primary);
             transition: var(--transition);
+            text-decoration: none;
         }
 
         .social-links a:hover {
             background-color: var(--accent);
             transform: translateY(-3px);
+            box-shadow: var(--glow);
         }
 
         .modal-details {
@@ -515,6 +627,12 @@
             background-color: var(--light-gray);
             padding: 1.5rem;
             border-radius: 10px;
+            transition: var(--transition);
+        }
+
+        .detail-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
         }
 
         .detail-card h3 {
@@ -538,6 +656,7 @@
             backdrop-filter: blur(10px);
             box-shadow: var(--shadow);
             border: 1px solid rgba(255, 255, 255, 0.1);
+            cursor: pointer;
         }
 
         [data-theme="light"] .merch-card {
@@ -546,7 +665,7 @@
 
         .merch-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(220, 38, 38, 0.2);
+            box-shadow: 0 10px 20px rgba(220, 38, 38, 0.2), var(--glow);
         }
 
         .merch-img {
@@ -595,10 +714,12 @@
             align-items: center;
             justify-content: center;
             gap: 0.5rem;
+            box-shadow: var(--glow);
         }
 
         .add-to-cart:hover {
             background-color: #b91c1c;
+            transform: translateY(-2px);
         }
 
         /* WhatsApp Floating Button */
@@ -619,6 +740,7 @@
             z-index: 1000;
             transition: var(--transition);
             animation: pulse 2s infinite;
+            text-decoration: none;
         }
 
         @keyframes pulse {
@@ -636,6 +758,7 @@
             background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), 
                         url('images/emtee records slide image.jpg') center/cover no-repeat;
             padding: 5rem 5%;
+            position: relative;
         }
 
         [data-theme="light"] .booking {
@@ -651,6 +774,7 @@
             border-radius: 15px;
             backdrop-filter: blur(10px);
             box-shadow: var(--shadow);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .form-group {
@@ -677,6 +801,7 @@
         .form-control:focus {
             outline: none;
             border-color: var(--accent);
+            box-shadow: 0 0 0 2px var(--accent-glow);
         }
 
         textarea.form-control {
@@ -688,6 +813,8 @@
         footer {
             background-color: var(--gray);
             padding: 3rem 5%;
+            position: relative;
+            overflow: hidden;
         }
 
         .footer-content {
@@ -695,6 +822,8 @@
             flex-wrap: wrap;
             justify-content: space-between;
             margin-bottom: 2rem;
+            position: relative;
+            z-index: 1;
         }
 
         .footer-column {
@@ -718,6 +847,7 @@
             width: 40px;
             height: 2px;
             background-color: var(--accent);
+            box-shadow: var(--glow);
         }
 
         .footer-links {
@@ -745,6 +875,8 @@
             border-top: 1px solid #444;
             color: var(--text-secondary);
             font-size: 0.9rem;
+            position: relative;
+            z-index: 1;
         }
 
         /* Responsive Design */
@@ -774,6 +906,7 @@
                 transition: var(--transition);
                 padding: 2rem;
                 backdrop-filter: blur(10px);
+                border-right: 1px solid rgba(255, 255, 255, 0.1);
             }
 
             nav.active {
@@ -803,6 +936,13 @@
             .stat-number {
                 font-size: 2rem;
             }
+
+            .theme-toggle, .music-player {
+                position: relative;
+                top: auto;
+                right: auto;
+                margin: 10px;
+            }
         }
 
         @media (max-width: 576px) {
@@ -825,10 +965,24 @@
     </style>
 </head>
 <body data-theme="dark">
+    <!-- Custom Cursor -->
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+
+    <!-- Particle Background -->
+    <div id="particles-js"></div>
+
     <!-- Theme Toggle -->
     <div class="theme-toggle">
         <button class="theme-btn active" data-theme="dark"><i class="fas fa-moon"></i></button>
         <button class="theme-btn" data-theme="light"><i class="fas fa-sun"></i></button>
+    </div>
+
+    <!-- Music Player -->
+    <div class="music-player">
+        <button class="player-btn" id="play-btn"><i class="fas fa-play"></i></button>
+        <button class="player-btn" id="pause-btn"><i class="fas fa-pause"></i></button>
+        <button class="player-btn" id="stop-btn"><i class="fas fa-stop"></i></button>
     </div>
 
     <!-- Header & Navigation -->
@@ -852,7 +1006,7 @@
 
     <!-- Hero Section -->
     <section class="hero" id="home">
-        <div class="hero-content">
+        <div class="hero-content" data-aos="fade-up" data-aos-duration="1000">
             <div class="hero-logo">
                 <img src="images/eMtee Records logo.jpg" alt="eMtee Records">
             </div>
@@ -863,19 +1017,19 @@
 
     <!-- Stats Section -->
     <section class="stats">
-        <div class="stat-item">
+        <div class="stat-item" data-aos="fade-up" data-aos-delay="100">
             <span class="stat-number" data-count="25">0</span>
             <span class="stat-label">Million Streams</span>
         </div>
-        <div class="stat-item">
+        <div class="stat-item" data-aos="fade-up" data-aos-delay="200">
             <span class="stat-number" data-count="5">0</span>
             <span class="stat-label">Artists</span>
         </div>
-        <div class="stat-item">
+        <div class="stat-item" data-aos="fade-up" data-aos-delay="300">
             <span class="stat-number" data-count="120">0</span>
             <span class="stat-label">Events</span>
         </div>
-        <div class="stat-item">
+        <div class="stat-item" data-aos="fade-up" data-aos-delay="400">
             <span class="stat-number" data-count="15">0</span>
             <span class="stat-label">Countries</span>
         </div>
@@ -883,12 +1037,12 @@
 
     <!-- Artists Section -->
     <section class="section" id="artists">
-        <div class="section-title">
+        <div class="section-title" data-aos="fade-up">
             <h2>Our Artists</h2>
         </div>
         <div class="artists-grid">
             <!-- Emtee -->
-            <div class="artist-card" data-artist="emtee">
+            <div class="artist-card" data-artist="emtee" data-aos="fade-up" data-aos-delay="100">
                 <div class="artist-img">
                     <img src="images/emtee best image.jpg" alt="Emtee">
                     <div class="artist-overlay">
@@ -908,12 +1062,12 @@
                             <div class="stat-label">Social Reach</div>
                         </div>
                     </div>
-                    <a href="#" class="btn view-artist">View Profile</a>
+                    <button class="btn view-artist">View Profile</button>
                 </div>
             </div>
 
             <!-- Kraizie -->
-            <div class="artist-card" data-artist="kraizie">
+            <div class="artist-card" data-artist="kraizie" data-aos="fade-up" data-aos-delay="200">
                 <div class="artist-img">
                     <img src="images/Kraizie1.jpg" alt="Kraizie">
                     <div class="artist-overlay">
@@ -933,12 +1087,12 @@
                             <div class="stat-label">Social Reach</div>
                         </div>
                     </div>
-                    <a href="#" class="btn view-artist">View Profile</a>
+                    <button class="btn view-artist">View Profile</button>
                 </div>
             </div>
 
             <!-- F-eezy -->
-            <div class="artist-card" data-artist="feezy">
+            <div class="artist-card" data-artist="feezy" data-aos="fade-up" data-aos-delay="300">
                 <div class="artist-img">
                     <img src="images/Feezy1.jpg" alt="F-eezy">
                     <div class="artist-overlay">
@@ -958,12 +1112,12 @@
                             <div class="stat-label">Social Reach</div>
                         </div>
                     </div>
-                    <a href="#" class="btn view-artist">View Profile</a>
+                    <button class="btn view-artist">View Profile</button>
                 </div>
             </div>
 
             <!-- Skiips -->
-            <div class="artist-card" data-artist="skiips">
+            <div class="artist-card" data-artist="skiips" data-aos="fade-up" data-aos-delay="400">
                 <div class="artist-img">
                     <img src="images/Skiips1.jpg" alt="Skiips">
                     <div class="artist-overlay">
@@ -983,12 +1137,12 @@
                             <div class="stat-label">Social Reach</div>
                         </div>
                     </div>
-                    <a href="#" class="btn view-artist">View Profile</a>
+                    <button class="btn view-artist">View Profile</button>
                 </div>
             </div>
 
             <!-- Baby Girl Zae -->
-            <div class="artist-card" data-artist="babygirlzae">
+            <div class="artist-card" data-artist="babygirlzae" data-aos="fade-up" data-aos-delay="500">
                 <div class="artist-img">
                     <img src="images/Babyg!rl Zae1.jpg" alt="Baby Girl Zae">
                     <div class="artist-overlay">
@@ -1008,7 +1162,7 @@
                             <div class="stat-label">Social Reach</div>
                         </div>
                     </div>
-                    <a href="#" class="btn view-artist">View Profile</a>
+                    <button class="btn view-artist">View Profile</button>
                 </div>
             </div>
         </div>
@@ -1025,10 +1179,10 @@
                         <h2>Emtee</h2>
                         <p>Hip-Hop • Johannesburg</p>
                         <div class="social-links">
-                            <a href="#"><i class="fab fa-spotify"></i></a>
-                            <a href="#"><i class="fab fa-instagram"></i></a>
-                            <a href="#"><i class="fab fa-twitter"></i></a>
-                            <a href="#"><i class="fab fa-youtube"></i></a>
+                            <a href="https://open.spotify.com/artist/6U3gCOvxVWKBxXItqp3mdr" target="_blank"><i class="fab fa-spotify"></i></a>
+                            <a href="https://www.instagram.com/emteetherapper/" target="_blank"><i class="fab fa-instagram"></i></a>
+                            <a href="https://twitter.com/emteetherapper" target="_blank"><i class="fab fa-twitter"></i></a>
+                            <a href="https://www.youtube.com/c/EmteeOfficial" target="_blank"><i class="fab fa-youtube"></i></a>
                         </div>
                     </div>
                 </div>
@@ -1061,7 +1215,7 @@
         </div>
     </div>
 
-    <!-- Kraizie Modal (similar structure) -->
+    <!-- Kraizie Modal -->
     <div id="kraizie-modal" class="artist-modal">
         <div class="modal-content">
             <button class="close-modal"><i class="fas fa-times"></i></button>
@@ -1072,10 +1226,10 @@
                         <h2>Kraizie</h2>
                         <p>Hip-Hop • Mpumalanga</p>
                         <div class="social-links">
-                            <a href="#"><i class="fab fa-spotify"></i></a>
-                            <a href="#"><i class="fab fa-instagram"></i></a>
-                            <a href="#"><i class="fab fa-twitter"></i></a>
-                            <a href="#"><i class="fab fa-youtube"></i></a>
+                            <a href="https://open.spotify.com/artist/1tXUwhCT3Y3F1HSIcwC7M0" target="_blank"><i class="fab fa-spotify"></i></a>
+                            <a href="https://www.instagram.com/kraizie_k/" target="_blank"><i class="fab fa-instagram"></i></a>
+                            <a href="https://twitter.com/Kraizie_K" target="_blank"><i class="fab fa-twitter"></i></a>
+                            <a href="https://www.youtube.com/channel/UCexample" target="_blank"><i class="fab fa-youtube"></i></a>
                         </div>
                     </div>
                 </div>
@@ -1108,16 +1262,14 @@
         </div>
     </div>
 
-    <!-- Add similar modals for other artists -->
-
     <!-- Merchandise Section -->
     <section class="section" id="merch">
-        <div class="section-title">
+        <div class="section-title" data-aos="fade-up">
             <h2>Official Merchandise</h2>
         </div>
         <div class="merch-grid">
             <!-- Merch Item 1 -->
-            <div class="merch-card">
+            <div class="merch-card" data-aos="fade-up" data-aos-delay="100">
                 <div class="merch-img">
                     <img src="images/emtee records slide image 2.jpg" alt="eMtee Records Hoodie">
                 </div>
@@ -1131,7 +1283,7 @@
             </div>
 
             <!-- Merch Item 2 -->
-            <div class="merch-card">
+            <div class="merch-card" data-aos="fade-up" data-aos-delay="200">
                 <div class="merch-img">
                     <img src="images/emtee1.jpg" alt="Emtee Signature T-Shirt">
                 </div>
@@ -1145,7 +1297,7 @@
             </div>
 
             <!-- Merch Item 3 -->
-            <div class="merch-card">
+            <div class="merch-card" data-aos="fade-up" data-aos-delay="300">
                 <div class="merch-img">
                     <img src="images/Kraizie2.jpg" alt="Kraizie Cap">
                 </div>
@@ -1159,7 +1311,7 @@
             </div>
 
             <!-- Merch Item 4 -->
-            <div class="merch-card">
+            <div class="merch-card" data-aos="fade-up" data-aos-delay="400">
                 <div class="merch-img">
                     <img src="images/Feezy2.jpg" alt="F-eezy Beanie">
                 </div>
@@ -1176,10 +1328,10 @@
 
     <!-- Booking Section -->
     <section class="booking" id="booking">
-        <div class="section-title">
+        <div class="section-title" data-aos="fade-up">
             <h2>Book an Artist</h2>
         </div>
-        <div class="booking-form">
+        <div class="booking-form" data-aos="fade-up" data-aos-delay="100">
             <form id="booking-form">
                 <div class="form-group">
                     <label for="name">Your Name</label>
@@ -1239,11 +1391,11 @@
                 <h3>eMtee Records</h3>
                 <p>South Africa's premier independent music label, home to groundbreaking artists pushing the boundaries of hip-hop and urban music.</p>
                 <div class="social-links">
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-youtube"></i></a>
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-spotify"></i></a>
+                    <a href="https://www.instagram.com/emteerecords/" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://twitter.com/emteerecords" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.youtube.com/c/EmteeRecords" target="_blank"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.facebook.com/emteerecords" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://open.spotify.com/user/emteerecords" target="_blank"><i class="fab fa-spotify"></i></a>
                 </div>
             </div>
             <div class="footer-column">
@@ -1270,7 +1422,75 @@
         </div>
     </footer>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+
+        // Custom Cursor
+        const cursor = document.querySelector('.cursor');
+        const cursorFollower = document.querySelector('.cursor-follower');
+
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+            
+            setTimeout(() => {
+                cursorFollower.style.left = e.clientX + 'px';
+                cursorFollower.style.top = e.clientY + 'px';
+            }, 100);
+        });
+
+        document.addEventListener('mousedown', () => {
+            cursor.style.transform = 'scale(0.8)';
+            cursorFollower.style.transform = 'scale(1.5)';
+        });
+
+        document.addEventListener('mouseup', () => {
+            cursor.style.transform = 'scale(1)';
+            cursorFollower.style.transform = 'scale(1)';
+        });
+
+        // Particle Background
+        particlesJS('particles-js', {
+            particles: {
+                number: { value: 80, density: { enable: true, value_area: 800 } },
+                color: { value: "#dc2626" },
+                shape: { type: "circle" },
+                opacity: { value: 0.5, random: true },
+                size: { value: 3, random: true },
+                line_linked: {
+                    enable: true,
+                    distance: 150,
+                    color: "#dc2626",
+                    opacity: 0.4,
+                    width: 1
+                },
+                move: {
+                    enable: true,
+                    speed: 2,
+                    direction: "none",
+                    random: true,
+                    straight: false,
+                    out_mode: "out",
+                    bounce: false
+                }
+            },
+            interactivity: {
+                detect_on: "canvas",
+                events: {
+                    onhover: { enable: true, mode: "repulse" },
+                    onclick: { enable: true, mode: "push" },
+                    resize: true
+                }
+            }
+        });
+
         // Theme Toggle
         const themeButtons = document.querySelectorAll('.theme-btn');
         const body = document.body;
@@ -1283,14 +1503,6 @@
                 // Update active button
                 themeButtons.forEach(btn => btn.classList.remove('active'));
                 button.classList.add('active');
-                
-                // Update logo filter for light theme
-                const logo = document.querySelector('.logo img');
-                if (theme === 'light') {
-                    logo.style.filter = 'none';
-                } else {
-                    logo.style.filter = 'none';
-                }
             });
         });
 
@@ -1322,24 +1534,6 @@
             } else if (body.getAttribute('data-theme') === 'light') {
                 header.style.backgroundColor = 'rgba(255, 255, 255, 0.9)';
             }
-        });
-
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                if(targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if(targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                }
-            });
         });
 
         // Artist Modal Functionality
@@ -1450,6 +1644,25 @@
             // Show success message
             alert('Booking request submitted! We will contact you shortly.');
             this.reset();
+        });
+
+        // Music Player Functionality
+        const audio = new Audio('https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3');
+        const playBtn = document.getElementById('play-btn');
+        const pauseBtn = document.getElementById('pause-btn');
+        const stopBtn = document.getElementById('stop-btn');
+
+        playBtn.addEventListener('click', () => {
+            audio.play();
+        });
+
+        pauseBtn.addEventListener('click', () => {
+            audio.pause();
+        });
+
+        stopBtn.addEventListener('click', () => {
+            audio.pause();
+            audio.currentTime = 0;
         });
     </script>
 </body>
