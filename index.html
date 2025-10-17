@@ -21,6 +21,7 @@
             --text-secondary: #cccccc;
             --shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
             --glow: 0 0 20px var(--accent-glow);
+            --section-spacing: 8rem;
         }
 
         [data-theme="light"] {
@@ -86,6 +87,33 @@
             z-index: -1;
         }
 
+        /* Floating Elements Animation */
+        .floating-elements {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .floating-element {
+            position: absolute;
+            border-radius: 50%;
+            background: var(--accent-glow);
+            filter: blur(40px);
+            opacity: 0.1;
+            animation: float 15s infinite linear;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(10vw, 15vh) rotate(90deg); }
+            50% { transform: translate(5vw, 25vh) rotate(180deg); }
+            75% { transform: translate(15vw, 10vh) rotate(270deg); }
+        }
+
         /* Control Panel */
         .control-panel {
             position: fixed;
@@ -133,162 +161,52 @@
             box-shadow: var(--glow);
         }
 
-        /* Music Player */
-        .music-player {
-            background: var(--card-bg);
-            backdrop-filter: blur(20px);
-            border-radius: 20px;
-            padding: 15px;
-            display: flex;
-            flex-direction: column;
-            box-shadow: var(--shadow);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            width: 320px;
-            max-height: 450px;
-            overflow: hidden;
+        /* Spotify Player */
+        .spotify-player {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            transition: var(--transition);
+            width: 300px;
         }
 
-        [data-theme="light"] .music-player {
-            border: 1px solid rgba(0, 0, 0, 0.1);
+        .spotify-player.minimized {
+            width: 60px;
+            height: 60px;
         }
 
-        .player-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 15px;
-        }
-
-        .player-header h3 {
-            font-size: 1.2rem;
-            color: var(--accent);
-        }
-
-        .player-controls {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-bottom: 15px;
-        }
-
-        .player-btn {
-            width: 40px;
-            height: 40px;
+        .spotify-player.minimized .spotify-toggle {
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: var(--light-gray);
+        }
+
+        .spotify-player.minimized .spotify-embed {
+            display: none;
+        }
+
+        .spotify-toggle {
+            background: var(--accent);
+            color: white;
             border: none;
-            color: var(--text-primary);
+            border-radius: 10px 10px 0 0;
+            padding: 10px 15px;
             cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .player-btn:hover {
-            background: var(--accent);
-            transform: scale(1.1);
-            box-shadow: var(--glow);
-        }
-
-        .player-btn.active {
-            background: var(--accent);
-            box-shadow: var(--glow);
-        }
-
-        .volume-controls {
             display: flex;
             align-items: center;
-            gap: 10px;
-            margin-bottom: 15px;
-        }
-
-        .volume-slider {
-            flex: 1;
-            -webkit-appearance: none;
-            height: 5px;
-            background: var(--light-gray);
-            border-radius: 5px;
-            outline: none;
-        }
-
-        .volume-slider::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            width: 15px;
-            height: 15px;
-            border-radius: 50%;
-            background: var(--accent);
-            cursor: pointer;
+            justify-content: space-between;
+            width: 100%;
+            transition: var(--transition);
             box-shadow: var(--glow);
         }
 
-        .playlist {
-            max-height: 250px;
-            overflow-y: auto;
-            padding-right: 5px;
-        }
-
-        .playlist::-webkit-scrollbar {
-            width: 5px;
-        }
-
-        .playlist::-webkit-scrollbar-track {
-            background: var(--light-gray);
-            border-radius: 10px;
-        }
-
-        .playlist::-webkit-scrollbar-thumb {
-            background: var(--accent);
-            border-radius: 10px;
-        }
-
-        .track {
-            display: flex;
-            align-items: center;
-            padding: 8px 12px;
-            border-radius: 8px;
-            margin-bottom: 8px;
-            cursor: pointer;
-            transition: var(--transition);
-            background: rgba(255, 255, 255, 0.05);
-        }
-
-        .track:hover {
-            background: rgba(220, 38, 38, 0.2);
-            transform: translateX(5px);
-        }
-
-        .track.active {
-            background: rgba(220, 38, 38, 0.3);
-            border-left: 3px solid var(--accent);
-        }
-
-        .track-info {
-            flex: 1;
-            margin-left: 10px;
-        }
-
-        .track-title {
-            font-weight: 600;
-            font-size: 0.9rem;
-        }
-
-        .track-artist {
-            font-size: 0.8rem;
-            color: var(--text-secondary);
-        }
-
-        .track-duration {
-            font-size: 0.8rem;
-            color: var(--text-secondary);
-        }
-
-        /* Spotify Embed */
         .spotify-embed {
-            margin-top: 15px;
-            border-radius: 12px;
+            border-radius: 0 0 10px 10px;
             overflow: hidden;
             box-shadow: var(--shadow);
+            transition: var(--transition);
+            height: 352px;
         }
 
         /* Header & Navigation */
@@ -365,6 +283,40 @@
             font-size: 1.5rem;
             cursor: pointer;
             color: var(--text-primary);
+        }
+
+        /* Search Bar */
+        .search-container {
+            position: relative;
+            margin-left: 2rem;
+        }
+
+        .search-input {
+            background: var(--light-gray);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 25px;
+            padding: 0.5rem 1rem;
+            color: var(--text-primary);
+            width: 200px;
+            transition: var(--transition);
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 2px var(--accent-glow);
+            width: 250px;
+        }
+
+        .search-btn {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            cursor: pointer;
         }
 
         /* Hero Section */
@@ -509,20 +461,20 @@
             letter-spacing: 1px;
         }
 
-        /* Artists Section */
+        /* Sections */
         .section {
-            padding: 5rem 5%;
+            padding: var(--section-spacing) 5%;
             position: relative;
         }
 
         .section-title {
             text-align: center;
-            margin-bottom: 3rem;
+            margin-bottom: 5rem;
             position: relative;
         }
 
         .section-title h2 {
-            font-size: 2.5rem;
+            font-size: 3rem;
             text-transform: uppercase;
             letter-spacing: 2px;
             display: inline-block;
@@ -532,24 +484,25 @@
         .section-title h2::after {
             content: '';
             position: absolute;
-            bottom: -10px;
+            bottom: -15px;
             left: 50%;
             transform: translateX(-50%);
-            width: 80px;
-            height: 3px;
+            width: 100px;
+            height: 4px;
             background-color: var(--accent);
             box-shadow: var(--glow);
         }
 
+        /* Artists Section */
         .artists-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 3rem;
         }
 
         .artist-card {
             background-color: var(--card-bg);
-            border-radius: 15px;
+            border-radius: 20px;
             overflow: hidden;
             transition: var(--transition);
             position: relative;
@@ -564,12 +517,12 @@
         }
 
         .artist-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(220, 38, 38, 0.2), var(--glow);
+            transform: translateY(-15px);
+            box-shadow: 0 20px 40px rgba(220, 38, 38, 0.2), var(--glow);
         }
 
         .artist-img {
-            height: 300px;
+            height: 350px;
             overflow: hidden;
             position: relative;
         }
@@ -590,8 +543,8 @@
             bottom: 0;
             left: 0;
             width: 100%;
-            padding: 1rem;
-            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            padding: 1.5rem;
+            background: linear-gradient(transparent, rgba(0,0,0,0.9));
             color: white;
             transform: translateY(100%);
             transition: var(--transition);
@@ -602,23 +555,24 @@
         }
 
         .artist-info {
-            padding: 1.5rem;
+            padding: 2rem;
         }
 
         .artist-info h3 {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             margin-bottom: 0.5rem;
         }
 
         .artist-info p {
             color: var(--text-secondary);
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
         }
 
         .artist-stats {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
         }
 
         .stat {
@@ -626,14 +580,514 @@
         }
 
         .stat-value {
-            font-size: 1.2rem;
+            font-size: 1.4rem;
             font-weight: 700;
             color: var(--accent);
         }
 
         .stat-label {
-            font-size: 0.8rem;
+            font-size: 0.9rem;
             color: var(--text-secondary);
+        }
+
+        /* Music Section */
+        .music-section {
+            background: var(--gray);
+        }
+
+        .spotify-playlists {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .spotify-embed {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .spotify-embed:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(220, 38, 38, 0.2), var(--glow);
+        }
+
+        /* Merchandise Section */
+        .merch-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .merch-card {
+            background-color: var(--card-bg);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: var(--transition);
+            backdrop-filter: blur(10px);
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            cursor: pointer;
+        }
+
+        [data-theme="light"] .merch-card {
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .merch-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(220, 38, 38, 0.2), var(--glow);
+        }
+
+        .merch-img {
+            height: 300px;
+            overflow: hidden;
+        }
+
+        .merch-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .merch-card:hover .merch-img img {
+            transform: scale(1.05);
+        }
+
+        .merch-info {
+            padding: 2rem;
+        }
+
+        .merch-info h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .merch-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+        }
+
+        .add-to-cart {
+            width: 100%;
+            padding: 1rem;
+            background-color: var(--accent);
+            color: var(--secondary);
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            box-shadow: var(--glow);
+            font-size: 1.1rem;
+        }
+
+        .add-to-cart:hover {
+            background-color: #b91c1c;
+            transform: translateY(-3px);
+        }
+
+        /* Blog Section */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 3rem;
+        }
+
+        .blog-card {
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .blog-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(220, 38, 38, 0.2), var(--glow);
+        }
+
+        .blog-img {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .blog-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .blog-card:hover .blog-img img {
+            transform: scale(1.05);
+        }
+
+        .blog-content {
+            padding: 1.5rem;
+        }
+
+        .blog-date {
+            color: var(--accent);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .blog-title {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .blog-excerpt {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .read-more {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .read-more:hover {
+            color: var(--text-primary);
+        }
+
+        /* FAQ Section */
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: var(--card-bg);
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .faq-question:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .faq-answer {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .faq-answer.active {
+            padding: 0 1.5rem 1.5rem;
+            max-height: 500px;
+        }
+
+        /* Newsletter Section */
+        .newsletter {
+            background: var(--gray);
+            text-align: center;
+            padding: 5rem 5%;
+        }
+
+        .newsletter-form {
+            max-width: 500px;
+            margin: 2rem auto 0;
+            display: flex;
+            gap: 1rem;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            padding: 1rem;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: var(--light-gray);
+            color: var(--text-primary);
+            font-size: 1rem;
+        }
+
+        .newsletter-input:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 2px var(--accent-glow);
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+            color: var(--text-secondary);
+        }
+
+        .about-image {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Contact Section */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--glow);
+        }
+
+        .contact-details h4 {
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-details p {
+            color: var(--text-secondary);
+        }
+
+        .contact-form {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 1rem;
+            background-color: var(--light-gray);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            color: var(--text-primary);
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 2px var(--accent-glow);
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        /* Booking Section */
+        .booking {
+            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), 
+                        url('images/emtee records slide image.jpg') center/cover no-repeat;
+            padding: var(--section-spacing) 5%;
+            position: relative;
+        }
+
+        [data-theme="light"] .booking {
+            background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), 
+                        url('images/emtee records slide image.jpg') center/cover no-repeat;
+        }
+
+        .booking-form {
+            max-width: 700px;
+            margin: 0 auto;
+            background-color: var(--card-bg);
+            padding: 3rem;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* WhatsApp Floating Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 90px;
+            right: 25px;
+            width: 60px;
+            height: 60px;
+            background-color: #25D366;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.5);
+            z-index: 1000;
+            transition: var(--transition);
+            animation: pulse 2s infinite;
+            text-decoration: none;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--gray);
+            padding: 4rem 5% 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-column h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent);
+            box-shadow: var(--glow);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 1rem;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: var(--light-gray);
+            border-radius: 50%;
+            color: var(--text-primary);
+            transition: var(--transition);
+            text-decoration: none;
+        }
+
+        .social-links a:hover {
+            background-color: var(--accent);
+            transform: translateY(-3px);
+            box-shadow: var(--glow);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            position: relative;
+            z-index: 1;
         }
 
         /* Artist Detail Modal */
@@ -720,30 +1174,6 @@
             margin-bottom: 1rem;
         }
 
-        .social-links {
-            display: flex;
-            gap: 1rem;
-        }
-
-        .social-links a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            background-color: var(--light-gray);
-            border-radius: 50%;
-            color: var(--text-primary);
-            transition: var(--transition);
-            text-decoration: none;
-        }
-
-        .social-links a:hover {
-            background-color: var(--accent);
-            transform: translateY(-3px);
-            box-shadow: var(--glow);
-        }
-
         .modal-details {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -768,262 +1198,42 @@
             color: var(--accent);
         }
 
-        /* Merchandise Section */
-        .merch-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 2rem;
-        }
-
-        .merch-card {
-            background-color: var(--card-bg);
-            border-radius: 15px;
-            overflow: hidden;
-            transition: var(--transition);
-            backdrop-filter: blur(10px);
-            box-shadow: var(--shadow);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            cursor: pointer;
-        }
-
-        [data-theme="light"] .merch-card {
-            border: 1px solid rgba(0, 0, 0, 0.1);
-        }
-
-        .merch-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(220, 38, 38, 0.2), var(--glow);
-        }
-
-        .merch-img {
-            height: 250px;
-            overflow: hidden;
-        }
-
-        .merch-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: var(--transition);
-        }
-
-        .merch-card:hover .merch-img img {
-            transform: scale(1.05);
-        }
-
-        .merch-info {
-            padding: 1.5rem;
-        }
-
-        .merch-info h3 {
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .merch-price {
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: var(--accent);
-            margin-bottom: 1rem;
-        }
-
-        .add-to-cart {
-            width: 100%;
-            padding: 0.7rem;
-            background-color: var(--accent);
-            color: var(--secondary);
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: var(--transition);
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            box-shadow: var(--glow);
-        }
-
-        .add-to-cart:hover {
-            background-color: #b91c1c;
-            transform: translateY(-2px);
-        }
-
-        /* WhatsApp Floating Button */
-        .whatsapp-float {
-            position: fixed;
-            bottom: 25px;
-            right: 25px;
-            width: 60px;
-            height: 60px;
-            background-color: #25D366;
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.8rem;
-            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.5);
-            z-index: 1000;
-            transition: var(--transition);
-            animation: pulse 2s infinite;
-            text-decoration: none;
-        }
-
-        @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
-            70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
-        }
-
-        .whatsapp-float:hover {
-            transform: scale(1.1);
-        }
-
-        /* Booking Section */
-        .booking {
-            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), 
-                        url('images/emtee records slide image.jpg') center/cover no-repeat;
-            padding: 5rem 5%;
-            position: relative;
-        }
-
-        [data-theme="light"] .booking {
-            background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), 
-                        url('images/emtee records slide image.jpg') center/cover no-repeat;
-        }
-
-        .booking-form {
-            max-width: 600px;
-            margin: 0 auto;
-            background-color: var(--card-bg);
-            padding: 2rem;
-            border-radius: 15px;
-            backdrop-filter: blur(10px);
-            box-shadow: var(--shadow);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-        }
-
-        .form-control {
-            width: 100%;
-            padding: 0.8rem;
-            background-color: var(--light-gray);
-            border: 1px solid #444;
-            border-radius: 5px;
-            color: var(--text-primary);
-            font-size: 1rem;
-            transition: var(--transition);
-        }
-
-        .form-control:focus {
-            outline: none;
-            border-color: var(--accent);
-            box-shadow: 0 0 0 2px var(--accent-glow);
-        }
-
-        textarea.form-control {
-            min-height: 120px;
-            resize: vertical;
-        }
-
-        /* Footer */
-        footer {
-            background-color: var(--gray);
-            padding: 3rem 5%;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .footer-content {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            margin-bottom: 2rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .footer-column {
-            flex: 1;
-            min-width: 250px;
-            margin-bottom: 2rem;
-        }
-
-        .footer-column h3 {
-            font-size: 1.2rem;
-            margin-bottom: 1.5rem;
-            position: relative;
-            display: inline-block;
-        }
-
-        .footer-column h3::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 40px;
-            height: 2px;
-            background-color: var(--accent);
-            box-shadow: var(--glow);
-        }
-
-        .footer-links {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 0.8rem;
-        }
-
-        .footer-links a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            transition: var(--transition);
-        }
-
-        .footer-links a:hover {
-            color: var(--accent);
-            padding-left: 5px;
-        }
-
-        .copyright {
-            text-align: center;
-            padding-top: 2rem;
-            border-top: 1px solid #444;
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            position: relative;
-            z-index: 1;
-        }
-
         /* Responsive Design */
+        @media (max-width: 1200px) {
+            :root {
+                --section-spacing: 6rem;
+            }
+            
+            .artists-grid, .merch-grid, .blog-grid {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            }
+        }
+
         @media (max-width: 992px) {
             .hero-logo {
                 max-width: 300px;
             }
             
-            .modal-header {
-                flex-direction: column;
-                text-align: center;
+            .about-content, .contact-container {
+                grid-template-columns: 1fr;
+                gap: 3rem;
             }
-
+            
+            .about-image {
+                order: -1;
+            }
+            
+            .section-title h2 {
+                font-size: 2.5rem;
+            }
+            
             .control-panel {
                 flex-direction: row;
                 top: 80px;
                 right: 20px;
             }
 
-            .music-player {
+            .spotify-player {
                 width: 280px;
             }
         }
@@ -1058,12 +1268,21 @@
                 margin: 1rem 0;
             }
 
+            .search-container {
+                margin: 1rem 0 0;
+                width: 100%;
+            }
+
+            .search-input {
+                width: 100%;
+            }
+
             .hero-logo {
                 max-width: 250px;
             }
 
             .section {
-                padding: 3rem 5%;
+                padding: 4rem 5%;
             }
             
             .stats {
@@ -1082,13 +1301,21 @@
                 width: 100%;
             }
 
-            .theme-toggle, .music-player {
+            .theme-toggle {
                 margin-bottom: 15px;
             }
 
-            .music-player {
-                width: 100%;
-                max-width: 300px;
+            .newsletter-form {
+                flex-direction: column;
+            }
+
+            .spotify-player {
+                width: 250px;
+            }
+
+            .modal-header {
+                flex-direction: column;
+                text-align: center;
             }
         }
 
@@ -1101,12 +1328,22 @@
                 font-size: 2rem;
             }
             
-            .modal-content {
-                margin: 1rem auto;
+            .artists-grid, .merch-grid, .blog-grid {
+                grid-template-columns: 1fr;
             }
             
-            .modal-body {
-                padding: 1rem;
+            .spotify-playlists {
+                grid-template-columns: 1fr;
+            }
+            
+            .booking-form, .contact-form {
+                padding: 2rem;
+            }
+
+            .spotify-player {
+                width: 90%;
+                left: 5%;
+                right: 5%;
             }
         }
     </style>
@@ -1119,6 +1356,14 @@
     <!-- Particle Background -->
     <div id="particles-js"></div>
 
+    <!-- Floating Elements -->
+    <div class="floating-elements">
+        <div class="floating-element" style="width: 200px; height: 200px; top: 10%; left: 5%; animation-delay: 0s;"></div>
+        <div class="floating-element" style="width: 150px; height: 150px; top: 60%; left: 80%; animation-delay: 5s;"></div>
+        <div class="floating-element" style="width: 100px; height: 100px; top: 30%; left: 70%; animation-delay: 10s;"></div>
+        <div class="floating-element" style="width: 180px; height: 180px; top: 80%; left: 10%; animation-delay: 7s;"></div>
+    </div>
+
     <!-- Control Panel -->
     <div class="control-panel">
         <!-- Theme Toggle -->
@@ -1126,76 +1371,24 @@
             <button class="theme-btn active" data-theme="dark"><i class="fas fa-moon"></i></button>
             <button class="theme-btn" data-theme="light"><i class="fas fa-sun"></i></button>
         </div>
+    </div>
 
-        <!-- Music Player -->
-        <div class="music-player">
-            <div class="player-header">
-                <h3>Now Playing</h3>
-                <div class="player-controls">
-                    <button class="player-btn" id="prev-btn"><i class="fas fa-step-backward"></i></button>
-                    <button class="player-btn" id="play-btn"><i class="fas fa-play"></i></button>
-                    <button class="player-btn" id="next-btn"><i class="fas fa-step-forward"></i></button>
-                </div>
-            </div>
-            
-            <div class="volume-controls">
-                <button class="player-btn" id="mute-btn"><i class="fas fa-volume-up"></i></button>
-                <input type="range" min="0" max="100" value="50" class="volume-slider" id="volume-slider">
-            </div>
-            
-            <div class="playlist">
-                <div class="track active">
-                    <i class="fas fa-music"></i>
-                    <div class="track-info">
-                        <div class="track-title">Roll Up</div>
-                        <div class="track-artist">Emtee</div>
-                    </div>
-                    <div class="track-duration">3:45</div>
-                </div>
-                <div class="track">
-                    <i class="fas fa-music"></i>
-                    <div class="track-info">
-                        <div class="track-title">Pearl Thusi</div>
-                        <div class="track-artist">Emtee</div>
-                    </div>
-                    <div class="track-duration">4:12</div>
-                </div>
-                <div class="track">
-                    <i class="fas fa-music"></i>
-                    <div class="track-info">
-                        <div class="track-title">Mpumalanga</div>
-                        <div class="track-artist">Kraizie</div>
-                    </div>
-                    <div class="track-duration">3:28</div>
-                </div>
-                <div class="track">
-                    <i class="fas fa-music"></i>
-                    <div class="track-info">
-                        <div class="track-title">Dreams To Reality</div>
-                        <div class="track-artist">Kraizie</div>
-                    </div>
-                    <div class="track-duration">3:55</div>
-                </div>
-                <div class="track">
-                    <i class="fas fa-music"></i>
-                    <div class="track-info">
-                        <div class="track-title">Street Lights</div>
-                        <div class="track-artist">F-eezy</div>
-                    </div>
-                    <div class="track-duration">4:07</div>
-                </div>
-            </div>
-            
-            <div class="spotify-embed">
-                <iframe src="https://open.spotify.com/embed/playlist/0qIvroVtThINkLvz2hLfh8?utm_source=generator&theme=0" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-            </div>
+    <!-- Spotify Player -->
+    <div class="spotify-player">
+        <button class="spotify-toggle">
+            <i class="fab fa-spotify"></i>
+            <span>Now Playing</span>
+            <i class="fas fa-chevron-down minimize-btn"></i>
+        </button>
+        <div class="spotify-embed">
+            <iframe src="https://open.spotify.com/embed/playlist/0qIvroVtThINkLvz2hLfh8?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
         </div>
     </div>
 
     <!-- Header & Navigation -->
     <header>
         <div class="logo">
-            <img src="images/eMtee Records logo.jpg" alt="eMtee Records">
+            <img src="images/eMtee Records logo.png" alt="eMtee Records">
         </div>
         <div class="menu-toggle">
             <i class="fas fa-bars"></i>
@@ -1204,10 +1397,17 @@
             <ul>
                 <li><a href="#home">Home</a></li>
                 <li><a href="#artists">Artists</a></li>
+                <li><a href="#music">Music</a></li>
                 <li><a href="#merch">Merchandise</a></li>
+                <li><a href="#blog">Blog</a></li>
                 <li><a href="#booking">Bookings</a></li>
+                <li><a href="#about">About</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
+            <div class="search-container">
+                <input type="text" class="search-input" placeholder="Search...">
+                <button class="search-btn"><i class="fas fa-search"></i></button>
+            </div>
         </nav>
     </header>
 
@@ -1215,7 +1415,7 @@
     <section class="hero" id="home">
         <div class="hero-content" data-aos="fade-up" data-aos-duration="1000">
             <div class="hero-logo">
-                <img src="images/eMtee Records logo.jpg" alt="eMtee Records">
+                <img src="images/eMtee Records logo.png" alt="eMtee Records">
             </div>
             <p>South Africa's Premier Independent Music Label. Home to groundbreaking artists pushing the boundaries of hip-hop and urban music.</p>
             <a href="#artists" class="btn">Explore Our Artists</a>
@@ -1348,16 +1548,16 @@
                 </div>
             </div>
 
-            <!-- Baby Girl Zae -->
+            <!-- BabyG!rl Zae -->
             <div class="artist-card" data-artist="babygirlzae" data-aos="fade-up" data-aos-delay="500">
                 <div class="artist-img">
-                    <img src="images/Babyg!rl Zae1.jpg" alt="Baby Girl Zae">
+                    <img src="images/Babyg!rl Zae1.jpg" alt="BabyG!rl Zae">
                     <div class="artist-overlay">
                         <p>Click to view full profile</p>
                     </div>
                 </div>
                 <div class="artist-info">
-                    <h3>Baby Girl Zae</h3>
+                    <h3>BabyG!rl Zae</h3>
                     <p>R&B • Cape Town</p>
                     <div class="artist-stats">
                         <div class="stat">
@@ -1371,6 +1571,38 @@
                     </div>
                     <button class="btn view-artist">View Profile</button>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Music Section -->
+    <section class="section music-section" id="music">
+        <div class="section-title" data-aos="fade-up">
+            <h2>Our Music</h2>
+        </div>
+        <div class="spotify-playlists">
+            <div class="spotify-embed" data-aos="fade-up" data-aos-delay="100">
+                <iframe src="https://open.spotify.com/embed/playlist/0qIvroVtThINkLvz2hLfh8?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            </div>
+            <div class="spotify-embed" data-aos="fade-up" data-aos-delay="200">
+                <iframe src="https://open.spotify.com/embed/artist/6U3gCOvxVWKBxXItqp3mdr?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            </div>
+        </div>
+        <div class="section-title" style="margin-top: 5rem;" data-aos="fade-up">
+            <h3>All Our Artists</h3>
+        </div>
+        <div class="spotify-playlists">
+            <div class="spotify-embed" data-aos="fade-up" data-aos-delay="100">
+                <iframe src="https://open.spotify.com/embed/artist/79fCocNyVEjDwvuASCNeMo?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            </div>
+            <div class="spotify-embed" data-aos="fade-up" data-aos-delay="200">
+                <iframe src="https://open.spotify.com/embed/artist/1tXUwhCT3Y3F1HSIcwC7M0?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            </div>
+            <div class="spotify-embed" data-aos="fade-up" data-aos-delay="300">
+                <iframe src="https://open.spotify.com/embed/artist/1QquCeba1W051sM56tKu0Y?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            </div>
+            <div class="spotify-embed" data-aos="fade-up" data-aos-delay="400">
+                <iframe src="https://open.spotify.com/embed/artist/1djL8Gjzuz1jLKg5QWCuG4?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
             </div>
         </div>
     </section>
@@ -1478,167 +1710,156 @@
         </div>
     </div>
 
-    <!-- Merchandise Section -->
-    <section class="section" id="merch">
-        <div class="section-title" data-aos="fade-up">
-            <h2>Official Merchandise</h2>
-        </div>
-        <div class="merch-grid">
-            <!-- Merch Item 1 -->
-            <div class="merch-card" data-aos="fade-up" data-aos-delay="100">
-                <div class="merch-img">
-                    <img src="images/emtee records slide image 2.jpg" alt="eMtee Records Hoodie">
+    <!-- F-eezy Modal -->
+    <div id="feezy-modal" class="artist-modal">
+        <div class="modal-content">
+            <button class="close-modal"><i class="fas fa-times"></i></button>
+            <div class="modal-body">
+                <div class="modal-header">
+                    <img src="images/Feezy1.jpg" alt="F-eezy">
+                    <div class="modal-info">
+                        <h2>F-eezy</h2>
+                        <p>Hip-Hop • Johannesburg</p>
+                        <div class="social-links">
+                            <a href="https://open.spotify.com/artist/79fCocNyVEjDwvuASCNeMo" target="_blank"><i class="fab fa-spotify"></i></a>
+                            <a href="https://www.instagram.com/f_eezysa/" target="_blank"><i class="fab fa-instagram"></i></a>
+                            <a href="https://www.facebook.com/GateKhahlela2/" target="_blank"><i class="fab fa-facebook"></i></a>
+                        </div>
+                    </div>
                 </div>
-                <div class="merch-info">
-                    <h3>eMtee Records Hoodie</h3>
-                    <div class="merch-price">R 499</div>
-                    <button class="add-to-cart" data-product="Hoodie" data-price="499">
-                        <i class="fas fa-shopping-cart"></i> Add to Cart
-                    </button>
-                </div>
-            </div>
-
-            <!-- Merch Item 2 -->
-            <div class="merch-card" data-aos="fade-up" data-aos-delay="200">
-                <div class="merch-img">
-                    <img src="images/emtee1.jpg" alt="Emtee Signature T-Shirt">
-                </div>
-                <div class="merch-info">
-                    <h3>Emtee Signature T-Shirt</h3>
-                    <div class="merch-price">R 299</div>
-                    <button class="add-to-cart" data-product="Emtee T-Shirt" data-price="299">
-                        <i class="fas fa-shopping-cart"></i> Add to Cart
-                    </button>
-                </div>
-            </div>
-
-            <!-- Merch Item 3 -->
-            <div class="merch-card" data-aos="fade-up" data-aos-delay="300">
-                <div class="merch-img">
-                    <img src="images/Kraizie2.jpg" alt="Kraizie Cap">
-                </div>
-                <div class="merch-info">
-                    <h3>Kraizie Cap</h3>
-                    <div class="merch-price">R 249</div>
-                    <button class="add-to-cart" data-product="Kraizie Cap" data-price="249">
-                        <i class="fas fa-shopping-cart"></i> Add to Cart
-                    </button>
-                </div>
-            </div>
-
-            <!-- Merch Item 4 -->
-            <div class="merch-card" data-aos="fade-up" data-aos-delay="400">
-                <div class="merch-img">
-                    <img src="images/Feezy2.jpg" alt="F-eezy Beanie">
-                </div>
-                <div class="merch-info">
-                    <h3>F-eezy Beanie</h3>
-                    <div class="merch-price">R 199</div>
-                    <button class="add-to-cart" data-product="F-eezy Beanie" data-price="199">
-                        <i class="fas fa-shopping-cart"></i> Add to Cart
-                    </button>
+                <div class="modal-details">
+                    <div class="detail-card">
+                        <h3>About</h3>
+                        <p>F-eezy brings a unique energy to the eMtee Records roster with his versatile flow and contemporary sound. His music blends traditional hip-hop with modern influences, creating a fresh take on the South African urban music scene.</p>
+                    </div>
+                    <div class="detail-card">
+                        <h3>Top Tracks</h3>
+                        <ul>
+                            <li>Street Lights</li>
+                            <li>City Dreams</li>
+                            <li>No Turning Back</li>
+                            <li>On My Way</li>
+                            <li>Elevate</li>
+                        </ul>
+                    </div>
+                    <div class="detail-card">
+                        <h3>Booking Info</h3>
+                        <p>Appearance Fee: R 7,000 - R 12,000</p>
+                        <p>Feature Verse: R 18,000+</p>
+                        <p>Contact: 061 460 0542</p>
+                    </div>
+                    <div class="detail-card">
+                        <h3>Latest Release</h3>
+                        <p>Single: City Dreams (2023)</p>
+                        <p>Label: eMtee Records</p>
+                        <p>Streams: 1.5M+</p>
+                    </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
 
-    <!-- Booking Section -->
-    <section class="booking" id="booking">
-        <div class="section-title" data-aos="fade-up">
-            <h2>Book an Artist</h2>
+    <!-- Skiips Modal -->
+    <div id="skiips-modal" class="artist-modal">
+        <div class="modal-content">
+            <button class="close-modal"><i class="fas fa-times"></i></button>
+            <div class="modal-body">
+                <div class="modal-header">
+                    <img src="images/Skiips1.jpg" alt="Skiips">
+                    <div class="modal-info">
+                        <h2>Skiips</h2>
+                        <p>Hip-Hop • Durban</p>
+                        <div class="social-links">
+                            <a href="https://open.spotify.com/artist/1QquCeba1W051sM56tKu0Y" target="_blank"><i class="fab fa-spotify"></i></a>
+                            <a href="https://www.instagram.com/skiips/" target="_blank"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-details">
+                    <div class="detail-card">
+                        <h3>About</h3>
+                        <p>Skiips represents the coastal sound of Durban with his smooth delivery and melodic approach to hip-hop. His music captures the essence of South African youth culture while maintaining international appeal.</p>
+                    </div>
+                    <div class="detail-card">
+                        <h3>Top Tracks</h3>
+                        <ul>
+                            <li>Coastal Vibes</li>
+                            <li>Sunset Drive</li>
+                            <li>Ocean View</li>
+                            <li>Summer Nights</li>
+                            <li>Beach Dreams</li>
+                        </ul>
+                    </div>
+                    <div class="detail-card">
+                        <h3>Booking Info</h3>
+                        <p>Appearance Fee: R 6,000 - R 10,000</p>
+                        <p>Feature Verse: R 15,000+</p>
+                        <p>Contact: 061 460 0542</p>
+                    </div>
+                    <div class="detail-card">
+                        <h3>Latest Release</h3>
+                        <p>EP: Coastal Vibes (2023)</p>
+                        <p>Label: eMtee Records</p>
+                        <p>Streams: 1M+</p>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="booking-form" data-aos="fade-up" data-aos-delay="100">
-            <form id="booking-form">
-                <div class="form-group">
-                    <label for="name">Your Name</label>
-                    <input type="text" id="name" class="form-control" required>
+    </div>
+
+    <!-- BabyG!rl Zae Modal -->
+    <div id="babygirlzae-modal" class="artist-modal">
+        <div class="modal-content">
+            <button class="close-modal"><i class="fas fa-times"></i></button>
+            <div class="modal-body">
+                <div class="modal-header">
+                    <img src="images/Babyg!rl Zae1.jpg" alt="BabyG!rl Zae">
+                    <div class="modal-info">
+                        <h2>BabyG!rl Zae</h2>
+                        <p>R&B • Cape Town</p>
+                        <div class="social-links">
+                            <a href="https://open.spotify.com/artist/1djL8Gjzuz1jLKg5QWCuG4" target="_blank"><i class="fab fa-spotify"></i></a>
+                            <a href="https://linktr.ee/BABYGIRLZAE" target="_blank"><i class="fas fa-link"></i></a>
+                            <a href="https://www.instagram.com/babygirlzae/" target="_blank"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="email">Email Address</label>
-                    <input type="email" id="email" class="form-control" required>
+                <div class="modal-details">
+                    <div class="detail-card">
+                        <h3>About</h3>
+                        <p>BabyG!rl Zae brings soulful R&B to the eMtee Records family with her powerful vocals and emotional depth. Hailing from Cape Town, she adds a unique feminine energy to the label's diverse roster.</p>
+                    </div>
+                    <div class="detail-card">
+                        <h3>Top Tracks</h3>
+                        <ul>
+                            <li>Midnight Thoughts</li>
+                            <li>Love Again</li>
+                            <li>Heartbreak Season</li>
+                            <li>Fading Memories</li>
+                            <li>Better Days</li>
+                        </ul>
+                    </div>
+                    <div class="detail-card">
+                        <h3>Booking Info</h3>
+                        <p>Appearance Fee: R 8,000 - R 14,000</p>
+                        <p>Feature Verse: R 22,000+</p>
+                        <p>Contact: 061 460 0542</p>
+                    </div>
+                    <div class="detail-card">
+                        <h3>Latest Release</h3>
+                        <p>Single: Midnight Thoughts (2023)</p>
+                        <p>Label: eMtee Records</p>
+                        <p>Streams: 800K+</p>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="phone">Phone Number</label>
-                    <input type="tel" id="phone" class="form-control" required>
-                </div>
-                <div class="form-group">
-                    <label for="artist">Select Artist</label>
-                    <select id="artist" class="form-control" required>
-                        <option value="">Choose an artist</option>
-                        <option value="emtee">Emtee</option>
-                        <option value="kraizie">Kraizie</option>
-                        <option value="feezy">F-eezy</option>
-                        <option value="skiips">Skiips</option>
-                        <option value="babygirlzae">Baby Girl Zae</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="event-date">Event Date</label>
-                    <input type="date" id="event-date" class="form-control" required>
-                </div>
-                <div class="form-group">
-                    <label for="budget">Budget Range</label>
-                    <select id="budget" class="form-control" required>
-                        <option value="">Select budget range</option>
-                        <option value="5k-10k">R 5,000 - R 10,000</option>
-                        <option value="10k-25k">R 10,000 - R 25,000</option>
-                        <option value="25k-50k">R 25,000 - R 50,000</option>
-                        <option value="50k+">R 50,000+</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="message">Event Details</label>
-                    <textarea id="message" class="form-control" placeholder="Tell us about your event..."></textarea>
-                </div>
-                <button type="submit" class="btn" style="width: 100%;">Submit Booking Request</button>
-            </form>
+            </div>
         </div>
-    </section>
+    </div>
 
     <!-- WhatsApp Floating Button -->
-    <a href="https://wa.me/27614600542?text=Hi%2C%20I'm%20interested%20in%20eMtee%20Records%20merchandise" class="whatsapp-float" target="_blank">
+    <a href="https://wa.me/27614600542?text=Hi%2C%20I'm%20interested%20in%20eMtee%20Records" class="whatsapp-float" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
-
-    <!-- Footer -->
-    <footer id="contact">
-        <div class="footer-content">
-            <div class="footer-column">
-                <h3>eMtee Records</h3>
-                <p>South Africa's premier independent music label, home to groundbreaking artists pushing the boundaries of hip-hop and urban music.</p>
-                <div class="social-links">
-                    <a href="https://www.instagram.com/emteerecords/" target="_blank"><i class="fab fa-instagram"></i></a>
-                    <a href="https://twitter.com/emteerecords" target="_blank"><i class="fab fa-twitter"></i></a>
-                    <a href="https://www.youtube.com/c/EmteeRecords" target="_blank"><i class="fab fa-youtube"></i></a>
-                    <a href="https://www.facebook.com/emteerecords" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://open.spotify.com/user/emteerecords" target="_blank"><i class="fab fa-spotify"></i></a>
-                    <a href="https://www.tiktok.com/@emteerecords" target="_blank"><i class="fab fa-tiktok"></i></a>
-                </div>
-            </div>
-            <div class="footer-column">
-                <h3>Quick Links</h3>
-                <ul class="footer-links">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#artists">Artists</a></li>
-                    <li><a href="#merch">Merchandise</a></li>
-                    <li><a href="#booking">Bookings</a></li>
-                    <li><a href="#">News</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h3>Contact Us</h3>
-                <ul class="footer-links">
-                    <li><i class="fas fa-map-marker-alt"></i> Johannesburg, South Africa</li>
-                    <li><i class="fas fa-phone"></i> 061 460 0542</li>
-                    <li><i class="fas fa-envelope"></i> info@emteerecords.co.za</li>
-                    <li><i class="fas fa-globe"></i> www.emteerecords.co.za</li>
-                </ul>
-            </div>
-        </div>
-        <div class="copyright">
-            <p>&copy; 2023 eMtee Records. All Rights Reserved.</p>
-        </div>
-    </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
@@ -1722,6 +1943,17 @@
                 themeButtons.forEach(btn => btn.classList.remove('active'));
                 button.classList.add('active');
             });
+        });
+
+        // Spotify Player Toggle
+        const spotifyPlayer = document.querySelector('.spotify-player');
+        const spotifyToggle = document.querySelector('.spotify-toggle');
+        const minimizeBtn = document.querySelector('.minimize-btn');
+        
+        spotifyToggle.addEventListener('click', () => {
+            spotifyPlayer.classList.toggle('minimized');
+            minimizeBtn.classList.toggle('fa-chevron-down');
+            minimizeBtn.classList.toggle('fa-chevron-up');
         });
 
         // Mobile Menu Toggle
@@ -1841,101 +2073,27 @@
             });
         });
 
-        // Booking Form Submission
-        const bookingForm = document.getElementById('booking-form');
+        // Search Functionality
+        const searchInput = document.querySelector('.search-input');
         
-        bookingForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Get form data
-            const formData = new FormData(this);
-            const name = document.getElementById('name').value;
-            const artist = document.getElementById('artist').value;
-            
-            // Create WhatsApp message
-            const message = `New Booking Request:%0A%0AName: ${name}%0AArtist: ${artist}%0A%0APlease check the admin panel for full details.`;
-            const whatsappURL = `https://wa.me/27614600542?text=${message}`;
-            
-            // Open WhatsApp
-            window.open(whatsappURL, '_blank');
-            
-            // Show success message
-            alert('Booking request submitted! We will contact you shortly.');
-            this.reset();
-        });
-
-        // Music Player Functionality
-        const playBtn = document.getElementById('play-btn');
-        const prevBtn = document.getElementById('prev-btn');
-        const nextBtn = document.getElementById('next-btn');
-        const muteBtn = document.getElementById('mute-btn');
-        const volumeSlider = document.getElementById('volume-slider');
-        const tracks = document.querySelectorAll('.track');
-        
-        let currentTrack = 0;
-        let isPlaying = false;
-        let isMuted = false;
-        let volume = 50;
-        
-        // Set initial volume
-        volumeSlider.value = volume;
-        
-        // Play/Pause functionality
-        playBtn.addEventListener('click', () => {
-            isPlaying = !isPlaying;
-            playBtn.innerHTML = isPlaying ? '<i class="fas fa-pause"></i>' : '<i class="fas fa-play"></i>';
-            
-            if (isPlaying) {
-                playBtn.classList.add('active');
-            } else {
-                playBtn.classList.remove('active');
-            }
-        });
-        
-        // Previous track
-        prevBtn.addEventListener('click', () => {
-            tracks[currentTrack].classList.remove('active');
-            currentTrack = (currentTrack - 1 + tracks.length) % tracks.length;
-            tracks[currentTrack].classList.add('active');
-        });
-        
-        // Next track
-        nextBtn.addEventListener('click', () => {
-            tracks[currentTrack].classList.remove('active');
-            currentTrack = (currentTrack + 1) % tracks.length;
-            tracks[currentTrack].classList.add('active');
-        });
-        
-        // Mute functionality
-        muteBtn.addEventListener('click', () => {
-            isMuted = !isMuted;
-            muteBtn.innerHTML = isMuted ? '<i class="fas fa-volume-mute"></i>' : '<i class="fas fa-volume-up"></i>';
-            
-            if (isMuted) {
-                volumeSlider.disabled = true;
-            } else {
-                volumeSlider.disabled = false;
-            }
-        });
-        
-        // Volume control
-        volumeSlider.addEventListener('input', (e) => {
-            volume = e.target.value;
-        });
-        
-        // Track selection
-        tracks.forEach((track, index) => {
-            track.addEventListener('click', () => {
-                tracks[currentTrack].classList.remove('active');
-                currentTrack = index;
-                tracks[currentTrack].classList.add('active');
+        searchInput.addEventListener('keyup', function(e) {
+            if (e.key === 'Enter') {
+                const query = this.value.toLowerCase();
+                const sections = document.querySelectorAll('section');
+                let found = false;
                 
-                if (!isPlaying) {
-                    isPlaying = true;
-                    playBtn.innerHTML = '<i class="fas fa-pause"></i>';
-                    playBtn.classList.add('active');
+                sections.forEach(section => {
+                    const text = section.textContent.toLowerCase();
+                    if (text.includes(query) && section.id !== 'home') {
+                        found = true;
+                        section.scrollIntoView({ behavior: 'smooth' });
+                    }
+                });
+                
+                if (!found) {
+                    alert('No results found for: ' + query);
                 }
-            });
+            }
         });
     </script>
 </body>
