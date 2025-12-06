@@ -689,4 +689,1535 @@
         .youtube-embed {
             border-radius: 15px;
             overflow: hidden;
-            box-shadow: var(--shadow
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .youtube-embed:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(220, 38, 38, 0.2), var(--glow);
+        }
+        
+        /* YouTube Channels Section */
+        .youtube-channels {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .channel-card {
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .channel-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(220, 38, 38, 0.2), var(--glow);
+        }
+        
+        .channel-header {
+            padding: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .channel-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+            background: var(--light-gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+        }
+        
+        .channel-info h4 {
+            margin-bottom: 0.5rem;
+        }
+        
+        .channel-info p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        
+        .channel-video {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .channel-video iframe {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .channel-link {
+            display: block;
+            padding: 1rem;
+            text-align: center;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .channel-link:hover {
+            background: #b91c1c;
+        }
+        
+        /* Gallery Section - NEW */
+        .gallery-section {
+            background: var(--gray);
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 3rem;
+        }
+        
+        .gallery-item {
+            border-radius: 10px;
+            overflow: hidden;
+            height: 250px;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.05);
+            box-shadow: var(--glow);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        /* Merchandise Section */
+        .merch-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        
+        .merch-card {
+            background-color: var(--card-bg);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: var(--transition);
+            backdrop-filter: blur(10px);
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            cursor: pointer;
+        }
+        
+        [data-theme="light"] .merch-card {
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+        
+        .merch-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(220, 38, 38, 0.2), var(--glow);
+        }
+        
+        .merch-img {
+            height: 250px;
+            overflow: hidden;
+        }
+        
+        .merch-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .merch-card:hover .merch-img img {
+            transform: scale(1.05);
+        }
+        
+        .merch-info {
+            padding: 1.5rem;
+        }
+        
+        .merch-info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .merch-price {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+        
+        .add-to-cart {
+            width: 100%;
+            padding: 0.8rem;
+            background-color: var(--accent);
+            color: var(--secondary);
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            box-shadow: var(--glow);
+            font-size: 1rem;
+        }
+        
+        .add-to-cart:hover {
+            background-color: #b91c1c;
+            transform: translateY(-3px);
+        }
+        
+        /* News Section */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+        
+        .blog-card {
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .blog-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(220, 38, 38, 0.2), var(--glow);
+        }
+        
+        .blog-img {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .blog-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .blog-card:hover .blog-img img {
+            transform: scale(1.05);
+        }
+        
+        .blog-content {
+            padding: 1.5rem;
+        }
+        
+        .blog-date {
+            color: var(--accent);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .blog-title {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .blog-excerpt {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+        
+        .read-more {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        
+        .read-more:hover {
+            color: var(--text-primary);
+        }
+        
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        
+        .about-text h3 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+        }
+        
+        .about-text p {
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+            color: var(--text-secondary);
+        }
+        
+        .about-image {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        /* Contact Section */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--glow);
+        }
+        
+        .contact-details h4 {
+            margin-bottom: 0.5rem;
+        }
+        
+        .contact-details p {
+            color: var(--text-secondary);
+        }
+        
+        .contact-form {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 1rem;
+            background-color: var(--light-gray);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            color: var(--text-primary);
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 2px var(--accent-glow);
+        }
+        
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        /* Booking Section */
+        .booking {
+            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), 
+                        url('images/emtee records slide image.jpg') center/cover no-repeat;
+            padding: var(--section-spacing) 5%;
+            position: relative;
+        }
+        
+        [data-theme="light"] .booking {
+            background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), 
+                        url('images/emtee records slide image.jpg') center/cover no-repeat;
+        }
+        
+        .booking-form {
+            max-width: 700px;
+            margin: 0 auto;
+            background-color: var(--card-bg);
+            padding: 3rem;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* WhatsApp Floating Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 90px;
+            right: 25px;
+            width: 60px;
+            height: 60px;
+            background-color: #25D366;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.5);
+            z-index: 1000;
+            transition: var(--transition);
+            animation: pulse 2s infinite;
+            text-decoration: none;
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+        
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--gray);
+            padding: 4rem 5% 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent);
+            box-shadow: var(--glow);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 1rem;
+        }
+        
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .footer-links a:hover {
+            color: var(--accent);
+            padding-left: 5px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: var(--light-gray);
+            border-radius: 50%;
+            color: var(--text-primary);
+            transition: var(--transition);
+            text-decoration: none;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--accent);
+            transform: translateY(-3px);
+            box-shadow: var(--glow);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Artist Detail Modal */
+        .artist-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            overflow-y: auto;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+        }
+        
+        .modal-content {
+            background-color: var(--card-bg);
+            max-width: 900px;
+            margin: 2rem auto;
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+            animation: modalSlideIn 0.5s ease-out;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        @keyframes modalSlideIn {
+            from { opacity: 0; transform: translateY(-50px) scale(0.9); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            background: none;
+            border: none;
+            cursor: pointer;
+            z-index: 10;
+            transition: var(--transition);
+        }
+        
+        .close-modal:hover {
+            color: var(--accent);
+            transform: rotate(90deg);
+        }
+        
+        .modal-body {
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+        
+        .modal-header {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        
+        .modal-header img {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+        
+        .modal-info h2 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(to right, var(--accent), #ff6b6b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .modal-info p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+        
+        .modal-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .detail-card {
+            background-color: var(--light-gray);
+            padding: 1.5rem;
+            border-radius: 10px;
+            transition: var(--transition);
+        }
+        
+        .detail-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+        }
+        
+        .detail-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--accent);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            :root {
+                --section-spacing: 6rem;
+            }
+            .artists-grid, .merch-grid, .blog-grid {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .hero-logo {
+                max-width: 300px;
+            }
+            .about-content, .contact-container {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+            .about-image {
+                order: -1;
+            }
+            .section-title h2 {
+                font-size: 2.5rem;
+            }
+            .control-panel {
+                flex-direction: row;
+                top: 80px;
+                right: 20px;
+            }
+            .spotify-player {
+                width: 280px;
+            }
+            .featured-artist {
+                grid-template-columns: 1fr;
+            }
+            .featured-artist-img {
+                height: 300px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+            nav {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 80%;
+                height: calc(100vh - 80px);
+                background-color: var(--gray);
+                transition: var(--transition);
+                padding: 2rem;
+                backdrop-filter: blur(10px);
+                border-right: 1px solid rgba(255, 255, 255, 0.1);
+            }
+            nav.active {
+                left: 0;
+            }
+            nav ul {
+                flex-direction: column;
+            }
+            nav ul li {
+                margin: 1rem 0;
+            }
+            .search-container {
+                margin: 1rem 0 0;
+                width: 100%;
+            }
+            .search-input {
+                width: 100%;
+            }
+            .hero-logo {
+                max-width: 250px;
+            }
+            .section {
+                padding: 4rem 5%;
+            }
+            .stats {
+                padding: 2rem 5%;
+            }
+            .stat-number {
+                font-size: 2rem;
+            }
+            .control-panel {
+                position: static;
+                flex-direction: column;
+                margin: 20px auto;
+                width: 100%;
+            }
+            .theme-toggle {
+                margin-bottom: 15px;
+            }
+            .newsletter-form {
+                flex-direction: column;
+            }
+            .spotify-player {
+                width: 250px;
+            }
+            .modal-header {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero-logo {
+                max-width: 200px;
+            }
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            .artists-grid, .merch-grid, .blog-grid {
+                grid-template-columns: 1fr;
+            }
+            .spotify-playlists {
+                grid-template-columns: 1fr;
+            }
+            .booking-form, .contact-form {
+                padding: 2rem;
+            }
+            .spotify-player {
+                width: 90%;
+                left: 5%;
+                right: 5%;
+            }
+            .artists-showcase {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body data-theme="dark">
+    <!-- Custom Cursor -->
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+    <!-- Particle Background -->
+    <div id="particles-js"></div>
+    <!-- Floating Elements -->
+    <div class="floating-elements">
+        <div class="floating-element" style="width: 200px; height: 200px; top: 10%; left: 5%; animation-delay: 0s;"></div>
+        <div class="floating-element" style="width: 150px; height: 150px; top: 60%; left: 80%; animation-delay: 5s;"></div>
+        <div class="floating-element" style="width: 100px; height: 100px; top: 30%; left: 70%; animation-delay: 10s;"></div>
+        <div class="floating-element" style="width: 180px; height: 180px; top: 80%; left: 10%; animation-delay: 7s;"></div>
+    </div>
+    <!-- Control Panel -->
+    <div class="control-panel">
+        <!-- Theme Toggle -->
+        <div class="theme-toggle">
+            <button class="theme-btn active" data-theme="dark"><i class="fas fa-moon"></i></button>
+            <button class="theme-btn" data-theme="light"><i class="fas fa-sun"></i></button>
+        </div>
+    </div>
+    <!-- Spotify Player -->
+    <div class="spotify-player">
+        <button class="spotify-toggle">
+            <i class="fab fa-spotify"></i>
+            <span>Now Playing</span>
+            <i class="fas fa-chevron-down minimize-btn"></i>
+        </button>
+        <div class="spotify-embed">
+            <iframe src="https://open.spotify.com/embed/playlist/0qIvroVtThINkLvz2hLfh8?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        </div>
+    </div>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="logo">
+            <img src="images/eMtee Records.png" alt="eMtee Records">
+        </div>
+        <div class="menu-toggle">
+            <i class="fas fa-bars"></i>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#artists">Artists</a></li>
+                <li><a href="#music">Music</a></li>
+                <li><a href="#videos">Videos</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#merch">Merch</a></li>
+                <li><a href="#news">News</a></li>
+                <li><a href="#booking">Bookings</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="search-container">
+                <input type="text" class="search-input" placeholder="Search...">
+                <button class="search-btn"><i class="fas fa-search"></i></button>
+            </div>
+        </nav>
+    </header>
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content" data-aos="fade-up" data-aos-duration="1000">
+            <div class="hero-logo">
+                <img src="images/eMtee Records.png" alt="eMtee Records">
+            </div>
+            <p>South Africa's Premier Independent Music Label. Home to groundbreaking artists pushing the boundaries of hip-hop and urban music.</p>
+            <a href="#artists" class="btn">Explore Our Artists</a>
+        </div>
+    </section>
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="stat-item" data-aos="fade-up" data-aos-delay="100">
+            <span class="stat-number" data-count="50">0</span>
+            <span class="stat-label">Million Streams</span>
+        </div>
+        <div class="stat-item" data-aos="fade-up" data-aos-delay="200">
+            <span class="stat-number" data-count="5">0</span>
+            <span class="stat-label">Artists</span>
+        </div>
+        <div class="stat-item" data-aos="fade-up" data-aos-delay="300">
+            <span class="stat-number" data-count="120">0</span>
+            <span class="stat-label">Events</span>
+        </div>
+        <div class="stat-item" data-aos="fade-up" data-aos-delay="400">
+            <span class="stat-number" data-count="15">0</span>
+            <span class="stat-label">Countries</span>
+        </div>
+    </section>
+    <!-- Artists Section -->
+    <section class="section" id="artists">
+        <div class="section-title" data-aos="fade-up">
+            <h2>Our Artists</h2>
+        </div>
+        <!-- Featured Artist Showcase -->
+        <div class="artists-showcase" data-aos="fade-up">
+            <div class="featured-artist">
+                <div class="featured-artist-img">
+                    <img src="images/emtee best image.jpg" alt="Emtee">
+                </div>
+                <div class="featured-artist-info">
+                    <span class="artist-tag">Label Founder</span>
+                    <h3>Emtee</h3>
+                    <p>The visionary behind eMtee Records, bringing raw talent and authentic storytelling to the forefront of South African hip-hop.</p>
+                    <div class="artist-stats">
+                        <div class="stat">
+                            <div class="stat-value">2.4M+</div>
+                            <div class="stat-label">Monthly Listeners</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">5</div>
+                            <div class="stat-label">Albums</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">50M+</div>
+                            <div class="stat-label">Streams</div>
+                        </div>
+                    </div>
+                    <button class="btn">Full Profile</button>
+                </div>
+            </div>
+        </div>
+        <!-- Artists Grid -->
+        <div class="artists-grid">
+            <!-- Kraizie -->
+            <div class="artist-card" data-artist="kraizie" data-aos="fade-up" data-aos-delay="100">
+                <div class="artist-img">
+                    <img src="images/Kraizie1.jpg" alt="Kraizie">
+                    <div class="artist-overlay">
+                        <p>Click to view full profile</p>
+                    </div>
+                </div>
+                <div class="artist-info">
+                    <h3>Kraizie</h3>
+                    <p>Hip-Hop • Mpumalanga</p>
+                    <div class="artist-stats">
+                        <div class="stat">
+                            <div class="stat-value">850K+</div>
+                            <div class="stat-label">Monthly Listeners</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">3</div>
+                            <div class="stat-label">EPs</div>
+                        </div>
+                    </div>
+                    <button class="btn view-artist">View Profile</button>
+                </div>
+            </div>
+            <!-- F-eezy -->
+            <div class="artist-card" data-artist="feezy" data-aos="fade-up" data-aos-delay="200">
+                <div class="artist-img">
+                    <img src="images/Feezy1.jpg" alt="F-eezy">
+                    <div class="artist-overlay">
+                        <p>Click to view full profile</p>
+                    </div>
+                </div>
+                <div class="artist-info">
+                    <h3>F-eezy</h3>
+                    <p>Hip-Hop • Johannesburg</p>
+                    <div class="artist-stats">
+                        <div class="stat">
+                            <div class="stat-value">620K+</div>
+                            <div class="stat-label">Monthly Listeners</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">2</div>
+                            <div class="stat-label">Albums</div>
+                        </div>
+                    </div>
+                    <button class="btn view-artist">View Profile</button>
+                </div>
+            </div>
+            <!-- Skiips -->
+            <div class="artist-card" data-artist="skiips" data-aos="fade-up" data-aos-delay="300">
+                <div class="artist-img">
+                    <img src="images/Skiips1.jpg" alt="Skiips">
+                    <div class="artist-overlay">
+                        <p>Click to view full profile</p>
+                    </div>
+                </div>
+                <div class="artist-info">
+                    <h3>Skiips</h3>
+                    <p>Hip-Hop • Durban</p>
+                    <div class="artist-stats">
+                        <div class="stat">
+                            <div class="stat-value">450K+</div>
+                            <div class="stat-label">Monthly Listeners</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">1</div>
+                            <div class="stat-label">Album</div>
+                        </div>
+                    </div>
+                    <button class="btn view-artist">View Profile</button>
+                </div>
+            </div>
+            <!-- BabyG!rl Zae -->
+            <div class="artist-card" data-artist="babygirlzae" data-aos="fade-up" data-aos-delay="400">
+                <div class="artist-img">
+                    <img src="images/Babyg!rl Zae1.jpg" alt="BabyG!rl Zae">
+                    <div class="artist-overlay">
+                        <p>Click to view full profile</p>
+                    </div>
+                </div>
+                <div class="artist-info">
+                    <h3>BabyG!rl Zae</h3>
+                    <p>R&B • Cape Town</p>
+                    <div class="artist-stats">
+                        <div class="stat">
+                            <div class="stat-value">380K+</div>
+                            <div class="stat-label">Monthly Listeners</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">2</div>
+                            <div class="stat-label">EPs</div>
+                        </div>
+                    </div>
+                    <button class="btn view-artist">View Profile</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Music Section -->
+    <section class="section music-section" id="music">
+        <div class="section-title" data-aos="fade-up">
+            <h2>Our Music</h2>
+        </div>
+        <div class="spotify-playlists">
+            <div class="spotify-embed" data-aos="fade-up" data-aos-delay="100">
+                <iframe src="https://open.spotify.com/embed/playlist/0qIvroVtThINkLvz2hLfh8?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            </div>
+            <div class="spotify-embed" data-aos="fade-up" data-aos-delay="200">
+                <iframe src="https://open.spotify.com/embed/artist/6U3gCOvxVWKBxXItqp3mdr?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            </div>
+        </div>
+    </section>
+    <!-- YouTube Videos Section -->
+    <section class="section youtube-section" id="videos">
+        <div class="section-title" data-aos="fade-up">
+            <h2>Latest Music Videos</h2>
+        </div>
+        <div class="youtube-grid">
+            <div class="youtube-embed" data-aos="fade-up" data-aos-delay="100">
+                <iframe width="100%" height="315" src="https://www.youtube.com/embed/videoseries?list=UU549e3k32frZfExn3BWSv7A" title="eMtee Videos" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="youtube-embed" data-aos="fade-up" data-aos-delay="200">
+                <iframe width="100%" height="315" src="https://www.youtube.com/embed/videoseries?list=UULF549e3k32frZfExn3BWSv7A" title="Kraizie Videos" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+    </section>
+    <!-- Gallery Section - NEW -->
+    <section class="section gallery-section" id="gallery">
+        <div class="section-title" data-aos="fade-up">
+            <h2>Behind The Scenes</h2>
+        </div>
+        <div class="gallery-grid">
+            <div class="gallery-item" data-aos="fade-up" data-aos-delay="100">
+                <img src="images/emtee1.jpg" alt="Emtee Photo 1">
+            </div>
+            <div class="gallery-item" data-aos="fade-up" data-aos-delay="200">
+                <img src="images/emtee2.jpg" alt="Emtee Photo 2">
+            </div>
+            <div class="gallery-item" data-aos="fade-up" data-aos-delay="300">
+                <img src="images/emtee3.jpg" alt="Emtee Photo 3">
+            </div>
+            <div class="gallery-item" data-aos="fade-up" data-aos-delay="400">
+                <img src="images/Kraizie2.jpg" alt="Kraizie Photo 2">
+            </div>
+            <div class="gallery-item" data-aos="fade-up" data-aos-delay="500">
+                <img src="images/Kraizie3.jpg" alt="Kraizie Photo 3">
+            </div>
+            <div class="gallery-item" data-aos="fade-up" data-aos-delay="600">
+                <img src="images/Feezy2.jpg" alt="Feezy Photo 2">
+            </div>
+            <div class="gallery-item" data-aos="fade-up" data-aos-delay="700">
+                <img src="images/Babyg!rl Zae2.jpg" alt="BabyG!rl Zae Photo 2">
+            </div>
+            <div class="gallery-item" data-aos="fade-up" data-aos-delay="800">
+                <img src="images/Babyg!rl Zae3.jpg" alt="BabyG!rl Zae Photo 3">
+            </div>
+        </div>
+    </section>
+    <!-- Merchandise Section -->
+    <section class="section" id="merch">
+        <div class="section-title" data-aos="fade-up">
+            <h2>Official Merchandise</h2>
+        </div>
+        <div class="merch-grid">
+            <!-- Hoodie -->
+            <div class="merch-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="merch-img">
+                    <img src="images/merch-hoodie.jpg" alt="eMtee Records Hoodie">
+                </div>
+                <div class="merch-info">
+                    <h3>eMtee Records Hoodie</h3>
+                    <div class="merch-price">R499</div>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+            </div>
+            <!-- T-Shirt -->
+            <div class="merch-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="merch-img">
+                    <img src="images/merch-kraizie-tshirt.jpg" alt="Kraizie Signature T-Shirt">
+                </div>
+                <div class="merch-info">
+                    <h3>Kraizie Signature T-Shirt</h3>
+                    <div class="merch-price">R299</div>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+            </div>
+            <!-- Cap -->
+            <div class="merch-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="merch-img">
+                    <img src="images/merch-emtee-cap.jpg" alt="Emtee Limited Edition Cap">
+                </div>
+                <div class="merch-info">
+                    <h3>Emtee Limited Edition Cap</h3>
+                    <div class="merch-price">R199</div>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+            </div>
+            <!-- Beanie -->
+            <div class="merch-card" data-aos="fade-up" data-aos-delay="400">
+                <div class="merch-img">
+                    <img src="images/merch-beanie.jpg" alt="eMtee Records Beanie">
+                </div>
+                <div class="merch-info">
+                    <h3>eMtee Records Beanie</h3>
+                    <div class="merch-price">R149</div>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+            </div>
+            <!-- Collection -->
+            <div class="merch-card" data-aos="fade-up" data-aos-delay="500">
+                <div class="merch-img">
+                    <img src="images/merch-f-eezy-collection.jpg" alt="F-eezy Artist Collection">
+                </div>
+                <div class="merch-info">
+                    <h3>F-eezy Artist Collection</h3>
+                    <div class="merch-price">R399</div>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+            </div>
+            <!-- Sticker Pack -->
+            <div class="merch-card" data-aos="fade-up" data-aos-delay="600">
+                <div class="merch-img">
+                    <img src="images/merch-sticker-pack.jpg" alt="eMtee Records Sticker Pack">
+                </div>
+                <div class="merch-info">
+                    <h3>eMtee Records Sticker Pack</h3>
+                    <div class="merch-price">R99</div>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- News Section -->
+    <section class="section" id="news">
+        <div class="section-title" data-aos="fade-up">
+            <h2>Latest News</h2>
+        </div>
+        <div class="blog-grid">
+            <!-- Article 1 -->
+            <div class="blog-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="blog-img">
+                    <img src="images/news-article-1.jpg" alt="Kraizie Calls for Respect">
+                </div>
+                <div class="blog-content">
+                    <div class="blog-date">August 12, 2025</div>
+                    <h3 class="blog-title">Kraizie Calls for Respect Amid Controversy Surrounding Emtee's Career</h3>
+                    <p class="blog-excerpt">Kraizie, a close colleague and friend of Emtee, used the moment to call for respect, unity, and kindness within the music community and beyond.</p>
+                    <a href="#" class="read-more">Read More →</a>
+                </div>
+            </div>
+            <!-- Article 2 -->
+            <div class="blog-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="blog-img">
+                    <img src="images/news-article-2.jpg" alt="eMtee Records Announces New Artist Signings">
+                </div>
+                <div class="blog-content">
+                    <div class="blog-date">July 28, 2025</div>
+                    <h3 class="blog-title">eMtee Records Announces New Artist Signings for 2025</h3>
+                    <p class="blog-excerpt">Exciting news! eMtee Records is expanding its roster with three new talented artists who are set to make waves in the industry.</p>
+                    <a href="#" class="read-more">Read More →</a>
+                </div>
+            </div>
+            <!-- Article 3 -->
+            <div class="blog-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="blog-img">
+                    <img src="images/news-article-3.jpg" alt="Behind the Scenes: Making of Imai">
+                </div>
+                <div class="blog-content">
+                    <div class="blog-date">June 15, 2025</div>
+                    <h3 class="blog-title">Behind the Scenes: Making of "Imali" with Kraizie and Emtee</h3>
+                    <p class="blog-excerpt">Get an exclusive look at the creative process behind the hit single "Imali" featuring Kraizie and Emtee.</p>
+                    <a href="#" class="read-more">Read More →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Booking Section -->
+    <section class="section booking" id="booking">
+        <div class="section-title" data-aos="fade-up">
+            <h2>Book an Artist</h2>
+        </div>
+        <div class="booking-form" data-aos="fade-up">
+            <form>
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="eventDate">Event Date</label>
+                    <input type="date" id="eventDate" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="artist">Select Artist</label>
+                    <select id="artist" class="form-control" required>
+                        <option value="">Choose an artist</option>
+                        <option value="emtee">Emtee</option>
+                        <option value="kraizie">Kraizie</option>
+                        <option value="feezy">F-eezy</option>
+                        <option value="skiips">Skiips</option>
+                        <option value="babygirlzae">Baby Girl Zae</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="purpose">Purpose of Booking</label>
+                    <select id="purpose" class="form-control" required>
+                        <option value="">Select purpose</option>
+                        <option value="concert">Concert/Performance</option>
+                        <option value="corporate">Corporate Event</option>
+                        <option value="private">Private Party</option>
+                        <option value="wedding">Wedding</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="budget">Budget Range</label>
+                    <select id="budget" class="form-control" required>
+                        <option value="">Select budget</option>
+                        <option value="R5,000 - R15,000">R5,000 - R15,000</option>
+                        <option value="R15,000 - R30,000">R15,000 - R30,000</option>
+                        <option value="R30,000 - R50,000">R30,000 - R50,000</option>
+                        <option value="R50,000+">R50,000+</option>
+                        <option value="Custom Quote">Custom Quote</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" class="form-control" rows="4" placeholder="Tell us more about your event..."></textarea>
+                </div>
+                <button type="submit" class="btn">Submit Booking Request</button>
+            </form>
+        </div>
+    </section>
+    <!-- Contact Section -->
+    <section class="section" id="contact">
+        <div class="section-title" data-aos="fade-up">
+            <h2>Contact Us</h2>
+        </div>
+        <div class="contact-container" data-aos="fade-up">
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="contact-details">
+                        <h4>Address</h4>
+                        <p>123 Music Street, Johannesburg, South Africa</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <div class="contact-details">
+                        <h4>Phone</h4>
+                        <p>+27 83 725 4362</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="contact-details">
+                        <h4>Email</h4>
+                        <p>info@emteerecords.co.za</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                    <div class="contact-details">
+                        <h4>Social Media</h4>
+                        <p>@emteerecords</p>
+                    </div>
+                </div>
+            </div>
+            <div class="contact-form">
+                <h3>Send us a message</h3>
+                <form>
+                    <div class="form-group">
+                        <label for="contactName">Your Name</label>
+                        <input type="text" id="contactName" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contactEmail">Your Email</label>
+                        <input type="email" id="contactEmail" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contactSubject">Subject</label>
+                        <input type="text" id="contactSubject" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contactMessage">Message</label>
+                        <textarea id="contactMessage" class="form-control" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>About eMtee Records</h3>
+                <p>South Africa's premier independent music label, home to groundbreaking artists pushing the boundaries of hip-hop and urban music.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-spotify"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#artists">Artists</a></li>
+                    <li><a href="#music">Music</a></li>
+                    <li><a href="#videos">Videos</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Legal</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Cookie Policy</a></li>
+                    <li><a href="#">Copyright</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Newsletter</h3>
+                <p>Subscribe to our newsletter for the latest updates and news.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="email" class="form-control" placeholder="Enter your email">
+                    </div>
+                    <button type="submit" class="btn">Subscribe</button>
+                </form>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 eMtee Records. All rights reserved.</p>
+        </div>
+    </footer>
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/27837254362" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+    <!-- Artist Detail Modal -->
+    <div class="artist-modal" id="artistModal">
+        <div class="modal-content">
+            <button class="close-modal">&times;</button>
+            <div class="modal-body">
+                <div class="modal-header">
+                    <img src="images/emtee best image.jpg" alt="Emtee">
+                    <div class="modal-info">
+                        <h2>Emtee</h2>
+                        <p>Mthembeni Ndevu, professionally known as Emtee, is a South African rapper born in Matatiele, Eastern Cape. He rose to fame with his debut single "Roll Up" and has since become one of South Africa's most influential hip-hop artists.</p>
+                    </div>
+                </div>
+                <div class="modal-details">
+                    <div class="detail-card">
+                        <h3>Stats</h3>
+                        <p>2.4M Monthly Listeners</p>
+                        <p>5.8M Social Reach</p>
+                        <p>50M+ Total Streams</p>
+                    </div>
+                    <div class="detail-card">
+                        <h3>Discography</h3>
+                        <p>Avery (2024)</p>
+                        <p>Johustleburg (2023)</p>
+                        <p>Uzoyimela Ft. Gwamba (2022)</p>
+                    </div>
+                    <div class="detail-card">
+                        <h3>Upcoming Events</h3>
+                        <p>June 22, 2025 - FNB Stadium, Johannesburg</p>
+                        <p>July 15, 2025 - Cape Town Stadium, Cape Town</p>
+                    </div>
+                    <div class="detail-card">
+                        <h3>Pricing</h3>
+                        <p>Appearance: R8,000</p>
+                        <p>Feature Chorus: R25,000</p>
+                        <p>Feature Verse: R40,000</p>
+                    </div>
+                </div>
+                <div class="modal-actions">
+                    <a href="https://open.spotify.com/artist/6U3gCOvxVWKBxXItqp3mdr" target="_blank" class="btn">Listen on Spotify</a>
+                    <a href="https://instagram.com/emteethehustla" target="_blank" class="btn">Follow on Instagram</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+        
+        // Custom Cursor
+        const cursor = document.querySelector('.cursor');
+        const cursorFollower = document.querySelector('.cursor-follower');
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+            setTimeout(() => {
+                cursorFollower.style.left = e.clientX + 'px';
+                cursorFollower.style.top = e.clientY + 'px';
+            }, 100);
+        });
+        
+        // Particle Background
+        particlesJS('particles-js', {
+            particles: {
+                number: { value: 80, density: { enable: true, value_area: 800 } },
+                color: { value: "#dc2626" },
+                shape: { type: "circle" },
+                opacity: { value: 0.5, random: true },
+                size: { value: 3, random: true },
+                line_linked: {
+                    enable: true,
+                    distance: 150,
+                    color: "#dc2626",
+                    opacity: 0.4,
+                    width: 1
+                },
+                move: {
+                    enable: true,
+                    speed: 2,
+                    direction: "none",
+                    random: true,
+                    straight: false,
+                    out_mode: "out",
+                    bounce: false
+                }
+            },
+            interactivity: {
+                detect_on: "canvas",
+                events: {
+                    onhover: { enable: true, mode: "repulse" },
+                    onclick: { enable: true, mode: "push" },
+                    resize: true
+                }
+            }
+        });
+        
+        // Mobile Menu Toggle
+        document.querySelector('.menu-toggle').addEventListener('click', function() {
+            document.querySelector('nav').classList.toggle('active');
+        });
+        
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', function() {
+                document.querySelector('nav').classList.remove('active');
+            });
+        });
+        
+        // Stats Counter Animation
+        const statNumbers = document.querySelectorAll('.stat-number');
+        function animateStats() {
+            statNumbers.forEach(stat => {
+                const target = parseInt(stat.getAttribute('data-count'));
+                let count = 0;
+                const duration = 2000;
+                const increment = target / (duration / 16);
+                const updateCount = () => {
+                    if (count < target) {
+                        count += increment;
+                        stat.textContent = Math.floor(count).toLocaleString();
+                        setTimeout(updateCount, 16);
+                    } else {
+                        stat.textContent = target.toLocaleString();
+                    }
+                };
+                updateCount();
+            });
+        }
+        
+        // Intersection Observer for stats animation
+        const statsSection = document.querySelector('.stats');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateStats();
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+        observer.observe(statsSection);
+        
+        // Theme Toggle
+        document.querySelectorAll('.theme-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const theme = this.getAttribute('data-theme');
+                document.body.setAttribute('data-theme', theme);
+                document.querySelectorAll('.theme-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+        
+        // Spotify Player Toggle
+        document.querySelector('.spotify-toggle').addEventListener('click', function() {
+            document.querySelector('.spotify-player').classList.toggle('minimized');
+        });
+        
+        // View Artist Modal
+        document.querySelectorAll('.view-artist').forEach(button => {
+            button.addEventListener('click', function() {
+                document.getElementById('artistModal').style.display = 'block';
+            });
+        });
+        
+        // Close Artist Modal
+        document.querySelector('.close-modal').addEventListener('click', function() {
+            document.getElementById('artistModal').style.display = 'none';
+        });
+        
+        // Close modal when clicking outside
+        document.getElementById('artistModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                document.getElementById('artistModal').style.display = 'none';
+            }
+        });
+        
+        // WhatsApp Button Animation
+        const whatsappBtn = document.querySelector('.whatsapp-float');
+        whatsappBtn.addEventListener('mouseenter', function() {
+            this.style.transform = 'scale(1.1)';
+        });
+        whatsappBtn.addEventListener('mouseleave', function() {
+            this.style.transform = 'scale(1)';
+        });
+    </script>
+</body>
+</html>
