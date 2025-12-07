@@ -1,370 +1,368 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>eMtee Records | South Africa's Premier Music Label</title>
-    <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>eMtee Records | South Africa's Premier Music Label</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body data-theme="dark">
-    <!-- Custom Cursor -->
-    <div class="cursor"></div>
-    <div class="cursor-follower"></div>
-    <!-- Particle Background -->
-    <div id="particles-js"></div>
-    <!-- Spotify Player -->
-    <div class="spotify-player">
-        <button class="spotify-toggle">
-            <i class="fab fa-spotify"></i>
-            <span>Now Playing</span>
-            <i class="fas fa-chevron-down minimize-btn"></i>
-        </button>
-        <div class="spotify-embed">
-            <iframe src="https://open.spotify.com/embed/playlist/0qIvroVtThINkLvz2hLfh8?theme=0" width="100%" height="352" frameborder="0" allowfullscreen allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-        </div>
+  <!-- Custom Cursor -->
+  <div class="cursor"></div>
+  <div class="cursor-follower"></div>
+
+  <!-- Header -->
+  <header>
+    <div class="logo">
+      <img src="images/eMtee Records logo.jpg" alt="eMtee Records" />
     </div>
-    <!-- Header -->
-    <header>
-        <div class="logo">
-            <img src="images/eMtee Records logo.jpg" alt="eMtee Records" />
+    <div class="menu-toggle">
+      <i class="fas fa-bars"></i>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#artists">Artists</a></li>
+        <li><a href="#music">Music</a></li>
+        <li><a href="#videos">Videos</a></li>
+        <li><a href="#merch">Merch</a></li>
+        <li><a href="#messages">Messages</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <div class="search-container">
+        <input type="text" class="search-input" placeholder="Search..." />
+        <button class="search-btn"><i class="fas fa-search"></i></button>
+      </div>
+      <!-- Theme Toggle (Lowered) -->
+      <div class="theme-toggle">
+        <button class="theme-btn active" data-theme="dark"><i class="fas fa-moon"></i></button>
+        <button class="theme-btn" data-theme="light"><i class="fas fa-sun"></i></button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero" id="home">
+    <div class="hero-content" data-aos="fade-up">
+      <div class="hero-logo">
+        <img src="images/eMtee Records logo.jpg" alt="eMtee Records" />
+      </div>
+      <p>South Africa’s premier independent music label. Home to Emtee and groundbreaking artists shaping the future of African sound.</p>
+      <a href="#artists" class="btn">Explore Artists</a>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <section class="stats">
+    <div class="stat-item" data-aos="fade-up" data-aos-delay="100">
+      <span class="stat-number" data-count="50">0</span>
+      <span class="stat-label">Million Streams</span>
+    </div>
+    <div class="stat-item" data-aos="fade-up" data-aos-delay="200">
+      <span class="stat-number" data-count="5">0</span>
+      <span class="stat-label">Artists</span>
+    </div>
+    <div class="stat-item" data-aos="fade-up" data-aos-delay="300">
+      <span class="stat-number" data-count="120">0</span>
+      <span class="stat-label">Events</span>
+    </div>
+    <div class="stat-item" data-aos="fade-up" data-aos-delay="400">
+      <span class="stat-number" data-count="15">0</span>
+      <span class="stat-label">Countries</span>
+    </div>
+  </section>
+
+  <!-- Artists -->
+  <section class="section" id="artists">
+    <div class="section-title" data-aos="fade-up">
+      <h2>Our Artists</h2>
+    </div>
+    <div class="artists-grid">
+      <!-- Emtee -->
+      <div class="artist-card" data-aos="fade-up">
+        <div class="artist-img"><img src="https://i.scdn.co/image/ab6761610000e5eb5a0bcdbc8c8c8c8c8c8c8c8c" alt="Emtee" /></div>
+        <div class="artist-info">
+          <h3>Emtee</h3>
+          <p>Hip-Hop • Johannesburg</p>
+          <div class="artist-stats">
+            <div class="stat"><div class="stat-value">2.4M+</div><div class="stat-label">Listeners</div></div>
+          </div>
+          <div class="artist-links">
+            <a href="https://open.spotify.com/artist/6U3gCOvxVWKBxXItqp3mdr" target="_blank" class="btn-spotify">Spotify</a>
+            <a href="https://www.youtube.com/@emtee7199" target="_blank" class="btn-youtube">YouTube</a>
+          </div>
         </div>
-        <div class="menu-toggle">
-            <i class="fas fa-bars"></i>
+      </div>
+      <!-- Kraizie -->
+      <div class="artist-card" data-aos="fade-up" data-aos-delay="100">
+        <div class="artist-img"><img src="https://i.scdn.co/image/ab6761610000e5eb5a0bcdbc8c8c8c8c8c8c8c8c" alt="Kraizie" /></div>
+        <div class="artist-info">
+          <h3>Kraizie</h3>
+          <p>Afro-Pop • Cape Town</p>
+          <div class="artist-stats">
+            <div class="stat"><div class="stat-value">1.8M+</div><div class="stat-label">Listeners</div></div>
+          </div>
+          <div class="artist-links">
+            <a href="https://open.spotify.com/artist/1tXUwhCT3Y3F1HSIcwC7M0" target="_blank" class="btn-spotify">Spotify</a>
+            <a href="https://www.youtube.com/@kraizieOfficial" target="_blank" class="btn-youtube">YouTube</a>
+          </div>
         </div>
-        <nav>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#artists">Artists</a></li>
-                <li><a href="#music">Music</a></li>
-                <li><a href="#videos">Videos</a></li>
-                <li><a href="#merch">Merch</a></li>
-                <li><a href="#messages">Messages</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-            <div class="search-container">
-                <input type="text" class="search-input" placeholder="Search..." />
-                <button class="search-btn"><i class="fas fa-search"></i></button>
-            </div>
-            <!-- Theme Toggle - Lowered -->
-            <div class="theme-toggle">
-                <button class="theme-btn active" data-theme="dark"><i class="fas fa-moon"></i></button>
-                <button class="theme-btn" data-theme="light"><i class="fas fa-sun"></i></button>
-            </div>
-        </nav>
-    </header>
-    <!-- Hero -->
-    <section class="hero" id="home">
-        <div class="hero-content" data-aos="fade-up">
-            <div class="hero-logo">
-                <img src="images/eMtee Records logo.jpg" alt="eMtee Records" />
-            </div>
-            <p>South Africa’s premier independent music label. Home to Emtee and groundbreaking artists shaping the future of African sound.</p>
-            <a href="#artists" class="btn">Explore Artists</a>
+      </div>
+      <!-- F-eezy -->
+      <div class="artist-card" data-aos="fade-up" data-aos-delay="200">
+        <div class="artist-img"><img src="https://i.scdn.co/image/ab6761610000e5eb5a0bcdbc8c8c8c8c8c8c8c8c" alt="F-eezy" /></div>
+        <div class="artist-info">
+          <h3>F-eezy</h3>
+          <p>Hip-Hop • Johannesburg</p>
+          <div class="artist-stats">
+            <div class="stat"><div class="stat-value">950K+</div><div class="stat-label">Listeners</div></div>
+          </div>
+          <div class="artist-links">
+            <a href="https://open.spotify.com/artist/79fCocNyVEjDwvuASCNeMo" target="_blank" class="btn-spotify">Spotify</a>
+            <a href="https://www.youtube.com/@f_eezy" target="_blank" class="btn-youtube">YouTube</a>
+          </div>
         </div>
-    </section>
-    <!-- Stats -->
-    <section class="stats">
-        <div class="stat-item" data-aos="fade-up" data-aos-delay="100">
-            <span class="stat-number" data-count="50">0</span>
-            <span class="stat-label">Million Streams</span>
+      </div>
+      <!-- Skiips -->
+      <div class="artist-card" data-aos="fade-up" data-aos-delay="300">
+        <div class="artist-img"><img src="https://i.scdn.co/image/ab6761610000e5eb5a0bcdbc8c8c8c8c8c8c8c8c" alt="Skiips" /></div>
+        <div class="artist-info">
+          <h3>Skiips</h3>
+          <p>Hip-Hop • Johannesburg</p>
+          <div class="artist-stats">
+            <div class="stat"><div class="stat-value">320K+</div><div class="stat-label">Listeners</div></div>
+          </div>
+          <div class="artist-links">
+            <a href="https://open.spotify.com/artist/1QquCeba1W051sM56tKu0Y" target="_blank" class="btn-spotify">Spotify</a>
+            <a href="https://www.youtube.com/@skiips.wahunna" target="_blank" class="btn-youtube">YouTube</a>
+          </div>
         </div>
-        <div class="stat-item" data-aos="fade-up" data-aos-delay="200">
-            <span class="stat-number" data-count="5">0</span>
-            <span class="stat-label">Artists</span>
+      </div>
+      <!-- BabyG!rl Zae -->
+      <div class="artist-card" data-aos="fade-up" data-aos-delay="400">
+        <div class="artist-img"><img src="https://i.scdn.co/image/ab6761610000e5eb5a0bcdbc8c8c8c8c8c8c8c8c" alt="BabyG!rl Zae" /></div>
+        <div class="artist-info">
+          <h3>BabyG!rl Zae</h3>
+          <p>Afrobeats • Durban</p>
+          <div class="artist-stats">
+            <div class="stat"><div class="stat-value">680K+</div><div class="stat-label">Listeners</div></div>
+          </div>
+          <div class="artist-links">
+            <a href="https://open.spotify.com/artist/1djL8Gjzuz1jLKg5QWCuG4" target="_blank" class="btn-spotify">Spotify</a>
+            <a href="https://www.youtube.com/@BABYGIRLZAE" target="_blank" class="btn-youtube">YouTube</a>
+          </div>
         </div>
-        <div class="stat-item" data-aos="fade-up" data-aos-delay="300">
-            <span class="stat-number" data-count="120">0</span>
-            <span class="stat-label">Events</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Music -->
+  <section class="section music-section" id="music">
+    <div class="section-title" data-aos="fade-up">
+      <h2>Listen Now</h2>
+    </div>
+    <div class="spotify-playlists">
+      <iframe src="https://open.spotify.com/embed/playlist/0qIvroVtThINkLvz2hLfh8" width="100%" height="380" frameborder="0" allowfullscreen allow="autoplay; clipboard-write; encrypted-media"></iframe>
+    </div>
+  </section>
+
+  <!-- Videos -->
+  <section class="section youtube-section" id="videos">
+    <div class="section-title" data-aos="fade-up">
+      <h2>Latest Videos</h2>
+    </div>
+    <div class="youtube-grid">
+      <iframe width="100%" height="315" src="https://www.youtube.com/embed/videoseries?list=UU549e3k32frZfExn3BWSv7A" frameborder="0" allowfullscreen></iframe>
+      <iframe width="100%" height="315" src="https://www.youtube.com/embed/videoseries?list=UULF549e3k32frZfExn3BWSv7A" frameborder="0" allowfullscreen></iframe>
+    </div>
+  </section>
+
+  <!-- Merchandise -->
+  <section class="section" id="merch">
+    <div class="section-title" data-aos="fade-up">
+      <h2>Official Merchandise</h2>
+    </div>
+    <div class="merch-grid">
+      <div class="merch-card" data-aos="fade-up">
+        <div class="merch-img"><img src="images/emteetshirt.jpg" alt="Emtee T-Shirt" /></div>
+        <div class="merch-info">
+          <h3>Emtee T-Shirt</h3>
+          <div class="merch-price">R1,000</div>
+          <button class="add-to-cart">Add to Cart</button>
         </div>
-        <div class="stat-item" data-aos="fade-up" data-aos-delay="400">
-            <span class="stat-number" data-count="15">0</span>
-            <span class="stat-label">Countries</span>
+      </div>
+      <div class="merch-card" data-aos="fade-up" data-aos-delay="100">
+        <div class="merch-img"><img src="images/chain.jpg" alt="Emtee Chain" /></div>
+        <div class="merch-info">
+          <h3>Emtee Chain</h3>
+          <div class="merch-price">R100,000</div>
+          <button class="add-to-cart">Add to Cart</button>
         </div>
-    </section>
-    <!-- Artists -->
-    <section class="section" id="artists">
-        <div class="section-title" data-aos="fade-up">
-            <h2>Our Artists</h2>
+      </div>
+      <div class="merch-card" data-aos="fade-up" data-aos-delay="200">
+        <div class="merch-img"><img src="images/cap.jpg" alt="Emtee Cap" /></div>
+        <div class="merch-info">
+          <h3>Emtee Cap</h3>
+          <div class="merch-price">R600</div>
+          <button class="add-to-cart">Add to Cart</button>
         </div>
-        <div class="artists-grid">
-            <!-- Emtee -->
-            <div class="artist-card" data-aos="fade-up">
-                <div class="artist-img"><img src="https://i.scdn.co/image/ab6761610000e5eb5a0bcdbc8c8c8c8c8c8c8c8c" alt="Emtee" /></div>
-                <div class="artist-info">
-                    <h3>Emtee</h3>
-                    <p>Hip-Hop • Johannesburg</p>
-                    <div class="artist-stats">
-                        <div class="stat"><div class="stat-value">2.4M+</div><div class="stat-label">Listeners</div></div>
-                    </div>
-                    <div class="artist-links">
-                        <a href="https://open.spotify.com/artist/6U3gCOvxVWKBxXItqp3mdr" target="_blank" class="btn-spotify">Spotify</a>
-                        <a href="https://www.youtube.com/@emtee7199" target="_blank" class="btn-youtube">YouTube</a>
-                    </div>
-                </div>
-            </div>
-            <!-- Kraizie -->
-            <div class="artist-card" data-aos="fade-up" data-aos-delay="100">
-                <div class="artist-img"><img src="https://i.scdn.co/image/ab6761610000e5eb5a0bcdbc8c8c8c8c8c8c8c8c" alt="Kraizie" /></div>
-                <div class="artist-info">
-                    <h3>Kraizie</h3>
-                    <p>Afro-Pop • Cape Town</p>
-                    <div class="artist-stats">
-                        <div class="stat"><div class="stat-value">1.8M+</div><div class="stat-label">Listeners</div></div>
-                    </div>
-                    <div class="artist-links">
-                        <a href="https://open.spotify.com/artist/1tXUwhCT3Y3F1HSIcwC7M0" target="_blank" class="btn-spotify">Spotify</a>
-                        <a href="https://www.youtube.com/@kraizieOfficial" target="_blank" class="btn-youtube">YouTube</a>
-                    </div>
-                </div>
-            </div>
-            <!-- F-eezy -->
-            <div class="artist-card" data-aos="fade-up" data-aos-delay="200">
-                <div class="artist-img"><img src="https://i.scdn.co/image/ab6761610000e5eb5a0bcdbc8c8c8c8c8c8c8c8c" alt="F-eezy" /></div>
-                <div class="artist-info">
-                    <h3>F-eezy</h3>
-                    <p>Hip-Hop • Johannesburg</p>
-                    <div class="artist-stats">
-                        <div class="stat"><div class="stat-value">950K+</div><div class="stat-label">Listeners</div></div>
-                    </div>
-                    <div class="artist-links">
-                        <a href="https://open.spotify.com/artist/79fCocNyVEjDwvuASCNeMo" target="_blank" class="btn-spotify">Spotify</a>
-                        <a href="https://www.youtube.com/channel/UC549e3k32frZfExn3BWSv7A" target="_blank" class="btn-youtube">YouTube</a>
-                    </div>
-                </div>
-            </div>
-            <!-- Skiips -->
-            <div class="artist-card" data-aos="fade-up" data-aos-delay="300">
-                <div class="artist-img"><img src="https://i.scdn.co/image/ab6761610000e5eb5a0bcdbc8c8c8c8c8c8c8c8c" alt="Skiips" /></div>
-                <div class="artist-info">
-                    <h3>Skiips</h3>
-                    <p>Hip-Hop • Johannesburg</p>
-                    <div class="artist-stats">
-                        <div class="stat"><div class="stat-value">320K+</div><div class="stat-label">Listeners</div></div>
-                    </div>
-                    <div class="artist-links">
-                        <a href="https://open.spotify.com/artist/1QquCeba1W051sM56tKu0Y" target="_blank" class="btn-spotify">Spotify</a>
-                        <a href="https://www.youtube.com/@skiips.wahunna" target="_blank" class="btn-youtube">YouTube</a>
-                    </div>
-                </div>
-            </div>
-            <!-- BabyG!rl Zae -->
-            <div class="artist-card" data-aos="fade-up" data-aos-delay="400">
-                <div class="artist-img"><img src="https://i.scdn.co/image/ab6761610000e5eb5a0bcdbc8c8c8c8c8c8c8c8c" alt="BabyG!rl Zae" /></div>
-                <div class="artist-info">
-                    <h3>BabyG!rl Zae</h3>
-                    <p>Afrobeats • Durban</p>
-                    <div class="artist-stats">
-                        <div class="stat"><div class="stat-value">680K+</div><div class="stat-label">Listeners</div></div>
-                    </div>
-                    <div class="artist-links">
-                        <a href="https://open.spotify.com/artist/1djL8Gjzuz1jLKg5QWCuG4" target="_blank" class="btn-spotify">Spotify</a>
-                        <a href="https://www.youtube.com/@BABYGIRLZAE" target="_blank" class="btn-youtube">YouTube</a>
-                    </div>
-                </div>
-            </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Fan Messages -->
+  <section class="section" id="messages">
+    <div class="section-title" data-aos="fade-up">
+      <h2>Leave a Message</h2>
+    </div>
+    <div class="fan-message-form">
+      <form id="fanMessageForm">
+        <div class="form-group">
+          <input type="text" placeholder="Your Name" required />
         </div>
-    </section>
-    <!-- Music -->
-    <section class="section music-section" id="music">
-        <div class="section-title" data-aos="fade-up">
-            <h2>Listen Now</h2>
+        <div class="form-group">
+          <input type="email" placeholder="Your Email" required />
         </div>
-        <div class="spotify-playlists">
-            <iframe src="https://open.spotify.com/embed/playlist/0qIvroVtThINkLvz2hLfh8" width="100%" height="380" frameborder="0" allowfullscreen allow="autoplay; clipboard-write; encrypted-media"></iframe>
+        <div class="form-group">
+          <textarea placeholder="Your Message to eMtee Records" rows="5" required></textarea>
         </div>
-    </section>
-    <!-- Videos -->
-    <section class="section youtube-section" id="videos">
-        <div class="section-title" data-aos="fade-up">
-            <h2>Latest Videos</h2>
+        <button type="submit" class="btn">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="section" id="contact">
+    <div class="section-title" data-aos="fade-up">
+      <h2>Contact Us</h2>
+    </div>
+    <div class="contact-container">
+      <div class="contact-info">
+        <div class="contact-item">
+          <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+          <div class="contact-details">
+            <h4>Address</h4>
+            <p>4 Marie Road, Auckland Park, Johannesburg, 2092</p>
+          </div>
         </div>
-        <div class="youtube-grid">
-            <iframe width="100%" height="315" src="https://www.youtube.com/embed/videoseries?list=UU549e3k32frZfExn3BWSv7A" frameborder="0" allowfullscreen></iframe>
-            <iframe width="100%" height="315" src="https://www.youtube.com/embed/videoseries?list=UULF549e3k32frZfExn3BWSv7A" frameborder="0" allowfullscreen></iframe>
+        <div class="contact-item">
+          <div class="contact-icon"><i class="fas fa-phone"></i></div>
+          <div class="contact-details">
+            <h4>Phone</h4>
+            <p>+27 83 725 4362</p>
+          </div>
         </div>
-    </section>
-    <!-- Merchandise -->
-    <section class="section" id="merch">
-        <div class="section-title" data-aos="fade-up">
-            <h2>Official Merchandise</h2>
+        <div class="contact-item">
+          <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+          <div class="contact-details">
+            <h4>Email</h4>
+            <p>info@emteerecords.co.za</p>
+          </div>
         </div>
-        <div class="merch-grid">
-            <div class="merch-card" data-aos="fade-up">
-                <div class="merch-img"><img src="images/emteetshirt.jpg" alt="Emtee T-Shirt" /></div>
-                <div class="merch-info">
-                    <h3>Emtee T-Shirt</h3>
-                    <div class="merch-price">R1,000</div>
-                    <button class="add-to-cart">Add to Cart</button>
-                </div>
-            </div>
-            <div class="merch-card" data-aos="fade-up" data-aos-delay="100">
-                <div class="merch-img"><img src="images/chain.jpg" alt="Emtee Chain" /></div>
-                <div class="merch-info">
-                    <h3>Emtee Chain</h3>
-                    <div class="merch-price">R100,000</div>
-                    <button class="add-to-cart">Add to Cart</button>
-                </div>
-            </div>
-            <div class="merch-card" data-aos="fade-up" data-aos-delay="200">
-                <div class="merch-img"><img src="images/cap.jpg" alt="Emtee Cap" /></div>
-                <div class="merch-info">
-                    <h3>Emtee Cap</h3>
-                    <div class="merch-price">R600</div>
-                    <button class="add-to-cart">Add to Cart</button>
-                </div>
-            </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-column">
+        <h3>About eMtee Records</h3>
+        <p>South Africa's premier independent music label, home to groundbreaking artists shaping the future of African sound.</p>
+      </div>
+      <div class="footer-column">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#artists">Artists</a></li>
+          <li><a href="#music">Music</a></li>
+          <li><a href="#videos">Videos</a></li>
+          <li><a href="#merch">Merch</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Follow Us</h3>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+          <a href="#"><i class="fab fa-spotify"></i></a>
         </div>
-    </section>
-    <!-- Fan Messages -->
-    <section class="section" id="messages">
-        <div class="section-title" data-aos="fade-up">
-            <h2>Leave a Message</h2>
-        </div>
-        <div class="fan-message-form">
-            <form id="fanMessageForm">
-                <div class="form-group">
-                    <input type="text" placeholder="Your Name" required />
-                </div>
-                <div class="form-group">
-                    <input type="email" placeholder="Your Email" required />
-                </div>
-                <div class="form-group">
-                    <textarea placeholder="Your Message to eMtee Records" rows="5" required></textarea>
-                </div>
-                <button type="submit" class="btn">Send Message</button>
-            </form>
-        </div>
-    </section>
-    <!-- Contact -->
-    <section class="section" id="contact">
-        <div class="section-title" data-aos="fade-up">
-            <h2>Contact Us</h2>
-        </div>
-        <div class="contact-container">
-            <div class="contact-info">
-                <div class="contact-item">
-                    <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
-                    <div class="contact-details">
-                        <h4>Address</h4>
-                        <p>4 Marie Road, Auckland Park, Johannesburg, 2092</p>
-                    </div>
-                </div>
-                <div class="contact-item">
-                    <div class="contact-icon"><i class="fas fa-phone"></i></div>
-                    <div class="contact-details">
-                        <h4>Phone</h4>
-                        <p>+27 83 725 4362</p>
-                    </div>
-                </div>
-                <div class="contact-item">
-                    <div class="contact-icon"><i class="fas fa-envelope"></i></div>
-                    <div class="contact-details">
-                        <h4>Email</h4>
-                        <p>info@emteerecords.co.za</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <div class="footer-column">
-                <h3>About eMtee Records</h3>
-                <p>South Africa's premier independent music label, home to groundbreaking artists pushing boundaries.</p>
-            </div>
-            <div class="footer-column">
-                <h3>Quick Links</h3>
-                <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#artists">Artists</a></li>
-                    <li><a href="#music">Music</a></li>
-                    <li><a href="#videos">Videos</a></li>
-                    <li><a href="#merch">Merch</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h3>Follow Us</h3>
-                <div class="social-links">
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-youtube"></i></a>
-                    <a href="#"><i class="fab fa-spotify"></i></a>
-                </div>
-            </div>
-        </div>
-        <div class="copyright">
-            <p>&copy; 2025 eMtee Records. All rights reserved.</p>
-        </div>
-    </footer>
-    <!-- WhatsApp Button -->
-    <a href="https://wa.me/27837254362" class="whatsapp-float" target="_blank">
-        <i class="fab fa-whatsapp"></i>
-    </a>
-    <!-- Scripts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    <script>
-        AOS.init({ duration: 1000, once: true });
-        // Custom cursor
-        const cursor = document.querySelector('.cursor');
-        const cursorFollower = document.querySelector('.cursor-follower');
-        document.addEventListener('mousemove', (e) => {
-            cursor.style.left = e.clientX + 'px';
-            cursor.style.top = e.clientY + 'px';
-            setTimeout(() => {
-                cursorFollower.style.left = e.clientX + 'px';
-                cursorFollower.style.top = e.clientY + 'px';
-            }, 100);
-        });
-        // Particles
-        particlesJS('particles-js', {
-            particles: { number: { value: 80 }, color: { value: "#dc2626" }, shape: { type: "circle" }, opacity: { value: 0.5, random: true }, size: { value: 3, random: true }, line_linked: { enable: true, distance: 150, color: "#dc2626", opacity: 0.4, width: 1 }, move: { enable: true, speed: 2 } },
-            interactivity: { detect_on: "canvas", events: { onhover: { enable: true, mode: "repulse" } } }
-        });
-        // Mobile menu
-        document.querySelector('.menu-toggle').addEventListener('click', () => {
-            document.querySelector('nav').classList.toggle('active');
-        });
-        // Theme toggle
-        document.querySelectorAll('.theme-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                const theme = btn.getAttribute('data-theme');
-                document.body.setAttribute('data-theme', theme);
-                document.querySelectorAll('.theme-btn').forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-            });
-        });
-        // Stats counter
-        const observer = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    document.querySelectorAll('.stat-number').forEach(stat => {
-                        const target = parseInt(stat.getAttribute('data-count'));
-                        let count = 0;
-                        const timer = setInterval(() => {
-                            count += target / 100;
-                            stat.textContent = Math.floor(count).toLocaleString();
-                            if (count >= target) clearInterval(timer);
-                        }, 20);
-                    });
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.5 });
-        observer.observe(document.querySelector('.stats'));
-        // Form & Cart
-        document.getElementById('fanMessageForm').addEventListener('submit', e => {
-            e.preventDefault();
-            alert('Thank you! Your message has been sent.');
-            e.target.reset();
-        });
-        document.querySelectorAll('.add-to-cart').forEach(btn => {
-            btn.addEventListener('click', () => alert('Item added to cart!'));
-        });
-    </script>
+      </div>
+    </div>
+    <div class="copyright">
+      <p>&copy; 2025 eMtee Records. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- WhatsApp -->
+  <a href="https://wa.me/27837254362" class="whatsapp-float" target="_blank">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script>
+    AOS.init({ duration: 1000, once: true });
+
+    // Custom cursor
+    const cursor = document.querySelector('.cursor');
+    const cursorFollower = document.querySelector('.cursor-follower');
+    document.addEventListener('mousemove', (e) => {
+      cursor.style.left = e.clientX + 'px';
+      cursor.style.top = e.clientY + 'px';
+      setTimeout(() => {
+        cursorFollower.style.left = e.clientX + 'px';
+        cursorFollower.style.top = e.clientY + 'px';
+      }, 100);
+    });
+
+    // Mobile menu
+    document.querySelector('.menu-toggle').addEventListener('click', () => {
+      document.querySelector('nav').classList.toggle('active');
+    });
+
+    // Theme toggle
+    document.querySelectorAll('.theme-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const theme = btn.getAttribute('data-theme');
+        document.body.setAttribute('data-theme', theme);
+        document.querySelectorAll('.theme-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+      });
+    });
+
+    // Stats counter
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          document.querySelectorAll('.stat-number').forEach(stat => {
+            const target = parseInt(stat.getAttribute('data-count'));
+            let count = 0;
+            const timer = setInterval(() => {
+              count += target / 100;
+              stat.textContent = Math.floor(count).toLocaleString();
+              if (count >= target) clearInterval(timer);
+            }, 20);
+          });
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+    observer.observe(document.querySelector('.stats'));
+
+    // Form & Cart
+    document.getElementById('fanMessageForm').addEventListener('submit', e => {
+      e.preventDefault();
+      alert('Thank you! Your message has been sent.');
+      e.target.reset();
+    });
+    document.querySelectorAll('.add-to-cart').forEach(btn => {
+      btn.addEventListener('click', () => alert('Item added to cart!'));
+    });
+  </script>
 </body>
 </html>
