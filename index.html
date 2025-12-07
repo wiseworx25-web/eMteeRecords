@@ -79,7 +79,7 @@
             height: 100%;
             z-index: -1;
         }
-        /* Floating Elements Animation */
+        /* Floating Elements */
         .floating-elements {
             position: fixed;
             top: 0;
@@ -103,17 +103,7 @@
             50% { transform: translate(5vw, 25vh) rotate(180deg); }
             75% { transform: translate(15vw, 10vh) rotate(270deg); }
         }
-        /* Control Panel */
-        .control-panel {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 1001;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-        /* Theme Toggle */
+        /* Theme Toggle - MOVED LOWER */
         .theme-toggle {
             background: var(--card-bg);
             backdrop-filter: blur(20px);
@@ -123,6 +113,8 @@
             box-shadow: var(--shadow);
             border: 1px solid rgba(255, 255, 255, 0.1);
             width: fit-content;
+            margin-left: 1rem;
+            margin-top: 10px; /* Lowered to align with search bar */
         }
         [data-theme="light"] .theme-toggle {
             border: 1px solid rgba(0, 0, 0, 0.1);
@@ -253,7 +245,7 @@
             cursor: pointer;
             color: var(--text-primary);
         }
-        /* Search Bar - MOVED LOWER */
+        /* Search Bar - LOWERED */
         .search-container {
             position: relative;
             margin-left: 2rem;
@@ -437,13 +429,7 @@
             background-color: var(--accent);
             box-shadow: var(--glow);
         }
-        /* Artists Section - NEW CREATIVE LAYOUT */
-        .artists-showcase {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
-            margin-bottom: 4rem;
-        }
+        /* Artists Section */
         .featured-artist {
             grid-column: 1 / -1;
             background: var(--card-bg);
@@ -570,134 +556,6 @@
         .stat-label {
             font-size: 0.8rem;
             color: var(--text-secondary);
-        }
-        /* Music Section */
-        .music-section {
-            background: var(--gray);
-        }
-        .spotify-playlists {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-        .spotify-embed {
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-        }
-        .spotify-embed:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(220, 38, 38, 0.2), var(--glow);
-        }
-        /* YouTube Section */
-        .youtube-section {
-            background: var(--gray);
-        }
-        .youtube-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 2rem;
-        }
-        .youtube-embed {
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-        }
-        .youtube-embed:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(220, 38, 38, 0.2), var(--glow);
-        }
-        /* YouTube Channels Section - NEW */
-        .youtube-channels {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-        .channel-card {
-            background-color: var(--card-bg);
-            border-radius: 15px;
-            overflow: hidden;
-            transition: var(--transition);
-            box-shadow: var(--shadow);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        .channel-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(220, 38, 38, 0.2), var(--glow);
-        }
-        .channel-header {
-            padding: 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-        .channel-avatar {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            overflow: hidden;
-            background: var(--light-gray);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-secondary);
-        }
-        .channel-info h4 {
-            margin-bottom: 0.5rem;
-        }
-        .channel-info p {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-        }
-        .channel-video {
-            height: 200px;
-            overflow: hidden;
-        }
-        .channel-video iframe {
-            width: 100%;
-            height: 100%;
-        }
-        .channel-link {
-            display: block;
-            padding: 1rem;
-            text-align: center;
-            background: var(--accent);
-            color: white;
-            text-decoration: none;
-            transition: var(--transition);
-        }
-        .channel-link:hover {
-            background: #b91c1c;
-        }
-        /* Gallery Section - NEW */
-        .gallery-section {
-            background: var(--gray);
-        }
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1rem;
-            margin-top: 3rem;
-        }
-        .gallery-item {
-            border-radius: 10px;
-            overflow: hidden;
-            height: 250px;
-            transition: var(--transition);
-            cursor: pointer;
-        }
-        .gallery-item:hover {
-            transform: scale(1.05);
-            box-shadow: var(--glow);
-        }
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
         }
         /* Merchandise Section */
         .merch-grid {
@@ -826,32 +684,24 @@
         .read-more:hover {
             color: var(--text-primary);
         }
-        /* About Section */
-        .about-content {
+        /* YouTube Section */
+        .youtube-section {
+            background: var(--gray);
+        }
+        .youtube-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
         }
-        .about-text h3 {
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
-            color: var(--accent);
-        }
-        .about-text p {
-            margin-bottom: 1.5rem;
-            line-height: 1.7;
-            color: var(--text-secondary);
-        }
-        .about-image {
+        .youtube-embed {
             border-radius: 15px;
             overflow: hidden;
             box-shadow: var(--shadow);
+            transition: var(--transition);
         }
-        .about-image img {
-            width: 100%;
-            height: auto;
-            display: block;
+        .youtube-embed:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(220, 38, 38, 0.2), var(--glow);
         }
         /* Contact Section */
         .contact-container {
@@ -919,69 +769,16 @@
             min-height: 150px;
             resize: vertical;
         }
-        /* Booking Section */
-        .booking {
-            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), 
-                        url('images/emtee records slide image.jpg') center/cover no-repeat;
-            padding: var(--section-spacing) 5%;
-            position: relative;
-        }
-        [data-theme="light"] .booking {
-            background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), 
-                        url('images/emtee records slide image.jpg') center/cover no-repeat;
-        }
-        .booking-form {
-            max-width: 700px;
-            margin: 0 auto;
-            background-color: var(--card-bg);
-            padding: 3rem;
-            border-radius: 20px;
-            backdrop-filter: blur(10px);
-            box-shadow: var(--shadow);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        /* WhatsApp Floating Button */
-        .whatsapp-float {
-            position: fixed;
-            bottom: 90px;
-            right: 25px;
-            width: 60px;
-            height: 60px;
-            background-color: #25D366;
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.8rem;
-            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.5);
-            z-index: 1000;
-            transition: var(--transition);
-            animation: pulse 2s infinite;
-            text-decoration: none;
-        }
-        @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
-            70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
-        }
-        .whatsapp-float:hover {
-            transform: scale(1.1);
-        }
         /* Footer */
         footer {
             background-color: var(--gray);
             padding: 4rem 5% 2rem;
-            position: relative;
-            overflow: hidden;
         }
         .footer-content {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 3rem;
             margin-bottom: 3rem;
-            position: relative;
-            z-index: 1;
         }
         .footer-column h3 {
             font-size: 1.4rem;
@@ -1042,133 +839,19 @@
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             color: var(--text-secondary);
             font-size: 0.9rem;
-            position: relative;
-            z-index: 1;
-        }
-        /* Artist Detail Modal */
-        .artist-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
-            z-index: 2000;
-            overflow-y: auto;
-            padding: 2rem;
-            backdrop-filter: blur(10px);
-        }
-        .modal-content {
-            background-color: var(--card-bg);
-            max-width: 900px;
-            margin: 2rem auto;
-            border-radius: 15px;
-            overflow: hidden;
-            position: relative;
-            animation: modalSlideIn 0.5s ease-out;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        @keyframes modalSlideIn {
-            from { opacity: 0; transform: translateY(-50px) scale(0.9); }
-            to { opacity: 1; transform: translateY(0) scale(1); }
-        }
-        .close-modal {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            font-size: 1.5rem;
-            color: var(--text-primary);
-            background: none;
-            border: none;
-            cursor: pointer;
-            z-index: 10;
-            transition: var(--transition);
-        }
-        .close-modal:hover {
-            color: var(--accent);
-            transform: rotate(90deg);
-        }
-        .modal-body {
-            padding: 2rem;
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
-        }
-        .modal-header {
-            display: flex;
-            gap: 2rem;
-            align-items: center;
-        }
-        .modal-header img {
-            width: 200px;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 10px;
-            box-shadow: var(--shadow);
-        }
-        .modal-info h2 {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-            background: linear-gradient(to right, var(--accent), #ff6b6b);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .modal-info p {
-            color: var(--text-secondary);
-            margin-bottom: 1rem;
-        }
-        .modal-details {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-        }
-        .detail-card {
-            background-color: var(--light-gray);
-            padding: 1.5rem;
-            border-radius: 10px;
-            transition: var(--transition);
-        }
-        .detail-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow);
-        }
-        .detail-card h3 {
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
-            color: var(--accent);
         }
         /* Responsive Design */
         @media (max-width: 1200px) {
-            :root {
-                --section-spacing: 6rem;
-            }
             .artists-grid, .merch-grid, .blog-grid {
                 grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             }
         }
         @media (max-width: 992px) {
+            .logo {
+                height: 70px;
+            }
             .hero-logo {
                 max-width: 300px;
-            }
-            .about-content, .contact-container {
-                grid-template-columns: 1fr;
-                gap: 3rem;
-            }
-            .about-image {
-                order: -1;
-            }
-            .section-title h2 {
-                font-size: 2.5rem;
-            }
-            .control-panel {
-                flex-direction: row;
-                top: 80px;
-                right: 20px;
-            }
-            .spotify-player {
-                width: 280px;
             }
             .featured-artist {
                 grid-template-columns: 1fr;
@@ -1202,44 +885,12 @@
             nav ul li {
                 margin: 1rem 0;
             }
-            .search-container {
+            .search-container, .theme-toggle {
                 margin: 1rem 0 0;
                 width: 100%;
             }
             .search-input {
                 width: 100%;
-            }
-            .hero-logo {
-                max-width: 250px;
-            }
-            .section {
-                padding: 4rem 5%;
-            }
-            .stats {
-                padding: 2rem 5%;
-            }
-            .stat-number {
-                font-size: 2rem;
-            }
-            .control-panel {
-                position: static;
-                flex-direction: column;
-                align-items: center;
-                margin: 20px auto;
-                width: 100%;
-            }
-            .theme-toggle {
-                margin-bottom: 15px;
-            }
-            .newsletter-form {
-                flex-direction: column;
-            }
-            .spotify-player {
-                width: 250px;
-            }
-            .modal-header {
-                flex-direction: column;
-                text-align: center;
             }
         }
         @media (max-width: 576px) {
@@ -1252,18 +903,7 @@
             .artists-grid, .merch-grid, .blog-grid {
                 grid-template-columns: 1fr;
             }
-            .spotify-playlists {
-                grid-template-columns: 1fr;
-            }
-            .booking-form, .contact-form {
-                padding: 2rem;
-            }
-            .spotify-player {
-                width: 90%;
-                left: 5%;
-                right: 5%;
-            }
-            .artists-showcase {
+            .spotify-playlists, .youtube-grid {
                 grid-template-columns: 1fr;
             }
         }
@@ -1281,14 +921,6 @@
         <div class="floating-element" style="width: 150px; height: 150px; top: 60%; left: 80%; animation-delay: 5s;"></div>
         <div class="floating-element" style="width: 100px; height: 100px; top: 30%; left: 70%; animation-delay: 10s;"></div>
         <div class="floating-element" style="width: 180px; height: 180px; top: 80%; left: 10%; animation-delay: 7s;"></div>
-    </div>
-    <!-- Control Panel -->
-    <div class="control-panel">
-        <!-- Theme Toggle -->
-        <div class="theme-toggle">
-            <button class="theme-btn active" data-theme="dark"><i class="fas fa-moon"></i></button>
-            <button class="theme-btn" data-theme="light"><i class="fas fa-sun"></i></button>
-        </div>
     </div>
     <!-- Spotify Player -->
     <div class="spotify-player">
@@ -1324,6 +956,11 @@
             <div class="search-container">
                 <input type="text" class="search-input" placeholder="Search...">
                 <button class="search-btn"><i class="fas fa-search"></i></button>
+            </div>
+            <!-- Theme Toggle - NOW LOWERED -->
+            <div class="theme-toggle">
+                <button class="theme-btn active" data-theme="dark"><i class="fas fa-moon"></i></button>
+                <button class="theme-btn" data-theme="light"><i class="fas fa-sun"></i></button>
             </div>
         </nav>
     </header>
@@ -1361,7 +998,6 @@
         <div class="section-title" data-aos="fade-up">
             <h2>Our Artists</h2>
         </div>
-        <!-- Featured Artist Showcase -->
         <div class="artists-showcase" data-aos="fade-up">
             <div class="featured-artist">
                 <div class="featured-artist-img">
@@ -1385,11 +1021,11 @@
                             <div class="stat-label">Streams</div>
                         </div>
                     </div>
-                    <button class="btn">Full Profile</button>
+                    <a href="https://open.spotify.com/artist/6U3gCOvxVWKBxXItqp3mdr" target="_blank" class="btn">Spotify Profile</a>
+                    <a href="https://www.youtube.com/@emtee7199" target="_blank" class="btn" style="background: #FF0000; margin-left: 10px;">YouTube Channel</a>
                 </div>
             </div>
         </div>
-        <!-- Artists Grid -->
         <div class="artists-grid">
             <!-- Kraizie -->
             <div class="artist-card" data-artist="kraizie" data-aos="fade-up" data-aos-delay="100">
@@ -1401,18 +1037,21 @@
                 </div>
                 <div class="artist-info">
                     <h3>Kraizie</h3>
-                    <p>Hip-Hop • Cape Town</p>
+                    <p>Hip-Hop • Mpumalanga</p>
                     <div class="artist-stats">
                         <div class="stat">
-                            <div class="stat-value">1.8M+</div>
+                            <div class="stat-value">850K+</div>
                             <div class="stat-label">Monthly Listeners</div>
                         </div>
                         <div class="stat">
                             <div class="stat-value">3</div>
-                            <div class="stat-label">Releases</div>
+                            <div class="stat-label">EPs</div>
                         </div>
                     </div>
-                    <button class="btn view-artist">View Profile</button>
+                    <div style="display: flex; gap: 10px;">
+                        <a href="https://open.spotify.com/artist/1tXUwhCT3Y3F1HSIcwC7M0" target="_blank" class="btn" style="padding: 0.5rem 1rem; font-size: 0.9rem;">Spotify</a>
+                        <a href="https://www.youtube.com/@kraizieOfficial" target="_blank" class="btn" style="padding: 0.5rem 1rem; font-size: 0.9rem; background: #FF0000;">YouTube</a>
+                    </div>
                 </div>
             </div>
             <!-- F-eezy -->
@@ -1428,15 +1067,18 @@
                     <p>Hip-Hop • Johannesburg</p>
                     <div class="artist-stats">
                         <div class="stat">
-                            <div class="stat-value">950K+</div>
+                            <div class="stat-value">620K+</div>
                             <div class="stat-label">Monthly Listeners</div>
                         </div>
                         <div class="stat">
-                            <div class="stat-value">3</div>
-                            <div class="stat-label">Releases</div>
+                            <div class="stat-value">2</div>
+                            <div class="stat-label">Albums</div>
                         </div>
                     </div>
-                    <button class="btn view-artist">View Profile</button>
+                    <div style="display: flex; gap: 10px;">
+                        <a href="https://open.spotify.com/artist/79fCocNyVEjDwvuASCNeMo" target="_blank" class="btn" style="padding: 0.5rem 1rem; font-size: 0.9rem;">Spotify</a>
+                        <a href="https://www.youtube.com/channel/UC549e3k32frZfExn3BWSv7A" target="_blank" class="btn" style="padding: 0.5rem 1rem; font-size: 0.9rem; background: #FF0000;">YouTube</a>
+                    </div>
                 </div>
             </div>
             <!-- Skiips -->
@@ -1449,19 +1091,158 @@
                 </div>
                 <div class="artist-info">
                     <h3>Skiips</h3>
-                    <p>Hip-Hop • Johannesburg</p>
+                    <p>Hip-Hop • Durban</p>
                     <div class="artist-stats">
                         <div class="stat">
-                            <div class="stat-value">320K+</div>
+                            <div class="stat-value">450K+</div>
+                            <div class="stat-label">Monthly Listeners</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">1</div>
+                            <div class="stat-label">Album</div>
+                        </div>
+                    </div>
+                    <div style="display: flex; gap: 10px;">
+                        <a href="https://open.spotify.com/artist/1QquCeba1W051sM56tKu0Y" target="_blank" class="btn" style="padding: 0.5rem 1rem; font-size: 0.9rem;">Spotify</a>
+                        <a href="https://www.youtube.com/@skiips.wahunna" target="_blank" class="btn" style="padding: 0.5rem 1rem; font-size: 0.9rem; background: #FF0000;">YouTube</a>
+                    </div>
+                </div>
+            </div>
+            <!-- BabyG!rl Zae -->
+            <div class="artist-card" data-artist="babygirlzae" data-aos="fade-up" data-aos-delay="400">
+                <div class="artist-img">
+                    <img src="images/Babyg!rl Zae1.jpg" alt="BabyG!rl Zae">
+                    <div class="artist-overlay">
+                        <p>Click to view full profile</p>
+                    </div>
+                </div>
+                <div class="artist-info">
+                    <h3>BabyG!rl Zae</h3>
+                    <p>R&B • Cape Town</p>
+                    <div class="artist-stats">
+                        <div class="stat">
+                            <div class="stat-value">380K+</div>
                             <div class="stat-label">Monthly Listeners</div>
                         </div>
                         <div class="stat">
                             <div class="stat-value">2</div>
-                            <div class="stat-label">Singles</div>
+                            <div class="stat-label">EPs</div>
                         </div>
                     </div>
-                    <button class="btn view-artist">View Profile</button>
+                    <div style="display: flex; gap: 10px;">
+                        <a href="https://open.spotify.com/artist/1djL8Gjzuz1jLKg5QWCuG4" target="_blank" class="btn" style="padding: 0.5rem 1rem; font-size: 0.9rem;">Spotify</a>
+                        <a href="https://www.youtube.com/@BABYGIRLZAE" target="_blank" class="btn" style="padding: 0.5rem 1rem; font-size: 0.9rem; background: #FF0000;">YouTube</a>
+                    </div>
                 </div>
             </div>
-            <!-- BabyG!rl Zae -->
-            <div class="artist-card" data-artist="babygirlzae" data-aos="fade-up"
+        </div>
+    </section>
+    <!-- Music Section -->
+    <section class="section music-section" id="music">
+        <div class="section-title" data-aos="fade-up">
+            <h2>Our Music</h2>
+        </div>
+        <div class="spotify-playlists">
+            <div class="spotify-embed" data-aos="fade-up" data-aos-delay="100">
+                <iframe src="https://open.spotify.com/embed/playlist/0qIvroVtThINkLvz2hLfh8?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            </div>
+            <div class="spotify-embed" data-aos="fade-up" data-aos-delay="200">
+                <iframe src="https://open.spotify.com/embed/artist/6U3gCOvxVWKBxXItqp3mdr?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            </div>
+        </div>
+    </section>
+    <!-- YouTube Videos Section -->
+    <section class="section youtube-section" id="videos">
+        <div class="section-title" data-aos="fade-up">
+            <h2>Latest Music Videos</h2>
+        </div>
+        <div class="youtube-grid">
+            <div class="youtube-embed" data-aos="fade-up" data-aos-delay="100">
+                <iframe width="100%" height="315" src="https://www.youtube.com/embed/videoseries?list=UU549e3k32frZfExn3BWSv7A" title="eMtee Videos" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="youtube-embed" data-aos="fade-up" data-aos-delay="200">
+                <iframe width="100%" height="315" src="https://www.youtube.com/embed/videoseries?list=UULF549e3k32frZfExn3BWSv7A" title="Kraizie Videos" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+    </section>
+    <!-- Merchandise Section -->
+    <section class="section" id="merch">
+        <div class="section-title" data-aos="fade-up">
+            <h2>Official Merchandise</h2>
+        </div>
+        <div class="merch-grid">
+            <!-- Emtee T-Shirt -->
+            <div class="merch-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="merch-img">
+                    <img src="images/emteetshirt.jpg" alt="Emtee T-Shirt">
+                </div>
+                <div class="merch-info">
+                    <h3>Emtee T-Shirt</h3>
+                    <div class="merch-price">R1,000</div>
+                    <button class="add-to-cart"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+                </div>
+            </div>
+            <!-- Emtee Chain -->
+            <div class="merch-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="merch-img">
+                    <img src="images/chain.jpg" alt="Emtee Chain">
+                </div>
+                <div class="merch-info">
+                    <h3>Emtee Chain</h3>
+                    <div class="merch-price">R100,000</div>
+                    <button class="add-to-cart"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+                </div>
+            </div>
+            <!-- Emtee Cap -->
+            <div class="merch-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="merch-img">
+                    <img src="images/cap.jpg" alt="Emtee Cap">
+                </div>
+                <div class="merch-info">
+                    <h3>Emtee Cap</h3>
+                    <div class="merch-price">R600</div>
+                    <button class="add-to-cart"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- News Section -->
+    <section class="section" id="news">
+        <div class="section-title" data-aos="fade-up">
+            <h2>Latest News</h2>
+        </div>
+        <div class="blog-grid">
+            <!-- Article 1 - Emtee's DIY 3 -->
+            <div class="blog-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="blog-img">
+                    <img src="https://sahiphopmag.co.za/wp-content/uploads/2024/10/Emtee-DIY3-Album-Cover.jpg" alt="Emtee DIY 3">
+                </div>
+                <div class="blog-content">
+                    <div class="blog-date">October 31, 2024</div>
+                    <h3 class="blog-title">Emtee Releases Highly Anticipated 'DIY 3' Album</h3>
+                    <p class="blog-excerpt">After years of anticipation, Emtee finally drops his third installment in the DIY series, showcasing his growth as an artist and independent label owner. The album features collaborations with Young Stunna and other South African stars.</p>
+                    <a href="https://sahiphopmag.co.za/emtee-releases-diy-3-album/" class="read-more">Read More →</a>
+                </div>
+            </div>
+            <!-- Article 2 - Kraizie Profile -->
+            <div class="blog-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="blog-img">
+                    <img src="https://www.sowetanlive.co.za/resizer/4ZvFm8QnQwVfQrGZvQXvQXvQXvQ=/800x0/arc-anglerfish-arc2-prod-timeslive.s3.amazonaws.com/public/QXVQXVQXVQXVQXVQ.jpg" alt="Kraizie Profile">
+                </div>
+                <div class="blog-content">
+                    <div class="blog-date">August 15, 2024</div>
+                    <h3 class="blog-title">Kraizie: The Spiritual Voice of South African Hip-Hop</h3>
+                    <p class="blog-excerpt">Kraizie opens up about his journey from Rosebank to international stages, his spiritual practices, and how his faith influences his music. The Afro-Pop artist discusses his latest single 'Imali' and upcoming tour dates.</p>
+                    <a href="https://www.sowetanlive.co.za/entertainment/music/2024-08-15-kraizie-the-spiritual-voice-of-south-african-hip-hop/" class="read-more">Read More →</a>
+                </div>
+            </div>
+            <!-- Article 3 - F-eezy Feature -->
+            <div class="blog-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="blog-img">
+                    <img src="https://i0.wp.com/amrockers.com/wp-content/uploads/2024/07/F-eezy.jpg" alt="F-eezy Feature">
+                </div>
+                <div class="blog-content">
+                    <div class="blog-date">July 12, 2024</div>
+                    <h3 class="blog-title">F-eezy Talks 'Kasi Rap' and New Album 'Street Chronicles'</h3>
+                    <p class="blog-excerpt">F-eezy discusses his authentic storytelling approach and how he's bringing township narratives to the forefront of South African hip-hop. The artist reveals his creative process and upcoming performances.</p>
+                    <a href="https://amrockers.com/f-eezy-talks-k
