@@ -15,22 +15,6 @@
     <div class="cursor-follower"></div>
     <!-- Particle Background -->
     <div id="particles-js"></div>
-    <!-- Floating Elements -->
-    <div class="floating-elements">
-        <div class="floating-element" style="width: 200px; height: 200px; top: 10%; left: 5%; animation-delay: 0s;"></div>
-        <div class="floating-element" style="width: 150px; height: 150px; top: 60%; left: 80%; animation-delay: 5s;"></div>
-        <div class="floating-element" style="width: 100px; height: 100px; top: 30%; left: 70%; animation-delay: 10s;"></div>
-        <div class="floating-element" style="width: 180px; height: 180px; top: 80%; left: 10%; animation-delay: 7s;"></div>
-    </div>
-
-    <!-- Theme Toggle (Lowered) -->
-    <div class="theme-toggle-wrapper">
-        <div class="theme-toggle">
-            <button class="theme-btn active" data-theme="dark"><i class="fas fa-moon"></i></button>
-            <button class="theme-btn" data-theme="light"><i class="fas fa-sun"></i></button>
-        </div>
-    </div>
-
     <!-- Spotify Player -->
     <div class="spotify-player">
         <button class="spotify-toggle">
@@ -39,10 +23,9 @@
             <i class="fas fa-chevron-down minimize-btn"></i>
         </button>
         <div class="spotify-embed">
-            <iframe src="https://open.spotify.com/embed/playlist/0qIvroVtThINkLvz2hLfh8?theme=0" width="100%" height="352" frameborder="0" allowfullscreen allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+            <iframe src="https://open.spotify.com/embed/playlist/0qIvroVtThINkLvz2hLfh8?theme=0" width="100%" height="352" frameborder="0" allowfullscreen allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
         </div>
     </div>
-
     <!-- Header -->
     <header>
         <div class="logo">
@@ -57,7 +40,6 @@
                 <li><a href="#artists">Artists</a></li>
                 <li><a href="#music">Music</a></li>
                 <li><a href="#videos">Videos</a></li>
-                <li><a href="#gallery">Gallery</a></li>
                 <li><a href="#merch">Merch</a></li>
                 <li><a href="#messages">Messages</a></li>
                 <li><a href="#contact">Contact</a></li>
@@ -66,21 +48,24 @@
                 <input type="text" class="search-input" placeholder="Search..." />
                 <button class="search-btn"><i class="fas fa-search"></i></button>
             </div>
+            <!-- Theme Toggle - Lowered -->
+            <div class="theme-toggle">
+                <button class="theme-btn active" data-theme="dark"><i class="fas fa-moon"></i></button>
+                <button class="theme-btn" data-theme="light"><i class="fas fa-sun"></i></button>
+            </div>
         </nav>
     </header>
-
-    <!-- Hero Section -->
+    <!-- Hero -->
     <section class="hero" id="home">
         <div class="hero-content" data-aos="fade-up">
             <div class="hero-logo">
                 <img src="images/eMtee Records logo.jpg" alt="eMtee Records" />
             </div>
-            <p>South Africa's Premier Independent Music Label. Home to groundbreaking artists shaping the future of African sound.</p>
-            <a href="#artists" class="btn">Explore Our Artists</a>
+            <p>South Africa’s premier independent music label. Home to Emtee and groundbreaking artists shaping the future of African sound.</p>
+            <a href="#artists" class="btn">Explore Artists</a>
         </div>
     </section>
-
-    <!-- Stats Section -->
+    <!-- Stats -->
     <section class="stats">
         <div class="stat-item" data-aos="fade-up" data-aos-delay="100">
             <span class="stat-number" data-count="50">0</span>
@@ -99,8 +84,7 @@
             <span class="stat-label">Countries</span>
         </div>
     </section>
-
-    <!-- Artists Section -->
+    <!-- Artists -->
     <section class="section" id="artists">
         <div class="section-title" data-aos="fade-up">
             <h2>Our Artists</h2>
@@ -183,43 +167,26 @@
             </div>
         </div>
     </section>
-
-    <!-- Music Section -->
+    <!-- Music -->
     <section class="section music-section" id="music">
         <div class="section-title" data-aos="fade-up">
             <h2>Listen Now</h2>
         </div>
         <div class="spotify-playlists">
-            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/0qIvroVtThINkLvz2hLfh8?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            <iframe src="https://open.spotify.com/embed/playlist/0qIvroVtThINkLvz2hLfh8" width="100%" height="380" frameborder="0" allowfullscreen allow="autoplay; clipboard-write; encrypted-media"></iframe>
         </div>
     </section>
-
-    <!-- Videos Section -->
+    <!-- Videos -->
     <section class="section youtube-section" id="videos">
         <div class="section-title" data-aos="fade-up">
             <h2>Latest Videos</h2>
         </div>
         <div class="youtube-grid">
-            <iframe width="100%" height="315" src="https://www.youtube.com/embed/videoseries?list=UU549e3k32frZfExn3BWSv7A" title="eMtee" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            <iframe width="100%" height="315" src="https://www.youtube.com/embed/videoseries?list=UULF549e3k32frZfExn3BWSv7A" title="Kraizie" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <iframe width="100%" height="315" src="https://www.youtube.com/embed/videoseries?list=UU549e3k32frZfExn3BWSv7A" frameborder="0" allowfullscreen></iframe>
+            <iframe width="100%" height="315" src="https://www.youtube.com/embed/videoseries?list=UULF549e3k32frZfExn3BWSv7A" frameborder="0" allowfullscreen></iframe>
         </div>
     </section>
-
-    <!-- Gallery Section -->
-    <section class="section" id="gallery">
-        <div class="section-title" data-aos="fade-up">
-            <h2>Gallery</h2>
-        </div>
-        <div class="gallery-slideshow">
-            <div class="gallery-slides" id="gallerySlides">
-                <!-- Dynamically populated via JS -->
-            </div>
-            <button class="gallery-prev" onclick="changeSlide(-1)">&#10094;</button>
-            <button class="gallery-next" onclick="changeSlide(1)">&#10095;</button>
-        </div>
-    </section>
-
-    <!-- Merchandise Section -->
+    <!-- Merchandise -->
     <section class="section" id="merch">
         <div class="section-title" data-aos="fade-up">
             <h2>Official Merchandise</h2>
@@ -251,8 +218,7 @@
             </div>
         </div>
     </section>
-
-    <!-- Fan Messages Section -->
+    <!-- Fan Messages -->
     <section class="section" id="messages">
         <div class="section-title" data-aos="fade-up">
             <h2>Leave a Message</h2>
@@ -272,8 +238,7 @@
             </form>
         </div>
     </section>
-
-    <!-- Contact Section -->
+    <!-- Contact -->
     <section class="section" id="contact">
         <div class="section-title" data-aos="fade-up">
             <h2>Contact Us</h2>
@@ -304,13 +269,12 @@
             </div>
         </div>
     </section>
-
     <!-- Footer -->
     <footer>
         <div class="footer-content">
             <div class="footer-column">
                 <h3>About eMtee Records</h3>
-                <p>South Africa's premier independent music label, home to groundbreaking artists shaping the future of African sound.</p>
+                <p>South Africa's premier independent music label, home to groundbreaking artists pushing boundaries.</p>
             </div>
             <div class="footer-column">
                 <h3>Quick Links</h3>
@@ -319,7 +283,6 @@
                     <li><a href="#artists">Artists</a></li>
                     <li><a href="#music">Music</a></li>
                     <li><a href="#videos">Videos</a></li>
-                    <li><a href="#gallery">Gallery</a></li>
                     <li><a href="#merch">Merch</a></li>
                 </ul>
             </div>
@@ -337,20 +300,16 @@
             <p>&copy; 2025 eMtee Records. All rights reserved.</p>
         </div>
     </footer>
-
     <!-- WhatsApp Button -->
     <a href="https://wa.me/27837254362" class="whatsapp-float" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
-
     <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script>
-        // Initialize AOS
         AOS.init({ duration: 1000, once: true });
-
-        // Custom Cursor
+        // Custom cursor
         const cursor = document.querySelector('.cursor');
         const cursorFollower = document.querySelector('.cursor-follower');
         document.addEventListener('mousemove', (e) => {
@@ -361,30 +320,16 @@
                 cursorFollower.style.top = e.clientY + 'px';
             }, 100);
         });
-
         // Particles
         particlesJS('particles-js', {
-            particles: {
-                number: { value: 80, density: { enable: true, value_area: 800 } },
-                color: { value: "#dc2626" },
-                shape: { type: "circle" },
-                opacity: { value: 0.5, random: true },
-                size: { value: 3, random: true },
-                line_linked: { enable: true, distance: 150, color: "#dc2626", opacity: 0.4, width: 1 },
-                move: { enable: true, speed: 2, direction: "none", random: true, out_mode: "out" }
-            },
-            interactivity: {
-                detect_on: "canvas",
-                events: { onhover: { enable: true, mode: "repulse" }, onclick: { enable: true, mode: "push" } }
-            }
+            particles: { number: { value: 80 }, color: { value: "#dc2626" }, shape: { type: "circle" }, opacity: { value: 0.5, random: true }, size: { value: 3, random: true }, line_linked: { enable: true, distance: 150, color: "#dc2626", opacity: 0.4, width: 1 }, move: { enable: true, speed: 2 } },
+            interactivity: { detect_on: "canvas", events: { onhover: { enable: true, mode: "repulse" } } }
         });
-
-        // Mobile Menu
+        // Mobile menu
         document.querySelector('.menu-toggle').addEventListener('click', () => {
             document.querySelector('nav').classList.toggle('active');
         });
-
-        // Theme Toggle
+        // Theme toggle
         document.querySelectorAll('.theme-btn').forEach(btn => {
             btn.addEventListener('click', () => {
                 const theme = btn.getAttribute('data-theme');
@@ -393,19 +338,11 @@
                 btn.classList.add('active');
             });
         });
-
-        // Spotify Player Toggle
-        document.querySelector('.spotify-toggle').addEventListener('click', () => {
-            document.querySelector('.spotify-player').classList.toggle('minimized');
-        });
-
-        // Stats Counter
-        const statNumbers = document.querySelectorAll('.stat-number');
-        const statsSection = document.querySelector('.stats');
+        // Stats counter
         const observer = new IntersectionObserver(entries => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    statNumbers.forEach(stat => {
+                    document.querySelectorAll('.stat-number').forEach(stat => {
                         const target = parseInt(stat.getAttribute('data-count'));
                         let count = 0;
                         const timer = setInterval(() => {
@@ -418,39 +355,15 @@
                 }
             });
         }, { threshold: 0.5 });
-        observer.observe(statsSection);
-
-        // Gallery Slideshow
-        const slidesContainer = document.getElementById('gallerySlides');
-        const totalImages = 2983 - 2150 + 1;
-        for (let i = 2150; i <= 2983; i++) {
-            const slide = document.createElement('div');
-            slide.classList.add('gallery-slide');
-            slide.innerHTML = `<img src="images/gallery1/DSC${i}.JPG" alt="Gallery ${i}" onerror="this.style.display='none'" />`;
-            slidesContainer.appendChild(slide);
-        }
-        let currentSlide = 0;
-        const slides = document.querySelectorAll('.gallery-slide');
-        if (slides.length > 0) slides[currentSlide].style.display = 'block';
-
-        window.changeSlide = (n) => {
-            slides[currentSlide].style.display = 'none';
-            currentSlide = (currentSlide + n + slides.length) % slides.length;
-            slides[currentSlide].style.display = 'block';
-        };
-
-        // Fan Message Form
-        document.getElementById('fanMessageForm').addEventListener('submit', (e) => {
+        observer.observe(document.querySelector('.stats'));
+        // Form & Cart
+        document.getElementById('fanMessageForm').addEventListener('submit', e => {
             e.preventDefault();
-            alert('Thank you for your message! The eMtee Records team will review it soon.');
+            alert('Thank you! Your message has been sent.');
             e.target.reset();
         });
-
-        // Add to Cart
         document.querySelectorAll('.add-to-cart').forEach(btn => {
-            btn.addEventListener('click', () => {
-                alert('Item added to cart!');
-            });
+            btn.addEventListener('click', () => alert('Item added to cart!'));
         });
     </script>
 </body>
