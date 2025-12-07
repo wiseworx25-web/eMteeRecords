@@ -4,1478 +4,1112 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>eMtee Records | South Africa's Premier Music Label</title>
-  <meta name="description" content="Official website of eMtee Records – home to Emtee, Kraizie, F-eezy, Skiips, and Baby Girl Zae. Stream music, shop merch, and book artists." />
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎵</text></svg>">
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Orbitron:wght@500;600;700&display=swap" rel="stylesheet" />
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css  " />
+  <link href="https://fonts.googleapis.com/css2?family=Inter  :wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css  " />
   <style>
-    /* ========================================
-       GLOBAL VARIABLES & RESET
-    ======================================== */
     :root {
-      --emtee-red: #dc2626;
-      --emtee-red-dark: #991b1b;
-      --emtee-red-light: #ef4444;
-      --emtee-black: #000000;
-      --emtee-white: #ffffff;
-      --emtee-gray: #111111;
-      --emtee-gray-2: #1a1a1a;
-      --emtee-gray-3: #262626;
-      --emtee-gray-light: #404040;
-      --emtee-gold: #ffd700;
-      --transition-slow: 0.6s cubic-bezier(0.23, 1, 0.32, 1);
-      --transition-fast: 0.3s cubic-bezier(0.23, 1, 0.32, 1);
-      --shadow-light: 0 10px 30px rgba(0, 0, 0, 0.15);
-      --shadow-medium: 0 15px 50px rgba(0, 0, 0, 0.3);
-      --shadow-heavy: 0 25px 80px rgba(0, 0, 0, 0.5);
-      --glow-red: 0 0 30px rgba(220, 38, 38, 0.4);
-      --gradient-red: linear-gradient(135deg, var(--emtee-red), var(--emtee-red-dark));
-      --gradient-white: linear-gradient(135deg, var(--emtee-white), #d4d4d4);
+      --primary: #000000;
+      --secondary: #ffffff;
+      --accent: #dc2626;
+      --accent-glow: rgba(220, 38, 38, 0.4);
+      --gray: #1a1a1a;
+      --light-gray: #333333;
+      --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      --card-bg: rgba(30, 30, 30, 0.85);
+      --text-primary: #ffffff;
+      --text-secondary: #cccccc;
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      --glow: 0 0 20px var(--accent-glow);
+      --section-spacing: 8rem;
     }
-
+    [data-theme="light"] {
+      --primary: #ffffff;
+      --secondary: #000000;
+      --gray: #f5f5f5;
+      --light-gray: #e0e0e0;
+      --card-bg: rgba(255, 255, 255, 0.9);
+      --text-primary: #000000;
+      --text-secondary: #444444;
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      --glow: 0 0 20px rgba(220, 38, 38, 0.2);
+    }
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
     }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
+    html { scroll-behavior: smooth; }
     body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      background-color: var(--emtee-black);
-      color: var(--emtee-white);
-      line-height: 1.6;
+      background-color: var(--primary);
+      color: var(--text-primary);
       overflow-x: hidden;
-      -webkit-font-smoothing: antialiased;
-      min-height: 100vh;
-      position: relative;
+      transition: var(--transition);
+      background: radial-gradient(ellipse at center, var(--gray) 0%, var(--primary) 100%);
     }
-
-    /* ========================================
-       CUSTOM SCROLLBAR
-    ======================================== */
-    ::-webkit-scrollbar {
-      width: 8px;
-    }
-
-    ::-webkit-scrollbar-track {
-      background: var(--emtee-black);
-    }
-
-    ::-webkit-scrollbar-thumb {
-      background: var(--emtee-red);
-      border-radius: 4px;
-    }
-
-    ::-webkit-scrollbar-thumb:hover {
-      background: var(--emtee-red-light);
-    }
-
-    /* ========================================
-       TYPOGRAPHY
-    ======================================== */
-    h1, h2, h3, h4, h5, h6 {
-      font-weight: 800;
-      line-height: 1.2;
-    }
-
-    h1 {
-      font-size: clamp(2.5rem, 8vw, 5rem);
-      letter-spacing: -0.02em;
-    }
-
-    h2 {
-      font-size: clamp(2rem, 6vw, 3.5rem);
-      letter-spacing: -0.01em;
-    }
-
-    h3 {
-      font-size: clamp(1.5rem, 4vw, 2rem);
-    }
-
-    p, li, a {
-      font-size: clamp(0.9rem, 2vw, 1.1rem);
-      font-weight: 400;
-    }
-
-    .font-orbitron {
-      font-family: 'Orbitron', sans-serif;
-      font-weight: 700;
-    }
-
-    /* ========================================
-       UTILITY CLASSES
-    ======================================== */
-    .container {
-      width: 100%;
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 0 2rem;
-    }
-
-    .text-center {
-      text-align: center;
-    }
-
-    .flex-center {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 1rem 2.5rem;
-      border-radius: 50px;
-      font-weight: 700;
-      font-size: 1.1rem;
-      text-decoration: none;
-      cursor: pointer;
-      transition: var(--transition-fast);
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      position: relative;
-      overflow: hidden;
-      border: none;
-    }
-
-    .btn-primary {
-      background: var(--gradient-red);
-      color: var(--emtee-white);
-      box-shadow: var(--glow-red);
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-3px) scale(1.03);
-      box-shadow: 0 15px 40px rgba(220, 38, 38, 0.5);
-    }
-
-    .btn-secondary {
-      background: transparent;
-      color: var(--emtee-white);
-      border: 2px solid var(--emtee-white);
-    }
-
-    .btn-secondary:hover {
-      background: rgba(255, 255, 255, 0.1);
-      transform: translateY(-3px) scale(1.03);
-    }
-
-    .glow-red {
-      text-shadow: 0 0 20px rgba(220, 38, 38, 0.7);
-    }
-
-    .gradient-text {
-      background: var(--gradient-red);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .section {
-      padding: 8rem 0;
-    }
-
-    .section-title {
-      margin-bottom: 4rem;
-      position: relative;
-    }
-
-    .section-title:after {
-      content: '';
-      position: absolute;
-      bottom: -10px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 80px;
-      height: 4px;
-      background: var(--gradient-red);
-      border-radius: 2px;
-    }
-
-    /* ========================================
-       NAVIGATION
-    ======================================== */
-    .navbar {
+    /* Header with Theme Toggle */
+    header {
       position: fixed;
       top: 0;
       width: 100%;
-      z-index: 1000;
-      padding: 1.2rem 0;
-      transition: var(--transition-fast);
-      backdrop-filter: blur(20px);
-      background: rgba(0, 0, 0, 0.9);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .navbar.scrolled {
-      padding: 0.8rem 0;
-      background: rgba(0, 0, 0, 0.95);
-      box-shadow: var(--shadow-medium);
-    }
-
-    .navbar-container {
+      padding: 1.5rem 5%;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      background-color: rgba(0, 0, 0, 0.9);
+      z-index: 1000;
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }
-
-    .logo {
+    .logo-container {
       display: flex;
       align-items: center;
       gap: 1rem;
-      text-decoration: none;
     }
-
-    .logo-img {
-      width: 48px;
-      height: 48px;
-      background: var(--emtee-white);
-      border-radius: 12px;
+    .logo { height: 50px; }
+    .logo img { 
+      height: 100%; 
+      filter: drop-shadow(0 0 10px rgba(220, 38, 38, 0.5));
+    }
+    .theme-toggle {
+      display: flex;
+      background: var(--card-bg);
+      border-radius: 50px;
+      padding: 5px;
+      margin-left: 1rem;
+    }
+    .theme-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-weight: 900;
-      color: var(--emtee-black);
-      border: 2px solid var(--emtee-red);
+      background: transparent;
+      border: none;
+      color: var(--text-primary);
+      cursor: pointer;
     }
-
-    .logo-text {
-      font-size: 1.5rem;
-      font-weight: 900;
+    .theme-btn.active {
+      background: var(--accent);
+      color: white;
     }
-
-    .logo-text span {
-      color: var(--emtee-red);
+    nav ul { 
+      display: flex; 
+      list-style: none; 
+      margin-left: 2rem; 
     }
-
-    .nav-menu {
-      display: flex;
-      list-style: none;
-      gap: 2rem;
+    nav ul li { 
+      margin-left: 2rem; 
+      position: relative; 
     }
-
-    .nav-link {
-      color: var(--emtee-white);
+    nav ul li a {
+      color: var(--text-primary);
       text-decoration: none;
-      font-weight: 600;
-      padding: 0.5rem 1rem;
-      border-radius: 30px;
-      transition: var(--transition-fast);
-      position: relative;
+      font-weight: 500;
+      padding: 5px 0;
     }
-
-    .nav-link:hover {
-      color: var(--emtee-red);
-    }
-
-    .nav-link:after {
+    nav ul li a::after {
       content: '';
       position: absolute;
       bottom: 0;
       left: 0;
       width: 0;
       height: 2px;
-      background: var(--emtee-red);
-      transition: var(--transition-fast);
+      background-color: var(--accent);
+      transition: var(--transition);
+      box-shadow: var(--glow);
     }
-
-    .nav-link:hover:after {
-      width: 100%;
+    nav ul li a:hover::after { 
+      width: 100%; 
     }
-
-    .nav-actions {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
+    .menu-toggle { 
+      display: none; 
+      font-size: 1.5rem; 
+      color: var(--text-primary); 
     }
-
-    .search-bar {
-      position: relative;
+    .search-container { 
+      position: absolute; 
+      top: 70px; 
+      right: 5%; 
+      width: 250px; 
     }
-
     .search-input {
-      background: rgba(255, 255, 255, 0.08);
+      width: 100%;
+      padding: 0.5rem 1rem;
+      background: var(--light-gray);
       border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 30px;
-      padding: 0.6rem 1.2rem 0.6rem 2.5rem;
-      color: var(--emtee-white);
-      width: 220px;
-      transition: var(--transition-fast);
+      border-radius: 25px;
+      color: var(--text-primary);
     }
-
-    .search-input:focus {
-      outline: none;
-      border-color: var(--emtee-red);
-      background: rgba(255, 255, 255, 0.12);
-      width: 250px;
-    }
-
-    .search-icon {
-      position: absolute;
-      left: 1rem;
-      top: 50%;
-      transform: translateY(-50%);
-      color: var(--emtee-white);
-    }
-
-    .theme-toggle {
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 50%;
-      width: 40px;
-      height: 40px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: var(--transition-fast);
-    }
-
-    .theme-toggle:hover {
-      background: rgba(220, 38, 38, 0.2);
-      border-color: var(--emtee-red);
-    }
-
-    .cart-btn {
-      position: relative;
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 50%;
-      width: 40px;
-      height: 40px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: var(--transition-fast);
-    }
-
-    .cart-btn:hover {
-      background: rgba(220, 38, 38, 0.2);
-      border-color: var(--emtee-red);
-    }
-
-    .cart-badge {
-      position: absolute;
-      top: -5px;
-      right: -5px;
-      background: var(--emtee-red);
-      color: var(--emtee-white);
-      border-radius: 50%;
-      width: 20px;
-      height: 20px;
-      font-size: 0.75rem;
-      font-weight: 700;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .menu-toggle {
-      display: none;
-      background: none;
-      border: none;
-      color: var(--emtee-white);
-      font-size: 1.5rem;
-      cursor: pointer;
-    }
-
-    /* ========================================
-       HERO SECTION
-    ======================================== */
+    /* Hero */
     .hero {
-      min-height: 100vh;
+      height: 100vh;
+      background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('images/whole team.jpg') center/cover no-repeat;
       display: flex;
       align-items: center;
       justify-content: center;
-      position: relative;
-      overflow: hidden;
-      padding: 0 2rem;
-      background: 
-        radial-gradient(circle at 20% 30%, rgba(220, 38, 38, 0.15) 0%, transparent 50%),
-        radial-gradient(circle at 80% 70%, rgba(220, 38, 38, 0.1) 0%, transparent 50%),
-        linear-gradient(180deg, rgba(0,0,0,0.7) 0%, var(--emtee-black) 100%);
-    }
-
-    .hero-content {
       text-align: center;
-      max-width: 900px;
-      z-index: 2;
+      padding: 0 5%;
     }
-
-    .hero-logo {
-      width: 220px;
-      height: 220px;
-      margin: 0 auto 2.5rem;
-      background: var(--emtee-white);
-      border-radius: 24px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 2.5rem;
-      font-weight: 900;
-      color: var(--emtee-black);
-      border: 4px solid var(--emtee-red);
-      box-shadow: var(--glow-red);
-      animation: float 6s ease-in-out infinite;
+    .hero-content { 
+      max-width: 800px; 
+      position: relative; 
+      z-index: 1; 
     }
-
-    .hero-title {
-      margin-bottom: 1.5rem;
-      background: var(--gradient-white);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+    .hero-logo { 
+      max-width: 400px; 
+      margin: 0 auto 2rem; 
+      filter: drop-shadow(0 10px 30px rgba(220, 38, 38, 0.5)); 
     }
-
-    .hero-subtitle {
-      color: #9ca3af;
-      margin-bottom: 3rem;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
-      font-size: 1.2rem;
+    .hero-logo img { 
+      width: 100%; 
     }
-
-    .hero-cta {
-      display: flex;
-      gap: 1.5rem;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin-bottom: 4rem;
+    .hero p { 
+      font-size: 1.2rem; 
+      margin-bottom: 2rem; 
+      line-height: 1.6; 
+      color: var(--text-secondary); 
     }
-
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 2rem;
-      max-width: 800px;
-      margin: 0 auto;
-    }
-
-    .stat-card {
-      background: rgba(255, 255, 255, 0.05);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 20px;
-      padding: 1.5rem;
-      text-align: center;
-      transition: var(--transition-fast);
-    }
-
-    .stat-card:hover {
-      transform: translateY(-5px);
-      border-color: var(--emtee-red);
-      box-shadow: var(--glow-red);
-    }
-
-    .stat-number {
-      font-size: 2rem;
-      font-weight: 800;
-      margin-bottom: 0.5rem;
-      color: var(--emtee-white);
-    }
-
-    .stat-label {
-      color: #9ca3af;
-      font-size: 0.9rem;
+    .btn {
+      display: inline-block;
+      padding: 0.8rem 2rem;
+      background-color: var(--accent);
+      color: var(--secondary);
+      text-decoration: none;
+      border-radius: 30px;
+      font-weight: 600;
+      transition: var(--transition);
       text-transform: uppercase;
       letter-spacing: 1px;
+      border: none;
+      cursor: pointer;
+      box-shadow: var(--glow);
     }
-
-    /* ========================================
-       ARTISTS SECTION
-    ======================================== */
+    .btn:hover {
+      background-color: #b91c1c;
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(220, 38, 38, 0.3), var(--glow);
+    }
+    /* Stats */
+    .stats {
+      padding: 4rem 5%;
+      background-color: var(--gray);
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+    }
+    .stat-item { 
+      text-align: center; 
+      margin: 1rem; 
+    }
+    .stat-number {
+      font-size: 3rem;
+      font-weight: 800;
+      color: var(--accent);
+      display: block;
+      text-shadow: 0 0 10px var(--accent-glow);
+    }
+    .stat-label {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+    }
+    /* Sections */
+    .section { 
+      padding: var(--section-spacing) 5%; 
+      position: relative; 
+    }
+    .section-title {
+      text-align: center;
+      margin-bottom: 5rem;
+      position: relative;
+    }
+    .section-title h2 {
+      font-size: 3rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      display: inline-block;
+    }
+    .section-title h2::after {
+      content: '';
+      position: absolute;
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 4px;
+      background-color: var(--accent);
+      box-shadow: var(--glow);
+    }
+    /* Artists */
     .artists-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 2.5rem;
-    }
-
-    .artist-card {
-      background: rgba(255, 255, 255, 0.05);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 24px;
-      overflow: hidden;
-      transition: var(--transition-slow);
-      cursor: pointer;
-      position: relative;
-    }
-
-    .artist-card:hover {
-      transform: translateY(-10px) scale(1.02);
-      border-color: var(--emtee-red);
-      box-shadow: var(--shadow-heavy), var(--glow-red);
-    }
-
-    .artist-image {
-      height: 320px;
-      overflow: hidden;
-      position: relative;
-    }
-
-    .artist-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: var(--transition-fast);
-    }
-
-    .artist-card:hover .artist-image img {
-      transform: scale(1.1);
-    }
-
-    .artist-info {
-      padding: 2rem;
-    }
-
-    .artist-name {
-      margin-bottom: 0.5rem;
-    }
-
-    .artist-genre {
-      color: var(--emtee-red);
-      font-weight: 600;
-      margin-bottom: 1rem;
-      font-size: 0.95rem;
-      text-transform: uppercase;
-    }
-
-    .artist-bio {
-      color: #9ca3af;
-      margin-bottom: 1.5rem;
-      line-height: 1.6;
-      height: 80px;
-      overflow: hidden;
-    }
-
-    .artist-stats {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      color: #9ca3af;
-      font-size: 0.9rem;
-    }
-
-    .view-profile {
-      width: 100%;
-      margin-top: 1rem;
-      background: var(--gradient-red);
-      color: var(--emtee-white);
-      padding: 0.8rem;
-      border-radius: 12px;
-      font-weight: 600;
-      border: none;
-      cursor: pointer;
-      transition: var(--transition-fast);
-    }
-
-    .view-profile:hover {
-      background: var(--emtee-red-light);
-    }
-
-    /* ========================================
-       MODAL STYLES
-    ======================================== */
-    .modal {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.95);
-      display: none;
-      z-index: 2000;
-      backdrop-filter: blur(10px);
-      padding: 2rem;
-      overflow-y: auto;
-    }
-
-    .modal-content {
-      background: rgba(30, 30, 30, 0.95);
-      max-width: 1000px;
-      margin: 2rem auto;
-      border-radius: 24px;
-      overflow: hidden;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      animation: modalSlideIn 0.6s ease-out;
-    }
-
-    @keyframes modalSlideIn {
-      from {
-        opacity: 0;
-        transform: translateY(50px) scale(0.95);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-      }
-    }
-
-    .modal-header {
-      padding: 2rem;
-      display: flex;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 2rem;
-      background: rgba(0, 0, 0, 0.7);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }
-
-    .modal-avatar {
-      width: 220px;
-      height: 220px;
+    .artist-card {
+      background-color: var(--card-bg);
       border-radius: 20px;
       overflow: hidden;
-    }
-
-    .modal-avatar img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .modal-info h2 {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-      background: var(--gradient-red);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .modal-info p {
-      color: #9ca3af;
-      line-height: 1.7;
-      margin-bottom: 1.5rem;
-    }
-
-    .modal-close {
-      position: absolute;
-      top: 2rem;
-      right: 2rem;
-      background: rgba(255, 255, 255, 0.1);
-      border: none;
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      color: white;
-      font-size: 1.2rem;
       cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .modal-body {
-      padding: 2rem;
-    }
-
-    .modal-section {
-      margin-bottom: 2.5rem;
-    }
-
-    .modal-section h3 {
-      margin-bottom: 1.5rem;
-      padding-bottom: 0.5rem;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .discography-list, .events-list {
-      list-style: none;
-    }
-
-    .discography-item, .event-item {
-      padding: 1rem;
+      box-shadow: var(--shadow);
       border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 16px;
+    }
+    .artist-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(220, 38, 38, 0.2), var(--glow);
+    }
+    .artist-img { 
+      height: 300px; 
+      overflow: hidden; 
+    }
+    .artist-img img { 
+      width: 100%; 
+      height: 100%; 
+      object-fit: cover; 
+    }
+    .artist-info { 
+      padding: 1.5rem; 
+    }
+    .artist-info h3 { 
+      font-size: 1.5rem; 
+      margin-bottom: 0.5rem; 
+    }
+    .artist-info p { 
+      color: var(--text-secondary); 
+      margin-bottom: 1rem; 
+      font-size: 1rem; 
+    }
+    .artist-stats { 
+      display: flex; 
+      justify-content: space-between; 
+      margin-bottom: 1.5rem; 
+    }
+    .stat-value { 
+      font-size: 1.2rem; 
+      font-weight: 700; 
+      color: var(--accent); 
+    }
+    .stat-label { 
+      font-size: 0.8rem; 
+      color: var(--text-secondary); 
+    }
+    /* Video Section */
+    .video-item {
+      background: var(--card-bg);
+      padding: 1.5rem;
+      border-radius: 15px;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+    .video-thumb {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 10px;
       margin-bottom: 1rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
     }
-
-    .social-links {
-      display: flex;
-      gap: 1rem;
-      margin-top: 1.5rem;
-    }
-
-    .social-link {
-      width: 45px;
-      height: 45px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    .video-link {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.5rem 1rem;
+      background: #FF0000;
       color: white;
       text-decoration: none;
-      font-size: 1.2rem;
+      border-radius: 5px;
+      font-weight: 600;
     }
-
-    .social-spotify { background: #1DB954; }
-    .social-youtube { background: #FF0000; }
-    .social-instagram { background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D); }
-    .social-twitter { background: #1DA1F2; }
-
-    /* ========================================
-       MUSIC SECTION
-    ======================================== */
-    .music-section {
-      background: var(--emtee-gray-2);
-    }
-
-    .spotify-embed, .youtube-embed {
-      width: 100%;
-      border-radius: 20px;
-      overflow: hidden;
-      box-shadow: var(--shadow-medium);
-    }
-
-    .spotify-embed iframe, .youtube-embed iframe {
-      width: 100%;
-      height: 400px;
-      border: none;
-    }
-
-    .music-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 2.5rem;
-      max-width: 900px;
-      margin: 0 auto;
-    }
-
-    /* ========================================
-       MERCHANDISE SECTION
-    ======================================== */
+    /* Merch */
     .merch-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2.5rem;
-    }
-
-    .merch-card {
-      background: rgba(255, 255, 255, 0.05);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 24px;
-      overflow: hidden;
-      transition: var(--transition-slow);
-    }
-
-    .merch-card:hover {
-      transform: translateY(-10px) scale(1.02);
-      border-color: var(--emtee-red);
-      box-shadow: var(--shadow-heavy), var(--glow-red);
-    }
-
-    .merch-image {
-      height: 300px;
-      overflow: hidden;
-    }
-
-    .merch-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .merch-info {
-      padding: 1.5rem;
-    }
-
-    .merch-name {
-      margin-bottom: 0.5rem;
-    }
-
-    .merch-price {
-      color: var(--emtee-red);
-      font-size: 1.5rem;
-      font-weight: 700;
-      margin: 1rem 0;
-    }
-
-    .add-to-cart {
-      width: 100%;
-      background: var(--gradient-red);
-      color: white;
-      border: none;
-      padding: 0.9rem;
-      border-radius: 12px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: var(--transition-fast);
-    }
-
-    .add-to-cart:hover {
-      background: var(--emtee-red-light);
-    }
-
-    /* ========================================
-       FAN MESSAGES & BOOKING
-    ======================================== */
-    .forms-container {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3rem;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .form-card {
-      background: rgba(255, 255, 255, 0.05);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 24px;
-      padding: 2.5rem;
-    }
-
-    .form-title {
-      margin-bottom: 1.5rem;
-      font-size: 1.8rem;
-    }
-
-    .form-group {
-      margin-bottom: 1.5rem;
-    }
-
-    .form-label {
-      display: block;
-      margin-bottom: 0.5rem;
-      font-weight: 600;
-    }
-
-    .form-input, .form-textarea, .form-select {
-      width: 100%;
-      padding: 1rem;
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 12px;
-      color: white;
-      font-size: 1rem;
-    }
-
-    .form-textarea {
-      min-height: 150px;
-      resize: vertical;
-    }
-
-    .submit-btn {
-      width: 100%;
-      background: var(--gradient-red);
-      color: white;
-      border: none;
-      padding: 1.2rem;
-      border-radius: 12px;
-      font-weight: 700;
-      font-size: 1.1rem;
-      cursor: pointer;
-      transition: var(--transition-fast);
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    .submit-btn:hover {
-      background: var(--emtee-red-light);
-    }
-
-    /* ========================================
-       CONTACT SECTION
-    ======================================== */
-    .contact-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3rem;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .contact-info {
-      display: flex;
-      flex-direction: column;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
       gap: 2rem;
     }
-
+    .merch-card {
+      background-color: var(--card-bg);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .merch-img { 
+      height: 250px; 
+      overflow: hidden; 
+    }
+    .merch-img img { 
+      width: 100%; 
+      height: 100%; 
+      object-fit: cover; 
+    }
+    .merch-info { 
+      padding: 1.5rem; 
+    }
+    .merch-info h3 { 
+      font-size: 1.3rem; 
+      margin-bottom: 0.5rem; 
+    }
+    .merch-price {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+    .add-to-cart {
+      width: 100%;
+      padding: 0.8rem;
+      background-color: var(--accent);
+      color: var(--secondary);
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: 600;
+      box-shadow: var(--glow);
+    }
+    .add-to-cart:hover {
+      background-color: #b91c1c;
+      transform: translateY(-3px);
+    }
+    /* Articles */
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 2rem;
+    }
+    .blog-card {
+      background-color: var(--card-bg);
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .blog-img { 
+      height: 200px; 
+      overflow: hidden; 
+    }
+    .blog-img img { 
+      width: 100%; 
+      height: 100%; 
+      object-fit: cover; 
+    }
+    .blog-content { 
+      padding: 1.5rem; 
+    }
+    .blog-date { 
+      color: var(--accent); 
+      font-size: 0.9rem; 
+      margin-bottom: 0.5rem; 
+    }
+    .blog-title { 
+      font-size: 1.3rem; 
+      margin-bottom: 1rem; 
+    }
+    .blog-excerpt { 
+      color: var(--text-secondary); 
+      margin-bottom: 1.5rem; 
+      line-height: 1.6; 
+    }
+    .read-more {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .read-more:hover { 
+      color: var(--text-primary); 
+    }
+    /* Booking */
+    .booking-form {
+      background: var(--card-bg);
+      padding: 2rem;
+      border-radius: 15px;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    .form-group { 
+      margin-bottom: 1.5rem; 
+    }
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+    }
+    .form-control {
+      width: 100%;
+      padding: 1rem;
+      background-color: var(--light-gray);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      color: var(--text-primary);
+    }
+    /* Contact */
+    .contact-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+    }
     .contact-item {
       display: flex;
-      gap: 1.5rem;
+      align-items: center;
+      gap: 1rem;
     }
-
     .contact-icon {
-      width: 55px;
-      height: 55px;
-      background: var(--gradient-red);
+      width: 50px;
+      height: 50px;
+      background: var(--accent);
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      flex-shrink: 0;
     }
-
-    .contact-details h3 {
-      margin-bottom: 0.5rem;
-    }
-
-    .contact-details p {
-      color: #9ca3af;
-    }
-
-    /* ========================================
-       FOOTER
-    ======================================== */
+    /* Footer */
     footer {
-      background: var(--emtee-gray-3);
-      padding: 5rem 0 2rem;
-      margin-top: 4rem;
+      background-color: var(--gray);
+      padding: 4rem 5% 2rem;
     }
-
-    .footer-grid {
+    .footer-content {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 3rem;
       margin-bottom: 3rem;
     }
-
-    .footer-col h3 {
-      margin-bottom: 1.5rem;
-      position: relative;
-      display: inline-block;
-    }
-
-    .footer-col h3:after {
-      content: '';
-      position: absolute;
-      bottom: -8px;
-      left: 0;
-      width: 50px;
-      height: 3px;
-      background: var(--gradient-red);
-    }
-
-    .footer-links {
-      list-style: none;
-    }
-
-    .footer-links li {
-      margin-bottom: 0.8rem;
-    }
-
-    .footer-links a {
-      color: #9ca3af;
-      text-decoration: none;
-      transition: var(--transition-fast);
-    }
-
-    .footer-links a:hover {
-      color: var(--emtee-red);
-      padding-left: 5px;
-    }
-
     .copyright {
       text-align: center;
       padding-top: 2rem;
       border-top: 1px solid rgba(255, 255, 255, 0.1);
-      color: #9ca3af;
-      font-size: 0.95rem;
+      color: var(--text-secondary);
+      font-size: 0.9rem;
     }
-
-    /* ========================================
-       ANIMATIONS
-    ======================================== */
-    @keyframes float {
-      0%, 100% {
-        transform: translateY(0px) rotate(0deg);
-      }
-      50% {
-        transform: translateY(-15px) rotate(2deg);
-      }
+    /* Modal */
+    .artist-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.9);
+      z-index: 2000;
+      overflow-y: auto;
+      padding: 2rem;
     }
-
-    @keyframes pulse {
-      0%, 100% {
-        opacity: 1;
-      }
-      50% {
-        opacity: 0.5;
-      }
+    .modal-content {
+      background-color: var(--card-bg);
+      max-width: 900px;
+      margin: 2rem auto;
+      border-radius: 15px;
+      padding: 2rem;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+      border: 1px solid rgba(255, 255, 255, 0.1);
     }
-
-    /* ========================================
-       RESPONSIVE DESIGN
-    ======================================== */
-    @media (max-width: 1024px) {
-      .forms-container,
-      .contact-grid {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-      }
-
-      .stats-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1.5rem;
-      }
-    }
-
-    @media (max-width: 768px) {
-      .nav-menu {
-        display: none;
-      }
-
-      .menu-toggle {
-        display: block;
-      }
-
-      .search-bar, .theme-toggle, .cart-btn {
-        margin-top: 0.8rem;
-      }
-
-      .hero-logo {
-        width: 180px;
-        height: 180px;
-        font-size: 2rem;
-      }
-
-      .hero-cta {
-        flex-direction: column;
-        gap: 1rem;
-      }
-
-      .btn {
-        width: 100%;
-      }
-
-      .stats-grid {
-        grid-template-columns: 1fr;
-        gap: 1rem;
-      }
-
-      .modal-header {
-        flex-direction: column;
-        text-align: center;
-      }
-
-      .spotify-embed iframe,
-      .youtube-embed iframe {
-        height: 300px;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .hero-logo {
-        width: 150px;
-        height: 150px;
-        font-size: 1.8rem;
-      }
-
-      h1 {
-        font-size: 2.5rem;
-      }
-
-      h2 {
-        font-size: 2rem;
-      }
-    }
-
-    /* ========================================
-       WHATSAPP FLOATING BUTTON
-    ======================================== */
+    /* WhatsApp */
     .whatsapp-float {
       position: fixed;
-      bottom: 30px;
-      right: 30px;
+      bottom: 20px;
+      right: 25px;
       width: 60px;
       height: 60px;
-      background: #25D366;
+      background-color: #25D366;
       color: white;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.5rem;
-      box-shadow: 0 4px 20px rgba(37, 211, 102, 0.5);
-      z-index: 1000;
+      font-size: 1.8rem;
       text-decoration: none;
-      animation: pulse 2s infinite;
+      z-index: 1000;
     }
-
-    .whatsapp-float:hover {
-      transform: scale(1.1);
+    /* Responsive */
+    @media (max-width: 768px) {
+      .menu-toggle { 
+        display: block; 
+      }
+      nav ul { 
+        flex-direction: column; 
+      }
+      .search-container { 
+        position: static; 
+        margin-top: 1rem; 
+        width: 100%; 
+      }
+      .contact-container { 
+        grid-template-columns: 1fr; 
+      }
+      .logo-container {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .theme-toggle {
+        margin: 0.5rem 0 0 0;
+        align-self: flex-start;
+      }
     }
   </style>
 </head>
-<body>
-  <!-- Navbar -->
-  <nav class="navbar" id="navbar">
-    <div class="container navbar-container">
-      <a href="#home" class="logo">
-        <div class="logo-img" id="logoPlaceholder">EM</div>
-        <div class="logo-text">eMtee <span>Records</span></div>
-      </a>
-      <ul class="nav-menu">
-        <li><a href="#home" class="nav-link">Home</a></li>
-        <li><a href="#artists" class="nav-link">Artists</a></li>
-        <li><a href="#music" class="nav-link">Music</a></li>
-        <li><a href="#merch" class="nav-link">Merch</a></li>
-        <li><a href="#messages" class="nav-link">Messages</a></li>
-        <li><a href="#contact" class="nav-link">Contact</a></li>
-      </ul>
-      <div class="nav-actions">
-        <div class="search-bar">
-          <i class="fas fa-search search-icon"></i>
-          <input type="text" class="search-input" placeholder="Search...">
-        </div>
-        <div class="theme-toggle" id="themeToggle">
-          <i class="fas fa-moon"></i>
-        </div>
-        <div class="cart-btn" id="cartBtn">
-          <i class="fas fa-shopping-cart"></i>
-          <span class="cart-badge" id="cartCount">0</span>
-        </div>
-        <button class="menu-toggle" id="menuToggle">
-          <i class="fas fa-bars"></i>
-        </button>
+<body data-theme="dark">
+  <!-- Header with Theme Toggle -->
+  <header>
+    <div class="logo-container">
+      <div class="logo">
+        <img src="images/eMtee Records logo.jpg" alt="eMtee Records" />
+      </div>
+      <div class="theme-toggle">
+        <button class="theme-btn active" data-theme="dark"><i class="fas fa-moon"></i></button>
+        <button class="theme-btn" data-theme="light"><i class="fas fa-sun"></i></button>
       </div>
     </div>
-  </nav>
+    <div class="menu-toggle">
+      <i class="fas fa-bars"></i>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#artists">Artists</a></li>
+        <li><a href="#music">Music</a></li>
+        <li><a href="#videos">Videos</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#merch">Merch</a></li>
+        <li><a href="#news">News</a></li>
+        <li><a href="#booking">Bookings</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="search-container">
+      <input type="text" class="search-input" placeholder="Search..." />
+    </div>
+  </header>
 
-  <!-- Hero Section -->
+  <!-- Hero -->
   <section class="hero" id="home">
     <div class="hero-content">
-      <div class="hero-logo" id="heroLogo">
-        <img src="images/eMtee Records logo.jpg" alt="eMtee Records" style="width:100%;height:100%;object-fit:contain;" onerror="this.style.display='none';document.querySelector('#heroLogo > div').style.display='flex';">
-        <div style="display:none;font-size:2.5rem;font-weight:900;">EM</div>
+      <div class="hero-logo">
+        <img src="images/eMtee Records logo.jpg" alt="eMtee Records" />
       </div>
-      <h1 class="hero-title">THE FUTURE OF SOUTH AFRICAN MUSIC</h1>
-      <p class="hero-subtitle">Home to groundbreaking artists. Streamed worldwide. Defining the sound of a generation.</p>
-      <div class="hero-cta">
-        <a href="#artists" class="btn btn-primary">EXPLORE ARTISTS</a>
-        <a href="#merch" class="btn btn-secondary">SHOP MERCH</a>
-      </div>
-      <div class="stats-grid">
-        <div class="stat-card">
-          <div class="stat-number" id="streamsCount">0</div>
-          <div class="stat-label">TOTAL STREAMS</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-number">5</div>
-          <div class="stat-label">ARTISTS</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-number">100+</div>
-          <div class="stat-label">EVENTS</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-number">GLOBAL</div>
-          <div class="stat-label">REACH</div>
-        </div>
-      </div>
+      <p>South Africa's Premier Independent Music Label</p>
+      <a href="#artists" class="btn">Explore Our Artists</a>
     </div>
   </section>
 
-  <!-- Artists Section -->
+  <!-- Stats -->
+  <section class="stats">
+    <div class="stat-item">
+      <span class="stat-number" data-count="50000000">0</span>
+      <span class="stat-label">Streams</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-number" data-count="5">0</span>
+      <span class="stat-label">Artists</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-number" data-count="120">0</span>
+      <span class="stat-label">Events</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-number" data-count="15">0</span>
+      <span class="stat-label">Countries</span>
+    </div>
+  </section>
+
+  <!-- Artists -->
   <section class="section" id="artists">
-    <div class="container">
-      <h2 class="section-title text-center">OUR ARTISTS</h2>
-      <div class="artists-grid" id="artistsGrid">
-        <!-- Artists will be populated by JavaScript -->
+    <div class="section-title"><h2>Our Artists</h2></div>
+    <div class="artists-grid">
+      <div class="artist-card" onclick="openModal('emtee')">
+        <div class="artist-img"><img src="images/emtee best image.jpg" alt="Emtee" /></div>
+        <div class="artist-info">
+          <h3>Emtee</h3>
+          <p>Hip-Hop • Johannesburg</p>
+          <div class="artist-stats">
+            <div><span class="stat-value">2.4M+</span><br /><span class="stat-label">Listeners</span></div>
+          </div>
+          <button class="btn">View Profile</button>
+        </div>
+      </div>
+      <div class="artist-card" onclick="openModal('kraizie')">
+        <div class="artist-img"><img src="images/Kraizie1.jpg" alt="Kraizie" /></div>
+        <div class="artist-info">
+          <h3>Kraizie</h3>
+          <p>Afro-Pop • Cape Town</p>
+          <div class="artist-stats">
+            <div><span class="stat-value">1.8M+</span><br /><span class="stat-label">Listeners</span></div>
+          </div>
+          <button class="btn">View Profile</button>
+        </div>
+      </div>
+      <div class="artist-card" onclick="openModal('feezy')">
+        <div class="artist-img"><img src="images/Feezy1.jpg" alt="F-eezy" /></div>
+        <div class="artist-info">
+          <h3>F-eezy</h3>
+          <p>Hip-Hop • Johannesburg</p>
+          <div class="artist-stats">
+            <div><span class="stat-value">950K+</span><br /><span class="stat-label">Listeners</span></div>
+          </div>
+          <button class="btn">View Profile</button>
+        </div>
+      </div>
+      <div class="artist-card" onclick="openModal('skiips')">
+        <div class="artist-img"><img src="images/Skiips1.jpg" alt="Skiips" /></div>
+        <div class="artist-info">
+          <h3>Skiips</h3>
+          <p>Hip-Hop • Johannesburg</p>
+          <div class="artist-stats">
+            <div><span class="stat-value">320K+</span><br /><span class="stat-label">Listeners</span></div>
+          </div>
+          <button class="btn">View Profile</button>
+        </div>
+      </div>
+      <div class="artist-card" onclick="openModal('babygirlzae')">
+        <div class="artist-img"><img src="images/Babyg!rl Zae1.jpg" alt="BabyG!rl Zae" /></div>
+        <div class="artist-info">
+          <h3>BabyG!rl Zae</h3>
+          <p>Afrobeats • Durban</p>
+          <div class="artist-stats">
+            <div><span class="stat-value">680K+</span><br /><span class="stat-label">Listeners</span></div>
+          </div>
+          <button class="btn">View Profile</button>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Music Section -->
-  <section class="section music-section" id="music">
-    <div class="container">
-      <h2 class="section-title text-center">MUSIC</h2>
-      <div class="music-grid">
-        <div class="spotify-embed">
-          <iframe src="https://open.spotify.com/embed/playlist/0qIvroVtThINkLvz2hLfh8?utm_source=generator" width="100%" height="400" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-        </div>
-        <div class="youtube-embed">
-          <iframe width="100%" height="400" src="https://www.youtube.com/embed/videoseries?list=UU549e3k32frZfExn3BWSv7A" title="eMtee Records Videos" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        </div>
+  <!-- Music -->
+  <section class="section" id="music">
+    <div class="section-title"><h2>Our Music</h2></div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(400px,1fr));gap:2rem;">
+      <div><iframe src="https://open.spotify.com/embed/artist/6U3gCOvxVWKBxXItqp3mdr  " width="100%" height="352" frameborder="0"></iframe></div>
+      <div><iframe src="https://open.spotify.com/embed/artist/1tXUwhCT3Y3F1HSIcwC7M0  " width="100%" height="352" frameborder="0"></iframe></div>
+      <div><iframe src="https://open.spotify.com/embed/artist/79fCocNyVEjDwvuASCNeMo  " width="100%" height="352" frameborder="0"></iframe></div>
+      <div><iframe src="https://open.spotify.com/embed/artist/1QquCeba1W051sM56tKu0Y  " width="100%" height="352" frameborder="0"></iframe></div>
+      <div><iframe src="https://open.spotify.com/embed/artist/1djL8Gjzuz1jLKg5QWCuG4  " width="100%" height="352" frameborder="0"></iframe></div>
+    </div>
+  </section>
+
+  <!-- Videos -->
+  <section class="section" id="videos">
+    <div class="section-title"><h2>Videos</h2></div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(400px,1fr));gap:2rem;">
+      <div class="video-item">
+        <img src="https://img.youtube.com/vi/pQ7elf9r2tA/maxresdefault.jpg  " class="video-thumb" alt="Emtee Video" />
+        <a href="https://youtube.com/@emtee  " class="video-link" target="_blank">Watch Emtee on YouTube</a>
+      </div>
+      <div class="video-item">
+        <img src="https://img.youtube.com/vi/TDLs0VAyAEg/maxresdefault.jpg  " class="video-thumb" alt="Kraizie Video" />
+        <a href="https://youtube.com/@kraizieOfficial  " class="video-link" target="_blank">Watch Kraizie on YouTube</a>
+      </div>
+      <div class="video-item">
+        <img src="https://img.youtube.com/vi/Hdz8d51Y4E0/maxresdefault.jpg  " class="video-thumb" alt="Skiips Video" />
+        <a href="https://youtube.com/@skiips  " class="video-link" target="_blank">Watch Skiips on YouTube</a>
+      </div>
+      <div class="video-item">
+        <img src="https://img.youtube.com/vi/yQHvzPp8U6w/maxresdefault.jpg  " class="video-thumb" alt="BabyG!rl Zae Video" />
+        <a href="https://youtube.com/@babygirlzae  " class="video-link" target="_blank">Watch BabyG!rl Zae on YouTube</a>
       </div>
     </div>
   </section>
 
-  <!-- Merchandise Section -->
+  <!-- Gallery -->
+  <section class="section" id="gallery">
+    <div class="section-title"><h2>Behind The Scenes</h2></div>
+    <div class="artists-grid">
+      <div class="artist-card">
+        <div class="artist-img"><img src="images/emtee1.jpg" alt="Emtee Photo 1" /></div>
+      </div>
+      <div class="artist-card">
+        <div class="artist-img"><img src="images/emtee2.jpg" alt="Emtee Photo 2" /></div>
+      </div>
+      <div class="artist-card">
+        <div class="artist-img"><img src="images/emtee3.jpg" alt="Emtee Photo 3" /></div>
+      </div>
+      <div class="artist-card">
+        <div class="artist-img"><img src="images/Kraizie2.jpg" alt="Kraizie Photo 2" /></div>
+      </div>
+      <div class="artist-card">
+        <div class="artist-img"><img src="images/Kraizie3.jpg" alt="Kraizie Photo 3" /></div>
+      </div>
+      <div class="artist-card">
+        <div class="artist-img"><img src="images/Feezy2.jpg" alt="Feezy Photo 2" /></div>
+      </div>
+      <div class="artist-card">
+        <div class="artist-img"><img src="images/Babyg!rl Zae2.jpg" alt="BabyG!rl Zae Photo 2" /></div>
+      </div>
+      <div class="artist-card">
+        <div class="artist-img"><img src="images/Babyg!rl Zae3.jpg" alt="BabyG!rl Zae Photo 3" /></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Merch -->
   <section class="section" id="merch">
-    <div class="container">
-      <h2 class="section-title text-center">OFFICIAL MERCHANDISE</h2>
-      <div class="merch-grid" id="merchGrid">
-        <!-- Merch will be populated by JavaScript -->
-      </div>
-    </div>
-  </section>
-
-  <!-- Fan Messages & Booking -->
-  <section class="section" id="messages">
-    <div class="container">
-      <h2 class="section-title text-center">CONNECT WITH US</h2>
-      <div class="forms-container">
-        <div class="form-card">
-          <h3 class="form-title">FAN MESSAGE</h3>
-          <form id="fanMessageForm">
-            <div class="form-group">
-              <label class="form-label">Your Name</label>
-              <input type="text" class="form-input" required>
-            </div>
-            <div class="form-group">
-              <label class="form-label">Email</label>
-              <input type="email" class="form-input" required>
-            </div>
-            <div class="form-group">
-              <label class="form-label">Message</label>
-              <textarea class="form-textarea" placeholder="Your message to eMtee Records..." required></textarea>
-            </div>
-            <button type="submit" class="submit-btn">SEND MESSAGE</button>
-          </form>
+    <div class="section-title"><h2>Merchandise</h2></div>
+    <div class="merch-grid">
+      <div class="merch-card">
+        <div class="merch-img"><img src="images/emteetshirt.jpg" alt="eMtee T-Shirt" /></div>
+        <div class="merch-info">
+          <h3>eMtee T-Shirt</h3>
+          <div class="merch-price">R1,000</div>
+          <button class="add-to-cart">Add to Cart</button>
         </div>
-        <div class="form-card">
-          <h3 class="form-title">BOOK AN ARTIST</h3>
-          <form id="bookingForm">
-            <div class="form-group">
-              <label class="form-label">Full Name</label>
-              <input type="text" class="form-input" required>
-            </div>
-            <div class="form-group">
-              <label class="form-label">Email</label>
-              <input type="email" class="form-input" required>
-            </div>
-            <div class="form-group">
-              <label class="form-label">Phone</label>
-              <input type="tel" class="form-input" required>
-            </div>
-            <div class="form-group">
-              <label class="form-label">Artist</label>
-              <select class="form-select" required>
-                <option value="">Select Artist</option>
-                <option value="emtee">Emtee</option>
-                <option value="kraizie">Kraizie</option>
-                <option value="f-eezy">F-eezy</option>
-                <option value="skiips">Skiips</option>
-                <option value="baby-girl-zae">Baby Girl Zae</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label class="form-label">Event Date</label>
-              <input type="date" class="form-input" required>
-            </div>
-            <div class="form-group">
-              <label class="form-label">Message</label>
-              <textarea class="form-textarea" placeholder="Tell us about your event..."></textarea>
-            </div>
-            <button type="submit" class="submit-btn">SUBMIT BOOKING</button>
-          </form>
+      </div>
+      <div class="merch-card">
+        <div class="merch-img"><img src="images/Cap.jpg" alt="eMtee Cap" /></div>
+        <div class="merch-info">
+          <h3>eMtee Cap</h3>
+          <div class="merch-price">R600</div>
+          <button class="add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+      <div class="merch-card">
+        <div class="merch-img"><img src="images/chain.jpg" alt="eMtee Chain" /></div>
+        <div class="merch-info">
+          <h3>eMtee Chain</h3>
+          <div class="merch-price">R100,000</div>
+          <button class="add-to-cart">Add to Cart</button>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Contact Section -->
+  <!-- News -->
+  <section class="section" id="news">
+    <div class="section-title"><h2>Latest News</h2></div>
+    <div class="blog-grid">
+      <div class="blog-card">
+        <div class="blog-img"><img src="images/news-article-1.jpg" alt="Kraizie Article" /></div>
+        <div class="blog-content">
+          <div class="blog-date">August 12, 2025</div>
+          <h3 class="blog-title">Kraizie Calls for Respect Amid Controversy</h3>
+          <p class="blog-excerpt">Kraizie, a close colleague and friend of Emtee, used the moment to call for respect...</p>
+          <a href="https://sahiphopmag.co.za  " class="read-more">Read More</a>
+        </div>
+      </div>
+      <div class="blog-card">
+        <div class="blog-img"><img src="images/news-article-2.jpg" alt="New Artist Signings" /></div>
+        <div class="blog-content">
+          <div class="blog-date">July 28, 2025</div>
+          <h3 class="blog-title">eMtee Records Announces New Artist Signings</h3>
+          <p class="blog-excerpt">Exciting news! eMtee Records is expanding its roster...</p>
+          <a href="https://sahiphopmag.co.za  " class="read-more">Read More</a>
+        </div>
+      </div>
+      <div class="blog-card">
+        <div class="blog-img"><img src="images/news-article-3.jpg" alt="Imali Behind The Scenes" /></div>
+        <div class="blog-content">
+          <div class="blog-date">June 15, 2025</div>
+          <h3 class="blog-title">Behind the Scenes: Making of "Imali"</h3>
+          <p class="blog-excerpt">Get an exclusive look at the creative process behind the hit single "Imali"...</p>
+          <a href="https://sahiphopmag.co.za  " class="read-more">Read More</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Booking -->
+  <section class="section" id="booking">
+    <div class="section-title"><h2>Book an Artist</h2></div>
+    <form class="booking-form" id="bookingForm">
+      <div class="form-group">
+        <label>Full Name *</label>
+        <input type="text" class="form-control" required />
+      </div>
+      <div class="form-group">
+        <label>Email Address *</label>
+        <input type="email" class="form-control" value="info@emteerecords.co.za" readonly />
+      </div>
+      <div class="form-group">
+        <label>Phone Number *</label>
+        <input type="tel" class="form-control" required />
+      </div>
+      <div class="form-group">
+        <label>Event Date *</label>
+        <input type="date" class="form-control" required />
+      </div>
+      <div class="form-group">
+        <label>Select Artist(s) *</label>
+        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem;">
+          <div><input type="checkbox" id="artist-emtee" name="artist" value="Emtee"><label for="artist-emtee">Emtee</label></div>
+          <div><input type="checkbox" id="artist-kraizie" name="artist" value="Kraizie"><label for="artist-kraizie">Kraizie</label></div>
+          <div><input type="checkbox" id="artist-feezy" name="artist" value="F-eezy"><label for="artist-feezy">F-eezy</label></div>
+          <div><input type="checkbox" id="artist-skiips" name="artist" value="Skiips"><label for="artist-skiips">Skiips</label></div>
+          <div><input type="checkbox" id="artist-babygirlzae" name="artist" value="BabyG!rl Zae"><label for="artist-babygirlzae">BabyG!rl Zae</label></div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Budget Range *</label>
+        <select class="form-control" required>
+          <option value="">Select budget</option>
+          <option>R5,000 - R15,000</option>
+          <option>R15,000 - R30,000</option>
+          <option>R30,000 - R50,000</option>
+          <option>R50,000+</option>
+          <option>Custom Quote</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Message</label>
+        <textarea class="form-control" rows="4" placeholder="Tell us more about your event..."></textarea>
+      </div>
+      <button type="submit" class="btn">Submit Booking Request</button>
+    </form>
+  </section>
+
+  <!-- Contact -->
   <section class="section" id="contact">
-    <div class="container">
-      <h2 class="section-title text-center">CONTACT US</h2>
-      <div class="contact-grid">
-        <div class="contact-info">
-          <div class="contact-item">
-            <div class="contact-icon">
-              <i class="fas fa-map-marker-alt"></i>
-            </div>
-            <div class="contact-details">
-              <h3>Address</h3>
-              <p>4 Marie Road, Auckland Park, Johannesburg, 2092</p>
-            </div>
-          </div>
-          <div class="contact-item">
-            <div class="contact-icon">
-              <i class="fas fa-phone"></i>
-            </div>
-            <div class="contact-details">
-              <h3>Phone</h3>
-              <p>+27 83 725 4362</p>
-            </div>
-          </div>
-          <div class="contact-item">
-            <div class="contact-icon">
-              <i class="fas fa-envelope"></i>
-            </div>
-            <div class="contact-details">
-              <h3>Email</h3>
-              <p>info@emteerecords.co.za</p>
-            </div>
-          </div>
+    <div class="section-title"><h2>Contact Us</h2></div>
+    <div class="contact-container">
+      <div>
+        <div class="contact-item">
+          <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+          <div><h4>Email</h4><p>info@emteerecords.co.za</p></div>
         </div>
-        <div class="contact-info">
-          <div class="contact-item">
-            <div class="contact-icon">
-              <i class="fab fa-instagram"></i>
-            </div>
-            <div class="contact-details">
-              <h3>Instagram</h3>
-              <p>@emteerecords</p>
-            </div>
-          </div>
-          <div class="contact-item">
-            <div class="contact-icon">
-              <i class="fab fa-youtube"></i>
-            </div>
-            <div class="contact-details">
-              <h3>YouTube</h3>
-              <p>eMtee Records</p>
-            </div>
-          </div>
-          <div class="contact-item">
-            <div class="contact-icon">
-              <i class="fab fa-spotify"></i>
-            </div>
-            <div class="contact-details">
-              <h3>Spotify</h3>
-              <p>Official Playlists</p>
-            </div>
-          </div>
+        <div class="contact-item">
+          <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+          <div><h4>Address</h4><p>4 Marie Road, Auckland Park, Johannesburg, 2000</p></div>
         </div>
+        <div class="contact-item">
+          <div class="contact-icon"><i class="fab fa-whatsapp"></i></div>
+          <div><h4>WhatsApp</h4><p>+27 83 725 4362</p></div>
+        </div>
+      </div>
+      <div class="booking-form">
+        <form id="contactForm">
+          <div class="form-group">
+            <label>Your Name *</label>
+            <input type="text" class="form-control" required />
+          </div>
+          <div class="form-group">
+            <label>Your Email *</label>
+            <input type="email" class="form-control" required />
+          </div>
+          <div class="form-group">
+            <label>Subject *</label>
+            <input type="text" class="form-control" required />
+          </div>
+          <div class="form-group">
+            <label>Message *</label>
+            <textarea class="form-control" rows="5" required></textarea>
+          </div>
+          <button type="submit" class="btn">Send Message</button>
+        </form>
       </div>
     </div>
   </section>
 
   <!-- Footer -->
   <footer>
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-col">
-          <h3>About eMtee Records</h3>
-          <p>South Africa's premier independent music label, home to groundbreaking artists shaping the future of African sound.</p>
-        </div>
-        <div class="footer-col">
-          <h3>Quick Links</h3>
-          <ul class="footer-links">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#artists">Artists</a></li>
-            <li><a href="#music">Music</a></li>
-            <li><a href="#merch">Merch</a></li>
-            <li><a href="#messages">Messages</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h3>Artists</h3>
-          <ul class="footer-links">
-            <li><a href="#" onclick="openArtistModal('emtee')">Emtee</a></li>
-            <li><a href="#" onclick="openArtistModal('kraizie')">Kraizie</a></li>
-            <li><a href="#" onclick="openArtistModal('f-eezy')">F-eezy</a></li>
-            <li><a href="#" onclick="openArtistModal('skiips')">Skiips</a></li>
-            <li><a href="#" onclick="openArtistModal('baby-girl-zae')">Baby Girl Zae</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h3>Follow Us</h3>
-          <div class="social-links">
-            <a href="https://instagram.com/emteerecords" class="social-link social-instagram" target="_blank"><i class="fab fa-instagram"></i></a>
-            <a href="https://youtube.com/@emtee7199" class="social-link social-youtube" target="_blank"><i class="fab fa-youtube"></i></a>
-            <a href="https://open.spotify.com/artist/6U3gCOvxVWKBxXItqp3mdr" class="social-link social-spotify" target="_blank"><i class="fab fa-spotify"></i></a>
-          </div>
-        </div>
+    <div class="footer-content">
+      <div>
+        <h3>About eMtee Records</h3>
+        <p>South Africa's premier independent music label.</p>
       </div>
-      <div class="copyright">
-        &copy; 2025 eMtee Records. All rights reserved.
+      <div>
+        <h3>Follow Us</h3>
+        <!-- Changed to image links as requested -->
+        <a href="https://instagram.com/emteethehustla  " target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/1024px-Instagram_logo_2016.svg.png" alt="Instagram" style="width: 30px; height: 30px; margin-right: 10px;"></a>
+        <a href="https://twitter.com/emtee7199  " target="_blank"><img src="https://upload.wikimedia.org/wikipedia/en/thumb/9/9f/Twitter_bird_logo_2012.svg/1200px-Twitter_bird_logo_2012.svg.png" alt="Twitter" style="width: 30px; height: 30px; margin-right: 10px;"></a>
+        <a href="https://youtube.com/@emtee  " target="_blank"><img src="https://upload.wikimedia.org/wikipedia/en/thumb/0/09/YouTube_logo.svg/1200px-YouTube_logo.svg.png" alt="YouTube" style="width: 30px; height: 30px; margin-right: 10px;"></a>
+        <a href="https://open.spotify.com/artist/6U3gCOvxVWKBxXItqp3mdr  " target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Spotify_logo_without_text.svg/1024px-Spotify_logo_without_text.svg.png" alt="Spotify" style="width: 30px; height: 30px;"></a>
       </div>
+    </div>
+    <div class="copyright">
+      &copy; 2025 eMtee Records. All rights reserved.
     </div>
   </footer>
 
-  <!-- WhatsApp Button -->
-  <a href="https://wa.me/27837254362" class="whatsapp-float" target="_blank">
-    <i class="fab fa-whatsapp"></i>
-  </a>
-
-  <!-- Artist Modal Template -->
-  <div class="modal" id="artistModal">
+  <!-- Artist Modal -->
+  <div class="artist-modal" id="artistModal">
     <div class="modal-content">
-      <button class="modal-close" id="closeModal">&times;</button>
-      <div class="modal-header">
-        <div class="modal-avatar">
-          <img src="" alt="" id="modalArtistImage">
-        </div>
-        <div class="modal-info">
-          <h2 id="modalArtistName"></h2>
-          <p id="modalArtistBio"></p>
-          <div class="social-links">
-            <a href="" class="social-link social-spotify" id="modalSpotifyLink" target="_blank"><i class="fab fa-spotify"></i></a>
-            <a href="" class="social-link social-youtube" id="modalYoutubeLink" target="_blank"><i class="fab fa-youtube"></i></a>
-            <a href="" class="social-link social-instagram" id="modalInstagramLink" target="_blank"><i class="fab fa-instagram"></i></a>
-          </div>
-        </div>
-      </div>
-      <div class="modal-body">
-        <div class="modal-section">
-          <h3>Discography</h3>
-          <ul class="discography-list" id="modalDiscography"></ul>
-        </div>
-        <div class="modal-section">
-          <h3>Upcoming Events</h3>
-          <ul class="events-list" id="modalEvents"></ul>
-        </div>
-        <div class="modal-section">
-          <h3>Booking Pricing</h3>
-          <div id="modalPricing"></div>
-        </div>
-      </div>
+      <button onclick="closeModal()" style="float:right;font-size:1.5rem;background:none;border:none;color:white;">×</button>
+      <div id="modalContent"></div>
     </div>
   </div>
 
-  <!-- JavaScript -->
+  <!-- WhatsApp -->
+  <a href="https://wa.me/27837254362  " class="whatsapp-float" target="_blank">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js  "></script>
   <script>
-    // Artist Data
-    const artists = [
-      {
-        id: 'emtee',
-        name: 'Emtee',
-        image: 'https://i.scdn.co/image/ab6761610000e5eb5a0bcdbc8c8c8c8c8c8c8c8c',
-        bio: 'Mthembeni Ndevu, professionally known as Emtee, is a South African rapper born in Matatiele, Eastern Cape. He rose to fame with his debut single "Roll Up" and has since become one of South Africa\'s most influential hip-hop artists. Founder of eMtee Records.',
-        genre: 'Hip-Hop',
-        location: 'Johannesburg',
-        stats: { monthlyListeners: '2.4M', socialReach: '5.8M' },
-        spotifyUrl: 'https://open.spotify.com/artist/6U3gCOvxVWKBxXItqp3mdr',
-        youtubeUrl: 'https://youtube.com/@emtee7199',
-        instagramUrl: 'https://instagram.com/emteethehustla',
-        discography: [
-          { title: 'Avery', year: '2024', type: 'Album' },
-          { title: 'Johustleburg', year: '2023', type: 'Single' },
-          { title: 'Uzoyimela Ft. Gwamba', year: '2022', type: 'Single' }
-        ],
-        events: [
-          { date: '2026-02-15', venue: 'FNB Stadium', city: 'Johannesburg' },
-          { date: '2026-03-22', venue: 'Cape Town Stadium', city: 'Cape Town' }
-        ],
-        pricing: {
-          appearance: 'R8,000',
-          featureChorus: 'R25,000',
-          featureVerse: 'R40,000'
-        }
+    // Artists data with corrected pricing for Emtee
+    const artists = {
+      emtee: {
+        name: "Emtee",
+        image: "images/emtee best image.jpg",
+        bio: "Mthembeni Ndevu, professionally known as Emtee, is a South African rapper born in Matatiele, Eastern Cape. He rose to fame with his debut single 'Roll Up' and has since become one of South Africa's most influential hip-hop artists.",
+        genre: "Hip-Hop",
+        location: "Johannesburg",
+        listeners: "2.4M",
+        social: {
+          instagram: "https://instagram.com/emteethehustla  ",
+          twitter: "https://twitter.com/emtee7199  ",
+          youtube: "https://youtube.com/@emtee  ",
+          spotify: "https://open.spotify.com/artist/6U3gCOvxVWKBxXItqp3mdr  "
+        },
+        pricing: { appearance: "R20,000", feature: "R30,000", performance: "R85,000" }
       },
-      {
-        id: 'kraizie',
-        name: 'Kraizie',
-        image: 'https://i.scdn.co/image/ab6761610000e5eb5a0bcdbc8c8c8c8c8c8c8c8c',
-        bio: 'A Rosebank-based artist signed under Ambitiouz Entertainment. Kraizie shares his journey in the music industry, his spiritual practices and his acting roles in popular TV shows.',
-        genre: 'Afro-Pop',
-        location: 'Cape Town',
-        stats: { monthlyListeners: '1.8M', socialReach: '4.2M' },
-        spotifyUrl: 'https://open.spotify.com/artist/1tXUwhCT3Y3F1HSIcwC7M0',
-        youtubeUrl: 'https://youtube.com/@kraizieOfficial',
-        instagramUrl: 'https://instagram.com/kraizieofficial',
-        discography: [
-          { title: 'Imali', year: '2023', type: 'Single' },
-          { title: 'Pepeb', year: '2022', type: 'Single' },
-          { title: 'Shishiliza ft Sjava', year: '2021', type: 'Single' }
-        ],
-        events: [
-          { date: '2025-06-15', venue: 'Cape Town International Convention Centre', city: 'Cape Town' },
-          { date: '2025-07-20
+      kraizie: {
+        name: "Kraizie",
+        image: "images/Kraizie1.jpg",
+        bio: "A Rosebank-based artist signed under Ambitiouz Entertainment. Kraizie shares his journey in the music industry, his spiritual practices and his acting roles in popular TV shows.",
+        genre: "Afro-Pop",
+        location: "Cape Town",
+        listeners: "1.8M",
+        social: {
+          instagram: "https://instagram.com/kraizieofficial  ",
+          twitter: "https://twitter.com/kraizieofficial  ",
+          youtube: "https://youtube.com/@kraizieOfficial  ",
+          spotify: "https://open.spotify.com/artist/1tXUwhCT3Y3F1HSIcwC7M0  "
+        },
+        pricing: { appearance: "R10,000", feature: "R25,000", performance: "R50,000" }
+      },
+      feezy: {
+        name: "F-eezy",
+        image: "images/Feezy1.jpg",
+        bio: "Known for his lyrical prowess and smooth flow, F-eezy has been making waves in the South African hip-hop scene with his authentic storytelling and innovative production.",
+        genre: "Hip-Hop",
+        location: "Johannesburg",
+        listeners: "950K",
+        social: {
+          instagram: "https://instagram.com/f_eezysa  ",
+          twitter: "https://twitter.com/f_eezy  ",
+          youtube: "https://youtube.com/@f_eezy  ",
+          spotify: "https://open.spotify.com/artist/79fCocNyVEjDwvuASCNeMo  "
+        },
+        pricing: { appearance: "R10,000", feature: "R25,000", performance: "R50,000" }
+      },
+      skiips: {
+        name: "Skiips",
+        image: "images/Skiips1.jpg",
+        bio: "A newly signed artist to eMtee Records, Skiips brings fresh energy to the label with his unique sound and collaborative spirit.",
+        genre: "Hip-Hop",
+        location: "Johannesburg",
+        listeners: "320K",
+        social: {
+          instagram: "https://instagram.com/emteerecords  ",
+          twitter: "https://twitter.com/skiips  ",
+          youtube: "https://youtube.com/@skiips  ",
+          spotify: "https://open.spotify.com/artist/1QquCeba1W051sM56tKu0Y  "
+        },
+        pricing: { appearance: "R10,000", feature: "R25,000", performance: "R50,000" }
+      },
+      babygirlzae: {
+        name: "BabyG!rl Zae",
+        image: "images/Babyg!rl Zae1.jpg",
+        bio: "Emerging talent with a unique sound that blends Afrobeats with traditional South African rhythms. Known for her powerful vocals and captivating stage presence.",
+        genre: "Afrobeats",
+        location: "Durban",
+        listeners: "680K",
+        social: {
+          instagram: "https://instagram.com/babygirlzae  ",
+          twitter: "https://twitter.com/babygirlzae  ",
+          youtube: "https://youtube.com/@babygirlzae  ",
+          spotify: "https://open.spotify.com/artist/1djL8Gjzuz1jLKg5QWCuG4  "
+        },
+        pricing: { appearance: "R10,000", feature: "R25,000", performance: "R50,000" }
+      }
+    };
+
+    function openModal(id) {
+      const artist = artists[id];
+      document.getElementById('modalContent').innerHTML = `
+        <div style="display:flex;gap:2rem;align-items:center;">
+          <img src="${artist.image}" style="width:200px;height:200px;object-fit:cover;border-radius:10px;" />
+          <div>
+            <h2>${artist.name}</h2>
+            <p><strong>Genre:</strong> ${artist.genre}</p>
+            <p><strong>Location:</strong> ${artist.location}</p>
+            <p>${artist.bio}</p>
+            <h3>Booking Rates</h3>
+            <p>Appearance: ${artist.pricing.appearance}</p>
+            <p>Feature: ${artist.pricing.feature}</p>
+            <p>Performance: ${artist.pricing.performance}</p>
+            <div style="margin-top:1rem;">
+              <a href="${artist.social.instagram}" target="_blank" style="margin-right:10px;">Instagram</a>
+              <a href="${artist.social.twitter}" target="_blank" style="margin-right:10px;">Twitter</a>
+              <a href="${artist.social.youtube}" target="_blank" style="margin-right:10px;">YouTube</a>
+              <a href="${artist.social.spotify}" target="_blank">Spotify</a>
+            </div>
+          </div>
+        </div>
+      `;
+      document.getElementById('artistModal').style.display = 'block';
+    }
+
+    function closeModal() {
+      document.getElementById('artistModal').style.display = 'none';
+    }
+
+    // Stats counter (50M streams)
+    function animateStats() {
+      document.querySelectorAll('.stat-number').forEach(stat => {
+        const target = parseInt(stat.getAttribute('data-count'));
+        let count = 0;
+        const duration = 3000;
+        const increment = target / (duration / 16);
+        const update = () => {
+          if (count < target) {
+            count += increment;
+            stat.textContent = Math.floor(count).toLocaleString();
+            setTimeout(update, 16);
+          } else {
+            stat.textContent = target.toLocaleString();
+          }
+        };
+        update();
+      });
+    }
+    window.addEventListener('scroll', animateStats);
+
+    // Form submission
+    document.getElementById('bookingForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const formData = new FormData(this);
+      const email = "info@emteerecords.co.za";
+      const subject = "Booking Request";
+      const body = `Name: ${formData.get('Full Name')}\nEmail: ${formData.get('Email Address')}\nPhone: ${formData.get('Phone Number')}\nEvent Date: ${formData.get('Event Date')}\nArtists: ${Array.from(document.querySelectorAll('input[name="artist"]:checked')).map(cb => cb.value).join(', ')}\nBudget: ${formData.get('Budget Range')}\nMessage: ${formData.get('Message')}`;
+      window.location.href = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      alert('Booking request sent to info@emteerecords.co.za!');
+      this.reset();
+    });
+
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const formData = new FormData(this);
+      const email = "info@emteerecords.co.za";
+      const subject = formData.get('Subject');
+      const body = `Name: ${formData.get('Your Name')}\nEmail: ${formData.get('Your Email')}\nMessage: ${formData.get('Message')}`;
+      window.location.href = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      alert('Message sent to info@emteerecords.co.za!');
+      this.reset();
+    });
+
+    // Cart functionality
+    document.querySelectorAll('.add-to-cart').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const merchName = this.closest('.merch-info').querySelector('h3').textContent;
+        const merchPrice = this.closest('.merch-info').querySelector('.merch-price').textContent;
+        const whatsappUrl = `https://wa.me/27837254362?text=Hello%20eMtee%20Records%2C%20I%20would%20like%20to%20order%3A%20  ${encodeURIComponent(merchName)}%20(${merchPrice}).`;
+        window.open(whatsappUrl, '_blank');
+      });
+    });
+
+    // Theme toggle
+    document.querySelectorAll('.theme-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const theme = this.getAttribute('data-theme');
+        document.body.setAttribute('data-theme', theme);
+        localStorage.setItem('theme', theme);
+        document.querySelectorAll('.theme-btn').forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+      });
+    });
+
+    // Load saved theme
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    document.body.setAttribute('data-theme', savedTheme);
+    document.querySelector(`.theme-btn[data-theme="${savedTheme}"]`).classList.add('active');
+  </script>
+</body>
+</html>
