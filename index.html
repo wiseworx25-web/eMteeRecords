@@ -1,913 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>eMtee Records | South Africa's Premier Music Label</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
-    <style>
-        :root {
-            --primary: #000000;
-            --secondary: #ffffff;
-            --accent: #dc2626;
-            --accent-glow: rgba(220, 38, 38, 0.4);
-            --gray: #1a1a1a;
-            --light-gray: #333333;
-            --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            --card-bg: rgba(30, 30, 30, 0.85);
-            --text-primary: #ffffff;
-            --text-secondary: #cccccc;
-            --shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            --glow: 0 0 20px var(--accent-glow);
-            --section-spacing: 8rem;
-        }
-        [data-theme="light"] {
-            --primary: #ffffff;
-            --secondary: #000000;
-            --gray: #f5f5f5;
-            --light-gray: #e0e0e0;
-            --card-bg: rgba(255, 255, 255, 0.9);
-            --text-primary: #000000;
-            --text-secondary: #444444;
-            --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            --glow: 0 0 20px rgba(220, 38, 38, 0.2);
-        }
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Inter', sans-serif;
-        }
-        html {
-            scroll-behavior: smooth;
-        }
-        body {
-            background-color: var(--primary);
-            color: var(--text-primary);
-            overflow-x: hidden;
-            transition: var(--transition);
-            background: radial-gradient(ellipse at center, var(--gray) 0%, var(--primary) 100%);
-        }
-        /* Custom Cursor */
-        .cursor {
-            width: 20px;
-            height: 20px;
-            border: 2px solid var(--accent);
-            border-radius: 50%;
-            position: fixed;
-            pointer-events: none;
-            z-index: 9999;
-            mix-blend-mode: difference;
-            transition: transform 0.2s ease;
-        }
-        .cursor-follower {
-            width: 8px;
-            height: 8px;
-            background: var(--accent);
-            border-radius: 50%;
-            position: fixed;
-            pointer-events: none;
-            z-index: 9998;
-            transition: transform 0.4s ease;
-        }
-        /* Particle Background */
-        #particles-js {
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-        }
-        /* Floating Elements */
-        .floating-elements {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: -1;
-        }
-        .floating-element {
-            position: absolute;
-            border-radius: 50%;
-            background: var(--accent-glow);
-            filter: blur(40px);
-            opacity: 0.1;
-            animation: float 15s infinite linear;
-        }
-        @keyframes float {
-            0%, 100% { transform: translate(0, 0) rotate(0deg); }
-            25% { transform: translate(10vw, 15vh) rotate(90deg); }
-            50% { transform: translate(5vw, 25vh) rotate(180deg); }
-            75% { transform: translate(15vw, 10vh) rotate(270deg); }
-        }
-        /* Theme Toggle - MOVED LOWER */
-        .theme-toggle {
-            background: var(--card-bg);
-            backdrop-filter: blur(20px);
-            border-radius: 50px;
-            padding: 8px;
-            display: flex;
-            box-shadow: var(--shadow);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            width: fit-content;
-            margin-left: 1rem;
-            margin-top: 10px; /* Lowered to align with search bar */
-        }
-        [data-theme="light"] .theme-toggle {
-            border: 1px solid rgba(0, 0, 0, 0.1);
-        }
-        .theme-btn {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: transparent;
-            border: none;
-            color: var(--text-primary);
-            cursor: pointer;
-            transition: var(--transition);
-        }
-        .theme-btn.active {
-            background: var(--accent);
-            color: white;
-            box-shadow: var(--glow);
-        }
-        /* Spotify Player */
-        .spotify-player {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 1000;
-            transition: var(--transition);
-            width: 300px;
-        }
-        .spotify-player.minimized {
-            width: 60px;
-            height: 60px;
-        }
-        .spotify-player.minimized .spotify-toggle {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-        }
-        .spotify-player.minimized .spotify-embed {
-            display: none;
-        }
-        .spotify-toggle {
-            background: var(--accent);
-            color: white;
-            border: none;
-            border-radius: 10px 10px 0 0;
-            padding: 10px 15px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            width: 100%;
-            transition: var(--transition);
-            box-shadow: var(--glow);
-        }
-        .spotify-embed {
-            border-radius: 0 0 10px 10px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            height: 352px;
-        }
-        /* Header & Navigation */
-        header {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            padding: 1.5rem 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background-color: rgba(0, 0, 0, 0.9);
-            z-index: 1000;
-            transition: var(--transition);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        [data-theme="light"] header {
-            background-color: rgba(255, 255, 255, 0.9);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-        }
-        .logo {
-            height: 80px; /* Increased logo size */
-            display: flex;
-            align-items: center;
-            transition: var(--transition);
-        }
-        .logo img {
-            height: 100%;
-            transition: var(--transition);
-            filter: drop-shadow(0 0 10px rgba(220, 38, 38, 0.5));
-        }
-        nav ul {
-            display: flex;
-            list-style: none;
-        }
-        nav ul li {
-            margin-left: 2rem;
-            position: relative;
-        }
-        nav ul li a {
-            color: var(--text-primary);
-            text-decoration: none;
-            font-weight: 500;
-            transition: var(--transition);
-            position: relative;
-            padding: 5px 0;
-        }
-        nav ul li a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: var(--accent);
-            transition: var(--transition);
-            box-shadow: var(--glow);
-        }
-        nav ul li a:hover::after {
-            width: 100%;
-        }
-        .menu-toggle {
-            display: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: var(--text-primary);
-        }
-        /* Search Bar - LOWERED */
-        .search-container {
-            position: relative;
-            margin-left: 2rem;
-            margin-top: 10px; /* Lowered search bar */
-        }
-        .search-input {
-            background: var(--light-gray);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 25px;
-            padding: 0.5rem 1rem;
-            color: var(--text-primary);
-            width: 200px;
-            transition: var(--transition);
-        }
-        .search-input:focus {
-            outline: none;
-            border-color: var(--accent);
-            box-shadow: 0 0 0 2px var(--accent-glow);
-            width: 250px;
-        }
-        .search-btn {
-            position: absolute;
-            right: 10px;
-            top: 50%;
-            transform: translateY(-50%);
-            background: none;
-            border: none;
-            color: var(--text-primary);
-            cursor: pointer;
-        }
-        /* Hero Section */
-        .hero {
-            height: 100vh;
-            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), 
-                        url('images/whole team.jpg') center/cover no-repeat;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 0 5%;
-            position: relative;
-            overflow: hidden;
-        }
-        [data-theme="light"] .hero {
-            background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), 
-                        url('images/whole team.jpg') center/cover no-repeat;
-        }
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at center, transparent 0%, var(--primary) 100%);
-            opacity: 0.5;
-        }
-        .hero-content {
-            max-width: 800px;
-            position: relative;
-            z-index: 1;
-        }
-        .hero-logo {
-            max-width: 400px;
-            margin: 0 auto 2rem;
-            animation: logoFloat 6s ease-in-out infinite;
-            filter: drop-shadow(0 10px 30px rgba(220, 38, 38, 0.5));
-        }
-        @keyframes logoFloat {
-            0%, 100% { transform: translateY(0) scale(1); }
-            50% { transform: translateY(-20px) scale(1.05); }
-        }
-        .hero-logo img {
-            width: 100%;
-        }
-        .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            line-height: 1.6;
-            color: var(--text-secondary);
-        }
-        .btn {
-            display: inline-block;
-            padding: 0.8rem 2rem;
-            background-color: var(--accent);
-            color: var(--secondary);
-            text-decoration: none;
-            border-radius: 30px;
-            font-weight: 600;
-            transition: var(--transition);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            position: relative;
-            overflow: hidden;
-            border: none;
-            cursor: pointer;
-            box-shadow: var(--glow);
-        }
-        .btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-            transition: 0.5s;
-        }
-        .btn:hover::before {
-            left: 100%;
-        }
-        .btn:hover {
-            background-color: #b91c1c;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(220, 38, 38, 0.3), var(--glow);
-        }
-        /* Stats Section */
-        .stats {
-            padding: 4rem 5%;
-            background-color: var(--gray);
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            position: relative;
-            overflow: hidden;
-        }
-        .stats::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, transparent 30%, var(--accent-glow) 100%);
-            opacity: 0.1;
-        }
-        .stat-item {
-            text-align: center;
-            margin: 1rem;
-            position: relative;
-            z-index: 1;
-        }
-        .stat-number {
-            font-size: 3rem;
-            font-weight: 800;
-            color: var(--accent);
-            display: block;
-            text-shadow: 0 0 10px var(--accent-glow);
-        }
-        .stat-label {
-            font-size: 1rem;
-            color: var(--text-secondary);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        /* Sections */
-        .section {
-            padding: var(--section-spacing) 5%;
-            position: relative;
-        }
-        .section-title {
-            text-align: center;
-            margin-bottom: 5rem;
-            position: relative;
-        }
-        .section-title h2 {
-            font-size: 3rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            display: inline-block;
-            position: relative;
-        }
-        .section-title h2::after {
-            content: '';
-            position: absolute;
-            bottom: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 4px;
-            background-color: var(--accent);
-            box-shadow: var(--glow);
-        }
-        /* Artists Section */
-        .featured-artist {
-            grid-column: 1 / -1;
-            background: var(--card-bg);
-            border-radius: 20px;
-            overflow: hidden;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 0;
-            box-shadow: var(--shadow);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        .featured-artist-img {
-            height: 500px;
-            overflow: hidden;
-        }
-        .featured-artist-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: var(--transition);
-        }
-        .featured-artist:hover .featured-artist-img img {
-            transform: scale(1.05);
-        }
-        .featured-artist-info {
-            padding: 3rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-        .featured-artist-info h3 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            background: linear-gradient(to right, var(--accent), #ff6b6b);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .artist-tag {
-            display: inline-block;
-            background: var(--accent);
-            color: white;
-            padding: 0.3rem 1rem;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            margin-bottom: 1.5rem;
-            box-shadow: var(--glow);
-        }
-        .artists-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-        }
-        .artist-card {
-            background-color: var(--card-bg);
-            border-radius: 20px;
-            overflow: hidden;
-            transition: var(--transition);
-            position: relative;
-            backdrop-filter: blur(10px);
-            box-shadow: var(--shadow);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            cursor: pointer;
-        }
-        [data-theme="light"] .artist-card {
-            border: 1px solid rgba(0, 0, 0, 0.1);
-        }
-        .artist-card:hover {
-            transform: translateY(-15px);
-            box-shadow: 0 20px 40px rgba(220, 38, 38, 0.2), var(--glow);
-        }
-        .artist-img {
-            height: 300px;
-            overflow: hidden;
-            position: relative;
-        }
-        .artist-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: var(--transition);
-        }
-        .artist-card:hover .artist-img img {
-            transform: scale(1.1);
-        }
-        .artist-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            padding: 1.5rem;
-            background: linear-gradient(transparent, rgba(0,0,0,0.9));
-            color: white;
-            transform: translateY(100%);
-            transition: var(--transition);
-        }
-        .artist-card:hover .artist-overlay {
-            transform: translateY(0);
-        }
-        .artist-info {
-            padding: 1.5rem;
-        }
-        .artist-info h3 {
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-        }
-        .artist-info p {
-            color: var(--text-secondary);
-            margin-bottom: 1rem;
-            font-size: 1rem;
-        }
-        .artist-stats {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 1.5rem;
-        }
-        .stat {
-            text-align: center;
-        }
-        .stat-value {
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: var(--accent);
-        }
-        .stat-label {
-            font-size: 0.8rem;
-            color: var(--text-secondary);
-        }
-        /* Merchandise Section */
-        .merch-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 2rem;
-        }
-        .merch-card {
-            background-color: var(--card-bg);
-            border-radius: 20px;
-            overflow: hidden;
-            transition: var(--transition);
-            backdrop-filter: blur(10px);
-            box-shadow: var(--shadow);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            cursor: pointer;
-        }
-        [data-theme="light"] .merch-card {
-            border: 1px solid rgba(0, 0, 0, 0.1);
-        }
-        .merch-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(220, 38, 38, 0.2), var(--glow);
-        }
-        .merch-img {
-            height: 250px;
-            overflow: hidden;
-        }
-        .merch-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: var(--transition);
-        }
-        .merch-card:hover .merch-img img {
-            transform: scale(1.05);
-        }
-        .merch-info {
-            padding: 1.5rem;
-        }
-        .merch-info h3 {
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
-        }
-        .merch-price {
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: var(--accent);
-            margin-bottom: 1rem;
-        }
-        .add-to-cart {
-            width: 100%;
-            padding: 0.8rem;
-            background-color: var(--accent);
-            color: var(--secondary);
-            border: none;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: var(--transition);
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            box-shadow: var(--glow);
-            font-size: 1rem;
-        }
-        .add-to-cart:hover {
-            background-color: #b91c1c;
-            transform: translateY(-3px);
-        }
-        /* News Section */
-        .blog-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 2rem;
-        }
-        .blog-card {
-            background-color: var(--card-bg);
-            border-radius: 15px;
-            overflow: hidden;
-            transition: var(--transition);
-            box-shadow: var(--shadow);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        .blog-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(220, 38, 38, 0.2), var(--glow);
-        }
-        .blog-img {
-            height: 200px;
-            overflow: hidden;
-        }
-        .blog-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: var(--transition);
-        }
-        .blog-card:hover .blog-img img {
-            transform: scale(1.05);
-        }
-        .blog-content {
-            padding: 1.5rem;
-        }
-        .blog-date {
-            color: var(--accent);
-            font-size: 0.9rem;
-            margin-bottom: 0.5rem;
-        }
-        .blog-title {
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
-        }
-        .blog-excerpt {
-            color: var(--text-secondary);
-            margin-bottom: 1.5rem;
-            line-height: 1.6;
-        }
-        .read-more {
-            color: var(--accent);
-            text-decoration: none;
-            font-weight: 600;
-            transition: var(--transition);
-        }
-        .read-more:hover {
-            color: var(--text-primary);
-        }
-        /* YouTube Section */
-        .youtube-section {
-            background: var(--gray);
-        }
-        .youtube-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 2rem;
-        }
-        .youtube-embed {
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-        }
-        .youtube-embed:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(220, 38, 38, 0.2), var(--glow);
-        }
-        /* Contact Section */
-        .contact-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-        }
-        .contact-info {
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
-        }
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-        .contact-icon {
-            width: 50px;
-            height: 50px;
-            background: var(--accent);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: var(--glow);
-        }
-        .contact-details h4 {
-            margin-bottom: 0.5rem;
-        }
-        .contact-details p {
-            color: var(--text-secondary);
-        }
-        .contact-form {
-            background: var(--card-bg);
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: var(--shadow);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-        }
-        .form-control {
-            width: 100%;
-            padding: 1rem;
-            background-color: var(--light-gray);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            color: var(--text-primary);
-            font-size: 1rem;
-            transition: var(--transition);
-        }
-        .form-control:focus {
-            outline: none;
-            border-color: var(--accent);
-            box-shadow: 0 0 0 2px var(--accent-glow);
-        }
-        textarea.form-control {
-            min-height: 150px;
-            resize: vertical;
-        }
-        /* Footer */
-        footer {
-            background-color: var(--gray);
-            padding: 4rem 5% 2rem;
-        }
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 3rem;
-            margin-bottom: 3rem;
-        }
-        .footer-column h3 {
-            font-size: 1.4rem;
-            margin-bottom: 1.5rem;
-            position: relative;
-            display: inline-block;
-        }
-        .footer-column h3::after {
-            content: '';
-            position: absolute;
-            bottom: -8px;
-            left: 0;
-            width: 50px;
-            height: 3px;
-            background-color: var(--accent);
-            box-shadow: var(--glow);
-        }
-        .footer-links {
-            list-style: none;
-        }
-        .footer-links li {
-            margin-bottom: 1rem;
-        }
-        .footer-links a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            transition: var(--transition);
-        }
-        .footer-links a:hover {
-            color: var(--accent);
-            padding-left: 5px;
-        }
-        .social-links {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1.5rem;
-        }
-        .social-links a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            background-color: var(--light-gray);
-            border-radius: 50%;
-            color: var(--text-primary);
-            transition: var(--transition);
-            text-decoration: none;
-        }
-        .social-links a:hover {
-            background-color: var(--accent);
-            transform: translateY(-3px);
-            box-shadow: var(--glow);
-        }
-        .copyright {
-            text-align: center;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-        }
-        /* Responsive Design */
-        @media (max-width: 1200px) {
-            .artists-grid, .merch-grid, .blog-grid {
-                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            }
-        }
-        @media (max-width: 992px) {
-            .logo {
-                height: 70px;
-            }
-            .hero-logo {
-                max-width: 300px;
-            }
-            .featured-artist {
-                grid-template-columns: 1fr;
-            }
-            .featured-artist-img {
-                height: 300px;
-            }
-        }
-        @media (max-width: 768px) {
-            .menu-toggle {
-                display: block;
-            }
-            nav {
-                position: fixed;
-                top: 80px;
-                left: -100%;
-                width: 80%;
-                height: calc(100vh - 80px);
-                background-color: var(--gray);
-                transition: var(--transition);
-                padding: 2rem;
-                backdrop-filter: blur(10px);
-                border-right: 1px solid rgba(255, 255, 255, 0.1);
-            }
-            nav.active {
-                left: 0;
-            }
-            nav ul {
-                flex-direction: column;
-            }
-            nav ul li {
-                margin: 1rem 0;
-            }
-            .search-container, .theme-toggle {
-                margin: 1rem 0 0;
-                width: 100%;
-            }
-            .search-input {
-                width: 100%;
-            }
-        }
-        @media (max-width: 576px) {
-            .hero-logo {
-                max-width: 200px;
-            }
-            .section-title h2 {
-                font-size: 2rem;
-            }
-            .artists-grid, .merch-grid, .blog-grid {
-                grid-template-columns: 1fr;
-            }
-            .spotify-playlists, .youtube-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
 </head>
 <body data-theme="dark">
     <!-- Custom Cursor -->
@@ -922,6 +22,15 @@
         <div class="floating-element" style="width: 100px; height: 100px; top: 30%; left: 70%; animation-delay: 10s;"></div>
         <div class="floating-element" style="width: 180px; height: 180px; top: 80%; left: 10%; animation-delay: 7s;"></div>
     </div>
+
+    <!-- Theme Toggle (Lowered) -->
+    <div class="theme-toggle-wrapper">
+        <div class="theme-toggle">
+            <button class="theme-btn active" data-theme="dark"><i class="fas fa-moon"></i></button>
+            <button class="theme-btn" data-theme="light"><i class="fas fa-sun"></i></button>
+        </div>
+    </div>
+
     <!-- Spotify Player -->
     <div class="spotify-player">
         <button class="spotify-toggle">
@@ -930,13 +39,14 @@
             <i class="fas fa-chevron-down minimize-btn"></i>
         </button>
         <div class="spotify-embed">
-            <iframe src="https://open.spotify.com/embed/playlist/0qIvroVtThINkLvz2hLfh8?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            <iframe src="https://open.spotify.com/embed/playlist/0qIvroVtThINkLvz2hLfh8?theme=0" width="100%" height="352" frameborder="0" allowfullscreen allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
         </div>
     </div>
-    <!-- Header & Navigation -->
+
+    <!-- Header -->
     <header>
         <div class="logo">
-            <img src="images/eMtee Records logo.jpg" alt="eMtee Records">
+            <img src="images/eMtee Records logo.jpg" alt="eMtee Records" />
         </div>
         <div class="menu-toggle">
             <i class="fas fa-bars"></i>
@@ -949,31 +59,27 @@
                 <li><a href="#videos">Videos</a></li>
                 <li><a href="#gallery">Gallery</a></li>
                 <li><a href="#merch">Merch</a></li>
-                <li><a href="#news">News</a></li>
-                <li><a href="#booking">Bookings</a></li>
+                <li><a href="#messages">Messages</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
             <div class="search-container">
-                <input type="text" class="search-input" placeholder="Search...">
+                <input type="text" class="search-input" placeholder="Search..." />
                 <button class="search-btn"><i class="fas fa-search"></i></button>
-            </div>
-            <!-- Theme Toggle - NOW LOWERED -->
-            <div class="theme-toggle">
-                <button class="theme-btn active" data-theme="dark"><i class="fas fa-moon"></i></button>
-                <button class="theme-btn" data-theme="light"><i class="fas fa-sun"></i></button>
             </div>
         </nav>
     </header>
+
     <!-- Hero Section -->
     <section class="hero" id="home">
-        <div class="hero-content" data-aos="fade-up" data-aos-duration="1000">
+        <div class="hero-content" data-aos="fade-up">
             <div class="hero-logo">
-                <img src="images/eMtee Records logo.jpg" alt="eMtee Records">
+                <img src="images/eMtee Records logo.jpg" alt="eMtee Records" />
             </div>
-            <p>South Africa's Premier Independent Music Label. Home to groundbreaking artists pushing the boundaries of hip-hop and urban music.</p>
+            <p>South Africa's Premier Independent Music Label. Home to groundbreaking artists shaping the future of African sound.</p>
             <a href="#artists" class="btn">Explore Our Artists</a>
         </div>
     </section>
+
     <!-- Stats Section -->
     <section class="stats">
         <div class="stat-item" data-aos="fade-up" data-aos-delay="100">
@@ -993,256 +99,359 @@
             <span class="stat-label">Countries</span>
         </div>
     </section>
+
     <!-- Artists Section -->
     <section class="section" id="artists">
         <div class="section-title" data-aos="fade-up">
             <h2>Our Artists</h2>
         </div>
-        <div class="artists-showcase" data-aos="fade-up">
-            <div class="featured-artist">
-                <div class="featured-artist-img">
-                    <img src="images/emtee best image.jpg" alt="Emtee">
-                </div>
-                <div class="featured-artist-info">
-                    <span class="artist-tag">Label Founder</span>
+        <div class="artists-grid">
+            <!-- Emtee -->
+            <div class="artist-card" data-aos="fade-up">
+                <div class="artist-img"><img src="https://i.scdn.co/image/ab6761610000e5eb5a0bcdbc8c8c8c8c8c8c8c8c" alt="Emtee" /></div>
+                <div class="artist-info">
                     <h3>Emtee</h3>
-                    <p>Mthembeni Ndevu, professionally known as Emtee, is a South African rapper born in Matatiele, Eastern Cape. He rose to fame with his debut single "Roll Up" and has since become one of South Africa's most influential hip-hop artists.</p>
+                    <p>Hip-Hop • Johannesburg</p>
                     <div class="artist-stats">
-                        <div class="stat">
-                            <div class="stat-value">2.4M+</div>
-                            <div class="stat-label">Monthly Listeners</div>
-                        </div>
-                        <div class="stat">
-                            <div class="stat-value">5</div>
-                            <div class="stat-label">Albums</div>
-                        </div>
-                        <div class="stat">
-                            <div class="stat-value">50M+</div>
-                            <div class="stat-label">Streams</div>
-                        </div>
+                        <div class="stat"><div class="stat-value">2.4M+</div><div class="stat-label">Listeners</div></div>
                     </div>
-                    <a href="https://open.spotify.com/artist/6U3gCOvxVWKBxXItqp3mdr" target="_blank" class="btn">Spotify Profile</a>
-                    <a href="https://www.youtube.com/@emtee7199" target="_blank" class="btn" style="background: #FF0000; margin-left: 10px;">YouTube Channel</a>
+                    <div class="artist-links">
+                        <a href="https://open.spotify.com/artist/6U3gCOvxVWKBxXItqp3mdr" target="_blank" class="btn-spotify">Spotify</a>
+                        <a href="https://www.youtube.com/@emtee7199" target="_blank" class="btn-youtube">YouTube</a>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="artists-grid">
             <!-- Kraizie -->
-            <div class="artist-card" data-artist="kraizie" data-aos="fade-up" data-aos-delay="100">
-                <div class="artist-img">
-                    <img src="images/Kraizie1.jpg" alt="Kraizie">
-                    <div class="artist-overlay">
-                        <p>Click to view full profile</p>
-                    </div>
-                </div>
+            <div class="artist-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="artist-img"><img src="https://i.scdn.co/image/ab6761610000e5eb5a0bcdbc8c8c8c8c8c8c8c8c" alt="Kraizie" /></div>
                 <div class="artist-info">
                     <h3>Kraizie</h3>
-                    <p>Hip-Hop • Mpumalanga</p>
+                    <p>Afro-Pop • Cape Town</p>
                     <div class="artist-stats">
-                        <div class="stat">
-                            <div class="stat-value">850K+</div>
-                            <div class="stat-label">Monthly Listeners</div>
-                        </div>
-                        <div class="stat">
-                            <div class="stat-value">3</div>
-                            <div class="stat-label">EPs</div>
-                        </div>
+                        <div class="stat"><div class="stat-value">1.8M+</div><div class="stat-label">Listeners</div></div>
                     </div>
-                    <div style="display: flex; gap: 10px;">
-                        <a href="https://open.spotify.com/artist/1tXUwhCT3Y3F1HSIcwC7M0" target="_blank" class="btn" style="padding: 0.5rem 1rem; font-size: 0.9rem;">Spotify</a>
-                        <a href="https://www.youtube.com/@kraizieOfficial" target="_blank" class="btn" style="padding: 0.5rem 1rem; font-size: 0.9rem; background: #FF0000;">YouTube</a>
+                    <div class="artist-links">
+                        <a href="https://open.spotify.com/artist/1tXUwhCT3Y3F1HSIcwC7M0" target="_blank" class="btn-spotify">Spotify</a>
+                        <a href="https://www.youtube.com/@kraizieOfficial" target="_blank" class="btn-youtube">YouTube</a>
                     </div>
                 </div>
             </div>
             <!-- F-eezy -->
-            <div class="artist-card" data-artist="feezy" data-aos="fade-up" data-aos-delay="200">
-                <div class="artist-img">
-                    <img src="images/Feezy1.jpg" alt="F-eezy">
-                    <div class="artist-overlay">
-                        <p>Click to view full profile</p>
-                    </div>
-                </div>
+            <div class="artist-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="artist-img"><img src="https://i.scdn.co/image/ab6761610000e5eb5a0bcdbc8c8c8c8c8c8c8c8c" alt="F-eezy" /></div>
                 <div class="artist-info">
                     <h3>F-eezy</h3>
                     <p>Hip-Hop • Johannesburg</p>
                     <div class="artist-stats">
-                        <div class="stat">
-                            <div class="stat-value">620K+</div>
-                            <div class="stat-label">Monthly Listeners</div>
-                        </div>
-                        <div class="stat">
-                            <div class="stat-value">2</div>
-                            <div class="stat-label">Albums</div>
-                        </div>
+                        <div class="stat"><div class="stat-value">950K+</div><div class="stat-label">Listeners</div></div>
                     </div>
-                    <div style="display: flex; gap: 10px;">
-                        <a href="https://open.spotify.com/artist/79fCocNyVEjDwvuASCNeMo" target="_blank" class="btn" style="padding: 0.5rem 1rem; font-size: 0.9rem;">Spotify</a>
-                        <a href="https://www.youtube.com/channel/UC549e3k32frZfExn3BWSv7A" target="_blank" class="btn" style="padding: 0.5rem 1rem; font-size: 0.9rem; background: #FF0000;">YouTube</a>
+                    <div class="artist-links">
+                        <a href="https://open.spotify.com/artist/79fCocNyVEjDwvuASCNeMo" target="_blank" class="btn-spotify">Spotify</a>
+                        <a href="https://www.youtube.com/channel/UC549e3k32frZfExn3BWSv7A" target="_blank" class="btn-youtube">YouTube</a>
                     </div>
                 </div>
             </div>
             <!-- Skiips -->
-            <div class="artist-card" data-artist="skiips" data-aos="fade-up" data-aos-delay="300">
-                <div class="artist-img">
-                    <img src="images/Skiips1.jpg" alt="Skiips">
-                    <div class="artist-overlay">
-                        <p>Click to view full profile</p>
-                    </div>
-                </div>
+            <div class="artist-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="artist-img"><img src="https://i.scdn.co/image/ab6761610000e5eb5a0bcdbc8c8c8c8c8c8c8c8c" alt="Skiips" /></div>
                 <div class="artist-info">
                     <h3>Skiips</h3>
-                    <p>Hip-Hop • Durban</p>
+                    <p>Hip-Hop • Johannesburg</p>
                     <div class="artist-stats">
-                        <div class="stat">
-                            <div class="stat-value">450K+</div>
-                            <div class="stat-label">Monthly Listeners</div>
-                        </div>
-                        <div class="stat">
-                            <div class="stat-value">1</div>
-                            <div class="stat-label">Album</div>
-                        </div>
+                        <div class="stat"><div class="stat-value">320K+</div><div class="stat-label">Listeners</div></div>
                     </div>
-                    <div style="display: flex; gap: 10px;">
-                        <a href="https://open.spotify.com/artist/1QquCeba1W051sM56tKu0Y" target="_blank" class="btn" style="padding: 0.5rem 1rem; font-size: 0.9rem;">Spotify</a>
-                        <a href="https://www.youtube.com/@skiips.wahunna" target="_blank" class="btn" style="padding: 0.5rem 1rem; font-size: 0.9rem; background: #FF0000;">YouTube</a>
+                    <div class="artist-links">
+                        <a href="https://open.spotify.com/artist/1QquCeba1W051sM56tKu0Y" target="_blank" class="btn-spotify">Spotify</a>
+                        <a href="https://www.youtube.com/@skiips.wahunna" target="_blank" class="btn-youtube">YouTube</a>
                     </div>
                 </div>
             </div>
             <!-- BabyG!rl Zae -->
-            <div class="artist-card" data-artist="babygirlzae" data-aos="fade-up" data-aos-delay="400">
-                <div class="artist-img">
-                    <img src="images/Babyg!rl Zae1.jpg" alt="BabyG!rl Zae">
-                    <div class="artist-overlay">
-                        <p>Click to view full profile</p>
-                    </div>
-                </div>
+            <div class="artist-card" data-aos="fade-up" data-aos-delay="400">
+                <div class="artist-img"><img src="https://i.scdn.co/image/ab6761610000e5eb5a0bcdbc8c8c8c8c8c8c8c8c" alt="BabyG!rl Zae" /></div>
                 <div class="artist-info">
                     <h3>BabyG!rl Zae</h3>
-                    <p>R&B • Cape Town</p>
+                    <p>Afrobeats • Durban</p>
                     <div class="artist-stats">
-                        <div class="stat">
-                            <div class="stat-value">380K+</div>
-                            <div class="stat-label">Monthly Listeners</div>
-                        </div>
-                        <div class="stat">
-                            <div class="stat-value">2</div>
-                            <div class="stat-label">EPs</div>
-                        </div>
+                        <div class="stat"><div class="stat-value">680K+</div><div class="stat-label">Listeners</div></div>
                     </div>
-                    <div style="display: flex; gap: 10px;">
-                        <a href="https://open.spotify.com/artist/1djL8Gjzuz1jLKg5QWCuG4" target="_blank" class="btn" style="padding: 0.5rem 1rem; font-size: 0.9rem;">Spotify</a>
-                        <a href="https://www.youtube.com/@BABYGIRLZAE" target="_blank" class="btn" style="padding: 0.5rem 1rem; font-size: 0.9rem; background: #FF0000;">YouTube</a>
+                    <div class="artist-links">
+                        <a href="https://open.spotify.com/artist/1djL8Gjzuz1jLKg5QWCuG4" target="_blank" class="btn-spotify">Spotify</a>
+                        <a href="https://www.youtube.com/@BABYGIRLZAE" target="_blank" class="btn-youtube">YouTube</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
     <!-- Music Section -->
     <section class="section music-section" id="music">
         <div class="section-title" data-aos="fade-up">
-            <h2>Our Music</h2>
+            <h2>Listen Now</h2>
         </div>
         <div class="spotify-playlists">
-            <div class="spotify-embed" data-aos="fade-up" data-aos-delay="100">
-                <iframe src="https://open.spotify.com/embed/playlist/0qIvroVtThINkLvz2hLfh8?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-            </div>
-            <div class="spotify-embed" data-aos="fade-up" data-aos-delay="200">
-                <iframe src="https://open.spotify.com/embed/artist/6U3gCOvxVWKBxXItqp3mdr?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-            </div>
+            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/0qIvroVtThINkLvz2hLfh8?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
         </div>
     </section>
-    <!-- YouTube Videos Section -->
+
+    <!-- Videos Section -->
     <section class="section youtube-section" id="videos">
         <div class="section-title" data-aos="fade-up">
-            <h2>Latest Music Videos</h2>
+            <h2>Latest Videos</h2>
         </div>
         <div class="youtube-grid">
-            <div class="youtube-embed" data-aos="fade-up" data-aos-delay="100">
-                <iframe width="100%" height="315" src="https://www.youtube.com/embed/videoseries?list=UU549e3k32frZfExn3BWSv7A" title="eMtee Videos" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
-            <div class="youtube-embed" data-aos="fade-up" data-aos-delay="200">
-                <iframe width="100%" height="315" src="https://www.youtube.com/embed/videoseries?list=UULF549e3k32frZfExn3BWSv7A" title="Kraizie Videos" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
+            <iframe width="100%" height="315" src="https://www.youtube.com/embed/videoseries?list=UU549e3k32frZfExn3BWSv7A" title="eMtee" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <iframe width="100%" height="315" src="https://www.youtube.com/embed/videoseries?list=UULF549e3k32frZfExn3BWSv7A" title="Kraizie" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
     </section>
+
+    <!-- Gallery Section -->
+    <section class="section" id="gallery">
+        <div class="section-title" data-aos="fade-up">
+            <h2>Gallery</h2>
+        </div>
+        <div class="gallery-slideshow">
+            <div class="gallery-slides" id="gallerySlides">
+                <!-- Dynamically populated via JS -->
+            </div>
+            <button class="gallery-prev" onclick="changeSlide(-1)">&#10094;</button>
+            <button class="gallery-next" onclick="changeSlide(1)">&#10095;</button>
+        </div>
+    </section>
+
     <!-- Merchandise Section -->
     <section class="section" id="merch">
         <div class="section-title" data-aos="fade-up">
             <h2>Official Merchandise</h2>
         </div>
         <div class="merch-grid">
-            <!-- Emtee T-Shirt -->
-            <div class="merch-card" data-aos="fade-up" data-aos-delay="100">
-                <div class="merch-img">
-                    <img src="images/emteetshirt.jpg" alt="Emtee T-Shirt">
-                </div>
+            <div class="merch-card" data-aos="fade-up">
+                <div class="merch-img"><img src="images/emteetshirt.jpg" alt="Emtee T-Shirt" /></div>
                 <div class="merch-info">
                     <h3>Emtee T-Shirt</h3>
                     <div class="merch-price">R1,000</div>
-                    <button class="add-to-cart"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+                    <button class="add-to-cart">Add to Cart</button>
                 </div>
             </div>
-            <!-- Emtee Chain -->
-            <div class="merch-card" data-aos="fade-up" data-aos-delay="200">
-                <div class="merch-img">
-                    <img src="images/chain.jpg" alt="Emtee Chain">
-                </div>
+            <div class="merch-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="merch-img"><img src="images/chain.jpg" alt="Emtee Chain" /></div>
                 <div class="merch-info">
                     <h3>Emtee Chain</h3>
                     <div class="merch-price">R100,000</div>
-                    <button class="add-to-cart"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+                    <button class="add-to-cart">Add to Cart</button>
                 </div>
             </div>
-            <!-- Emtee Cap -->
-            <div class="merch-card" data-aos="fade-up" data-aos-delay="300">
-                <div class="merch-img">
-                    <img src="images/cap.jpg" alt="Emtee Cap">
-                </div>
+            <div class="merch-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="merch-img"><img src="images/cap.jpg" alt="Emtee Cap" /></div>
                 <div class="merch-info">
                     <h3>Emtee Cap</h3>
                     <div class="merch-price">R600</div>
-                    <button class="add-to-cart"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+                    <button class="add-to-cart">Add to Cart</button>
                 </div>
             </div>
         </div>
     </section>
-    <!-- News Section -->
-    <section class="section" id="news">
+
+    <!-- Fan Messages Section -->
+    <section class="section" id="messages">
         <div class="section-title" data-aos="fade-up">
-            <h2>Latest News</h2>
+            <h2>Leave a Message</h2>
         </div>
-        <div class="blog-grid">
-            <!-- Article 1 - Emtee's DIY 3 -->
-            <div class="blog-card" data-aos="fade-up" data-aos-delay="100">
-                <div class="blog-img">
-                    <img src="https://sahiphopmag.co.za/wp-content/uploads/2024/10/Emtee-DIY3-Album-Cover.jpg" alt="Emtee DIY 3">
+        <div class="fan-message-form">
+            <form id="fanMessageForm">
+                <div class="form-group">
+                    <input type="text" placeholder="Your Name" required />
                 </div>
-                <div class="blog-content">
-                    <div class="blog-date">October 31, 2024</div>
-                    <h3 class="blog-title">Emtee Releases Highly Anticipated 'DIY 3' Album</h3>
-                    <p class="blog-excerpt">After years of anticipation, Emtee finally drops his third installment in the DIY series, showcasing his growth as an artist and independent label owner. The album features collaborations with Young Stunna and other South African stars.</p>
-                    <a href="https://sahiphopmag.co.za/emtee-releases-diy-3-album/" class="read-more">Read More →</a>
+                <div class="form-group">
+                    <input type="email" placeholder="Your Email" required />
+                </div>
+                <div class="form-group">
+                    <textarea placeholder="Your Message to eMtee Records" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="btn">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section" id="contact">
+        <div class="section-title" data-aos="fade-up">
+            <h2>Contact Us</h2>
+        </div>
+        <div class="contact-container">
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                    <div class="contact-details">
+                        <h4>Address</h4>
+                        <p>4 Marie Road, Auckland Park, Johannesburg, 2092</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon"><i class="fas fa-phone"></i></div>
+                    <div class="contact-details">
+                        <h4>Phone</h4>
+                        <p>+27 83 725 4362</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                    <div class="contact-details">
+                        <h4>Email</h4>
+                        <p>info@emteerecords.co.za</p>
+                    </div>
                 </div>
             </div>
-            <!-- Article 2 - Kraizie Profile -->
-            <div class="blog-card" data-aos="fade-up" data-aos-delay="200">
-                <div class="blog-img">
-                    <img src="https://www.sowetanlive.co.za/resizer/4ZvFm8QnQwVfQrGZvQXvQXvQXvQ=/800x0/arc-anglerfish-arc2-prod-timeslive.s3.amazonaws.com/public/QXVQXVQXVQXVQXVQ.jpg" alt="Kraizie Profile">
-                </div>
-                <div class="blog-content">
-                    <div class="blog-date">August 15, 2024</div>
-                    <h3 class="blog-title">Kraizie: The Spiritual Voice of South African Hip-Hop</h3>
-                    <p class="blog-excerpt">Kraizie opens up about his journey from Rosebank to international stages, his spiritual practices, and how his faith influences his music. The Afro-Pop artist discusses his latest single 'Imali' and upcoming tour dates.</p>
-                    <a href="https://www.sowetanlive.co.za/entertainment/music/2024-08-15-kraizie-the-spiritual-voice-of-south-african-hip-hop/" class="read-more">Read More →</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>About eMtee Records</h3>
+                <p>South Africa's premier independent music label, home to groundbreaking artists shaping the future of African sound.</p>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#artists">Artists</a></li>
+                    <li><a href="#music">Music</a></li>
+                    <li><a href="#videos">Videos</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#merch">Merch</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Follow Us</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-spotify"></i></a>
                 </div>
             </div>
-            <!-- Article 3 - F-eezy Feature -->
-            <div class="blog-card" data-aos="fade-up" data-aos-delay="300">
-                <div class="blog-img">
-                    <img src="https://i0.wp.com/amrockers.com/wp-content/uploads/2024/07/F-eezy.jpg" alt="F-eezy Feature">
-                </div>
-                <div class="blog-content">
-                    <div class="blog-date">July 12, 2024</div>
-                    <h3 class="blog-title">F-eezy Talks 'Kasi Rap' and New Album 'Street Chronicles'</h3>
-                    <p class="blog-excerpt">F-eezy discusses his authentic storytelling approach and how he's bringing township narratives to the forefront of South African hip-hop. The artist reveals his creative process and upcoming performances.</p>
-                    <a href="https://amrockers.com/f-eezy-talks-k
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 eMtee Records. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/27837254362" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({ duration: 1000, once: true });
+
+        // Custom Cursor
+        const cursor = document.querySelector('.cursor');
+        const cursorFollower = document.querySelector('.cursor-follower');
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+            setTimeout(() => {
+                cursorFollower.style.left = e.clientX + 'px';
+                cursorFollower.style.top = e.clientY + 'px';
+            }, 100);
+        });
+
+        // Particles
+        particlesJS('particles-js', {
+            particles: {
+                number: { value: 80, density: { enable: true, value_area: 800 } },
+                color: { value: "#dc2626" },
+                shape: { type: "circle" },
+                opacity: { value: 0.5, random: true },
+                size: { value: 3, random: true },
+                line_linked: { enable: true, distance: 150, color: "#dc2626", opacity: 0.4, width: 1 },
+                move: { enable: true, speed: 2, direction: "none", random: true, out_mode: "out" }
+            },
+            interactivity: {
+                detect_on: "canvas",
+                events: { onhover: { enable: true, mode: "repulse" }, onclick: { enable: true, mode: "push" } }
+            }
+        });
+
+        // Mobile Menu
+        document.querySelector('.menu-toggle').addEventListener('click', () => {
+            document.querySelector('nav').classList.toggle('active');
+        });
+
+        // Theme Toggle
+        document.querySelectorAll('.theme-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const theme = btn.getAttribute('data-theme');
+                document.body.setAttribute('data-theme', theme);
+                document.querySelectorAll('.theme-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+            });
+        });
+
+        // Spotify Player Toggle
+        document.querySelector('.spotify-toggle').addEventListener('click', () => {
+            document.querySelector('.spotify-player').classList.toggle('minimized');
+        });
+
+        // Stats Counter
+        const statNumbers = document.querySelectorAll('.stat-number');
+        const statsSection = document.querySelector('.stats');
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    statNumbers.forEach(stat => {
+                        const target = parseInt(stat.getAttribute('data-count'));
+                        let count = 0;
+                        const timer = setInterval(() => {
+                            count += target / 100;
+                            stat.textContent = Math.floor(count).toLocaleString();
+                            if (count >= target) clearInterval(timer);
+                        }, 20);
+                    });
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+        observer.observe(statsSection);
+
+        // Gallery Slideshow
+        const slidesContainer = document.getElementById('gallerySlides');
+        const totalImages = 2983 - 2150 + 1;
+        for (let i = 2150; i <= 2983; i++) {
+            const slide = document.createElement('div');
+            slide.classList.add('gallery-slide');
+            slide.innerHTML = `<img src="images/gallery1/DSC${i}.JPG" alt="Gallery ${i}" onerror="this.style.display='none'" />`;
+            slidesContainer.appendChild(slide);
+        }
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.gallery-slide');
+        if (slides.length > 0) slides[currentSlide].style.display = 'block';
+
+        window.changeSlide = (n) => {
+            slides[currentSlide].style.display = 'none';
+            currentSlide = (currentSlide + n + slides.length) % slides.length;
+            slides[currentSlide].style.display = 'block';
+        };
+
+        // Fan Message Form
+        document.getElementById('fanMessageForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Thank you for your message! The eMtee Records team will review it soon.');
+            e.target.reset();
+        });
+
+        // Add to Cart
+        document.querySelectorAll('.add-to-cart').forEach(btn => {
+            btn.addEventListener('click', () => {
+                alert('Item added to cart!');
+            });
+        });
+    </script>
+</body>
+</html>
